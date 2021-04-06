@@ -4,9 +4,9 @@
     "slug": "AwesomeProject",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./Components/assets/favicon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./Components/assets/favicon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,10 +17,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.daouadji.AwesomeProject"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./Components/assets/favicon.png"
+    },
+    "description": "",
+    "android": {
+      "package": "com.daouadji.AwesomeProject"
     }
   }
 }
