@@ -5,6 +5,7 @@ import BagContainer from '../mybagComp/BagContainer'
 import TotalBox from '../mybagComp/TotalBox'
 import TopNavigation from '../topNavigation/TopNavigation'
 import PrimaryButton from "../Basic/PrimaryButton";
+import routes from '../navigation/routes'
 
 const ini_data = [
   {
@@ -193,7 +194,7 @@ const ini_data = [
   },
 ];
 
-export default function MyBagScreen() {
+export default function MyBagScreen({navigation}) {
   const [data, setdata] = useState(ini_data)
   const hundleDelete=(item)=>{
     setdata(data.filter((product)=>product.productName != item.productName))
@@ -206,7 +207,7 @@ export default function MyBagScreen() {
           <BagContainer bagArray={data} hundleDelete={hundleDelete} />
         )}
         {data.length > 0 && <TotalBox num_items={data.length} tag="dzd" total="900" />}
-        {data.length > 0 && <PrimaryButton title="checkout" width="88%" />}
+        {data.length > 0 && <PrimaryButton title="checkout" width="88%" onPress={()=>{ navigation.navigate(routes.DELEVERY)  }} />}
       </View>
     );
 }

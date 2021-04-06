@@ -11,8 +11,10 @@ import OptionsContainer from "../OptionsContainer";
 import { TouchableOpacity } from "react-native";
 import AppButton from "../../Basic/AppButton";
 import PrimaryButton from "../../Basic/PrimaryButton";
+import routes from "../../navigation/routes";
 
 export default function Step03({
+  navigation,
   stepOption = { step, setstep },
   animationOption = { animation, setanimation },
 }) {
@@ -51,11 +53,17 @@ export default function Step03({
         backgroundcolor={Colors.lime}
         title="Confirm"
         width="80%"
+        onPress={() => {
+          navigation.navigate(routes.ACTIVITY);
+        }}
       />
       <PrimaryButton
         backgroundcolor={Colors.eliminatedRed}
         title="Cancel"
         width="80%"
+        onPress={() => {
+          navigation.goBack()
+        }}
       />
     </View>
   );

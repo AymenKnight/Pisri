@@ -9,6 +9,7 @@ import DeleveryScreen from  "../Screens/DeleveryScreen"
 import MyBagScreen from  "../Screens/MyBagScreen"
 import Colors from '../config/Colors';
 import HomeButton from './HomeButton';
+import StepNavigator from './StepNavigator';
 
 
 
@@ -40,8 +41,8 @@ export default function AppNavigator() {
         />
 
         <BottomTab.Screen
-          name={routes.DELEVERY}
-          component={DeleveryScreen}
+          name={routes.APP}
+          component={StoreScreen}
           options={({ navigation }) => ({
             tabBarButton: () => (
               <HomeButton onPress={() => navigation.navigate("home")} />
@@ -49,8 +50,8 @@ export default function AppNavigator() {
           })}
         />
         <BottomTab.Screen
-          name={routes.MY_BAG}
-          component={MyBagScreen}
+          name={routes.CHECK}
+          component={StepNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Feather

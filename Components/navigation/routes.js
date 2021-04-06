@@ -3,5 +3,7 @@ export default Object.freeze({
   MY_BAG: "my_bag",
   DELEVERY: "delevery",
   WELCOME: "Welcome",
-  APP:"App"
+  APP: "App",
+  ACTIVITY: "Activity",
+  CHECK:"check"
 });

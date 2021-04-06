@@ -14,7 +14,7 @@ import { ScrollView } from "react-native";
 export const AnimationContext = React.createContext();
 
 
-export default function Delevery() {
+export default function Delevery({navigation}) {
   const [step, setstep] = useState(1);
   const fadeInRight = "fadeInRight";
   const fadeInLeft = "fadeInLeft";
@@ -24,10 +24,13 @@ export default function Delevery() {
     if(step>1) {
       setanimation(fadeInLeft)
       setstep(step-1)}
+      else {
+          navigation.goBack();
+      }
    }
   return (
     <ScrollView style={styles.screen}>
-      <TopNavigation backButton={true} hundleLeftBtn={goBack} />
+      <TopNavigation backButton={true} hundleLeftBtn={goBack}   />
       <DotedScroll fill={step} />
       <View style={styles.step}>
         {step == 1 && (
@@ -70,6 +73,7 @@ export default function Delevery() {
             useNativeDriver={true}
           >
             <Step03
+             navigation={navigation}
               stepOption={{ step: step, setstep: setstep }}
               animationOption={{
                 animation: animation,
