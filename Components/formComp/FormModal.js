@@ -21,6 +21,7 @@ export default function FormModal({ visible, children, top, onClosed,height="75%
       backButtonClose={true}
       useNativeDriver={true}
       onClosed={onClosed}
+      coverScreen={true}
     >
       <ScrollView
         showsVerticalScrollIndicator={false}

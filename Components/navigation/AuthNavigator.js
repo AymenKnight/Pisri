@@ -12,22 +12,13 @@ const SignStack=createStackNavigator()
 
 
 export default function AuthNavigator() {
-    const [userToken, setUserToken] = useState(null);
-    const authContext = useMemo(() => {
-      signIn: () => {
-          setUserToken("")
-      };
-    });
+    const [user, setUser] = useState(null);
+  
     return (
-      <AuthContext.Provider
-        value={{ userToken: userToken, setUserToken: setUserToken }}
-      >
+      <AuthContext.Provider value={{ user: user, setUser: setUser }}>
         <SignStack.Navigator screenOptions={{ headerShown: false }}>
-          {userToken ? (
-            <SignStack.Screen name={routes.APP} component={AppNavigator} />
-          ) : (
-            <SignStack.Screen name={routes.WELCOME} component={WelcomeScreen} />
-          )}
+        {user && <SignStack.Screen name={routes.APP} component={AppNavigator} /> }
+        {!user && <SignStack.Screen name={routes.WELCOME} component={WelcomeScreen} />}
         </SignStack.Navigator>
       </AuthContext.Provider>
     );

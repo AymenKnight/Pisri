@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { StyleSheet, View } from 'react-native'
 import * as yup from 'yup';
 import { Dimensions } from "react-native";
@@ -10,6 +10,8 @@ import FormTitle from '../formComp/FormTitle'
 import Help_Button from '../formComp/Help_Button';
 import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
+import { AuthContext } from "../context/AuthContext";
+import { UserInterfaceIdiom } from "expo-constants";
 
 const SignIn_validationSchema=yup.object().shape(
 {
@@ -22,11 +24,15 @@ const SignIn_validationSchema=yup.object().shape(
 
 export default function SignInForm({visible,setVisible}) {
     const [dimensions, setDimensions] = useState({ window, screen }); 
-
+    const { user ,setUser} = useContext(AuthContext);
     return (
       <FormModal visible={visible} onClosed={()=>setVisible(false)}   >
         <View style={styles.container}>
           <Form
+            onSubmit={(values)=>{
+              setUser(values.Email)
+              console.log(values.Email)
+            }}
             validationSchema={SignIn_validationSchema}
             initialValues={{
               Email: "",
@@ -54,7 +60,7 @@ export default function SignInForm({visible,setVisible}) {
 
             <SubmitButton
               backgroundcolor="primary"
-              title="Sign Up"
+              title="Sign In"
               width={80}
               
             />

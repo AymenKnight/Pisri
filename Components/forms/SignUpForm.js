@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useContext, useState} from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import * as yup from 'yup';
 import { Dimensions } from "react-native";
@@ -11,6 +11,7 @@ import FormTitle from '../formComp/FormTitle'
 import Help_Button from '../formComp/Help_Button';
 import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
+import { AuthContext } from '../context/AuthContext';
 
 const SignUp_validationSchema=yup.object().shape(
 {
@@ -24,7 +25,11 @@ const SignUp_validationSchema=yup.object().shape(
 
 export default function SignUpForm({visible,setVisible}) {
     const [dimensions, setDimensions] = useState({ window, screen });
-   
+    const {user,setUser}=useContext(AuthContext)
+    const onSubmit=(values)=>{
+      console.log(values.Email)
+      setUser(values.Email)
+    }
     return (
       <>
         <MediaQuery maxDeviceHeight={720}>
@@ -35,6 +40,7 @@ export default function SignUpForm({visible,setVisible}) {
           >
             <View style={styles.container}>
               <Form
+                onSubmit={onSubmit}
                 validationSchema={SignUp_validationSchema}
                 initialValues={{
                   Full_Name: "",
@@ -89,6 +95,7 @@ export default function SignUpForm({visible,setVisible}) {
           >
             <View style={styles.container}>
               <Form
+                onSubmit={onSubmit}
                 validationSchema={SignUp_validationSchema}
                 initialValues={{
                   Full_Name: "",

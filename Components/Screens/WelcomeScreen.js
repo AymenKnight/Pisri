@@ -6,6 +6,7 @@ import {  Provider } from "react-native-paper";
 
 import AppButton from '../Basic/AppButton';
 import Colors from '../config/Colors';
+import { AuthContext } from '../context/AuthContext';
 import SignInForm from '../forms/SignInForm';
 import SignUpForm from '../forms/SignUpForm';
 
@@ -50,15 +51,16 @@ export default function WelcomeScreen({navigation,route}) {
             />
           </ImageBackground>
         </View>
-
-        <SignInForm
-          visible={SignInVisible}
-          setVisible={() => setSignInVisible(false)}
-        />
-        <SignUpForm
-          visible={SignUpVisible}
-          setVisible={() => setSignUpVisible(false)}
-        />
+      
+          <SignInForm
+            visible={SignInVisible}
+            setVisible={() => setSignInVisible(false)}
+          />
+          <SignUpForm
+            visible={SignUpVisible}
+            setVisible={() => setSignUpVisible(false)}
+          />
+       
       </Provider>
     </>
   );
