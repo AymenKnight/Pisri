@@ -64,6 +64,15 @@ const initialActiveArray = [
     reminingTime: 30,
     here: false,
   },
+  {
+    type: "delevering",
+    reciept_ID: 12345678444,
+    requests: [],
+    price: 400,
+    currency: "dzd",
+    reminingTime: 30,
+    here: false,
+  },
 ];
 export default function ActiveTab({
   route,
@@ -114,7 +123,6 @@ const styles = StyleSheet.create({
   },
   FlatList: {
     width:"100%",
-     maxHeight:"77%",
      flexGrow:0,
      alignSelf:'center',
   },

@@ -25,6 +25,7 @@ export default function FormModal({ visible, children, top, onClosed,height="75%
     >
       <ScrollView
         showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
         style={styles.ScrollView}
         contentContainerStyle={[styles.contentContainerStyle]}
       >

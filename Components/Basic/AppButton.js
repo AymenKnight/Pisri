@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import { TouchableOpacity,Text, StyleSheet } from 'react-native'
 import Colors from '../config/Colors'
 import { Dimensions } from "react-native";
-import { responsiveHeight, responsiveScreenHeight, responsiveScreenWidth, responsiveWidth, useResponsiveHeight, useResponsiveScreenHeight, useResponsiveScreenWidth, useResponsiveWidth } from 'react-native-responsive-dimensions';
+import { responsiveWidth, } from 'react-native-responsive-dimensions';
 
 
 
@@ -36,8 +36,7 @@ const styles=StyleSheet.create({
         backgroundColor:Colors.primary,
         borderRadius:15,
         padding:8,
-        marginVertical:10,
-       
+        marginVertical:10,       
     },
     
     text:{

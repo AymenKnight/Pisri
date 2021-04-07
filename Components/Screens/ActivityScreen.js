@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet,  } from 'react-native'
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import TopNavigation from '../topNavigation/TopNavigation';
 import ActiveTab from '../activityComp/ActiveTab';
@@ -8,7 +8,6 @@ import Colors from '../config/Colors';
 import font from '../config/font';
 import { useFonts,  PublicSans_700Bold,} from "@expo-google-fonts/public-sans";
 import AppLoading from "expo-app-loading";
-import { Provider } from "react-native-paper";
 import DeleveryReqModal from '../activityComp/popup/DeleveryReqModal';
 import DeleveryFinishedModal from "../activityComp/popup/DeleveryFinishedModal";
 

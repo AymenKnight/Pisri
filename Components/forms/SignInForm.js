@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         marginBottom :10,
-        width:"100%"
+        width:"100%",
     },
       help_Container :{
     flexDirection:"row",

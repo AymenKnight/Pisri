@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
   },
   FlatList: {
     width: "100%",
-    maxHeight: "77%",
     flexGrow: 0,
     alignSelf: "center",
   },

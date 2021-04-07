@@ -13,6 +13,7 @@ export default function SubmitButton({title,textColor="white",backgroundcolor,wi
        onPress={handleSubmit} 
        width={width}
        height={52}
+       
         />
     )
 }
