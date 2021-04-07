@@ -12,6 +12,7 @@ import Help_Button from '../formComp/Help_Button';
 import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
 import { AuthContext } from '../context/AuthContext';
+import { SignVisibleContext } from '../context/SignVisibleContext';
 
 const SignUp_validationSchema=yup.object().shape(
 {
@@ -26,9 +27,20 @@ const SignUp_validationSchema=yup.object().shape(
 export default function SignUpForm({visible,setVisible}) {
     const [dimensions, setDimensions] = useState({ window, screen });
     const {user,setUser}=useContext(AuthContext)
+      const {
+        SignInVisible,
+        setSignInVisible,
+        SignUpVisible,
+        setSignUpVisible,
+      } = useContext(SignVisibleContext);
     const onSubmit=(values)=>{
       console.log(values.Email)
       setUser(values.Email)
+    }
+    const openSignIn=()=>{
+                setSignUpVisible(!SignUpVisible)
+                setSignInVisible(!SignInVisible);
+             
     }
     return (
       <>
@@ -81,7 +93,7 @@ export default function SignUpForm({visible,setVisible}) {
                 />
                 <View style={styles.help_Container}>
                   <Help_Text title="Aleardy a User ?  " />
-                  <Help_Button title="Sign In " />
+                  <Help_Button title="Sign In " onPress={openSignIn} />
                 </View>
               </Form>
             </View>
@@ -136,7 +148,7 @@ export default function SignUpForm({visible,setVisible}) {
                 />
                 <View style={styles.help_Container}>
                   <Help_Text title="Aleardy a User ?  " />
-                  <Help_Button title="Sign In " />
+                  <Help_Button title="Sign In " onPress={openSignIn} />
                 </View>
               </Form>
             </View>

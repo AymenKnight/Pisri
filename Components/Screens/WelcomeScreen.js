@@ -1,22 +1,19 @@
 import React from 'react'
 import { useState } from 'react';
-import { StyleSheet, Modal, View ,Image, ImageBackground} from 'react-native';
-import { Dimensions } from "react-native";
+import { StyleSheet, View ,Image, ImageBackground} from 'react-native';
 import {  Provider } from "react-native-paper";
 
 import AppButton from '../Basic/AppButton';
 import Colors from '../config/Colors';
-import { AuthContext } from '../context/AuthContext';
+import { SignVisibleContext } from '../context/SignVisibleContext';
 import SignInForm from '../forms/SignInForm';
 import SignUpForm from '../forms/SignUpForm';
 
-const window = Dimensions.get("window");
-const screen = Dimensions.get("screen");
 
 export default function WelcomeScreen({navigation,route}) {
   const [SignInVisible, setSignInVisible] = useState(false);
   const [SignUpVisible, setSignUpVisible] = useState(false);
-  const [dimensions, setDimensions] = useState({ window, screen }); 
+
 
   return (
     <>
@@ -51,7 +48,11 @@ export default function WelcomeScreen({navigation,route}) {
             />
           </ImageBackground>
         </View>
-      
+        <SignVisibleContext.Provider  value={
+          {
+            SignInVisible:SignInVisible,setSignInVisible:setSignInVisible,
+            SignUpVisible:SignUpVisible,setSignUpVisible:setSignUpVisible
+        }} >
           <SignInForm
             visible={SignInVisible}
             setVisible={() => setSignInVisible(false)}
@@ -60,7 +61,7 @@ export default function WelcomeScreen({navigation,route}) {
             visible={SignUpVisible}
             setVisible={() => setSignUpVisible(false)}
           />
-       
+        </SignVisibleContext.Provider>
       </Provider>
     </>
   );

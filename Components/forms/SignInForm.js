@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { StyleSheet, View } from 'react-native'
 import * as yup from 'yup';
-import { Dimensions } from "react-native";
 
 import Form from '../formComp/Form'
 import FormModal from '../formComp/FormModal';
@@ -12,6 +11,7 @@ import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
 import { AuthContext } from "../context/AuthContext";
 import { UserInterfaceIdiom } from "expo-constants";
+import { SignVisibleContext } from "../context/SignVisibleContext";
 
 const SignIn_validationSchema=yup.object().shape(
 {
@@ -19,12 +19,16 @@ const SignIn_validationSchema=yup.object().shape(
  Password:yup.string().required().min(4).label("Password")
 }
 ) 
- const window = Dimensions.get("window");
- const screen = Dimensions.get("screen");
+
 
 export default function SignInForm({visible,setVisible}) {
-    const [dimensions, setDimensions] = useState({ window, screen }); 
     const { user ,setUser} = useContext(AuthContext);
+    const {
+      SignInVisible,
+      setSignInVisible,
+      SignUpVisible,
+      setSignUpVisible,
+    } = useContext(SignVisibleContext);
     return (
       <FormModal visible={visible} onClosed={()=>setVisible(false)}   >
         <View style={styles.container}>
@@ -66,7 +70,10 @@ export default function SignInForm({visible,setVisible}) {
             />
             <View style={styles.help_Container}>
               <Help_Text title="New User ?  " />
-              <Help_Button title="Sign Up " />
+              <Help_Button title="Sign Up "  onPress={()=>{
+                setSignInVisible(!SignInVisible)
+                setSignUpVisible(!SignUpVisible)
+              }}  />
             </View>
           </Form>
         </View>
