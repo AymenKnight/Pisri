@@ -7,9 +7,10 @@ import CloseButton from '../../Basic/CloseButton';
 import Colors from '../../config/Colors';
 import font from '../../config/font';
 import FormModal from '../../formComp/FormModal'
+import routes from '../../navigation/routes';
 import ProfileItem from './ProfileItem';
 
-export default function DeleveryReqModal({ visible, setVisible, reciept_ID, req_Array = [] }) {
+export default function DeleveryReqModal({ visible, setVisible, reciept_ID, req_Array = [],navigation }) {
   return (
     <FormModal visible={visible}  onClosed={()=>setVisible(false)}  height="75%" >
       <View style={styles.content}>
@@ -27,6 +28,9 @@ export default function DeleveryReqModal({ visible, setVisible, reciept_ID, req_
               name={person.delivery_Guy_name}
               age={person.delivery_Guy_age}
               rank={person.delivery_Guy_rank}
+              onPress={()=>{
+                setVisible(!visible)
+                navigation.push(routes.ORDER_ON_WAY)}}
             />
           ))}
         </View>

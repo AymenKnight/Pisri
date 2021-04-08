@@ -7,5 +7,6 @@ export default Object.freeze({
   ACTIVITY: "Activity",
   CHECK:"check",
   DELEVERY_FINISHED:"Delevery finished",
-  ORDER_ON_WAY:"Order_On_Way"
+  ORDER_ON_WAY:"Order_On_Way",
+  CONGRATULATIONS:"Congratulations"
 });

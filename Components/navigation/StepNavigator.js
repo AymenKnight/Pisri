@@ -8,6 +8,7 @@ import ActivityScreen from "../Screens/ActivityScreen";
 import MyBagScreen from "../Screens/MyBagScreen";
 import DeleveryFinished from "../Screens/DeleveryFinished";
 import OnTheWayScreen from "../Screens/OnTheWayScreen";
+import CongratulationScreen from "../Screens/CongratulationScreen";
 
 const StepStack = createStackNavigator();
 
@@ -24,6 +25,10 @@ export default function StepNavigator() {
       />
       <StepStack.Screen name={routes.ACTIVITY} component={ActivityScreen} />
       <StepStack.Screen name={routes.ORDER_ON_WAY} component={OnTheWayScreen} />
+      <StepStack.Screen
+        name={routes.CONGRATULATIONS}
+        component={CongratulationScreen}
+      />
     </StepStack.Navigator>
   );
 }

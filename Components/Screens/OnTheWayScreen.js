@@ -13,7 +13,7 @@ import PrimaryButton from "../Basic/PrimaryButton";
 import { PublicSans_600SemiBold , useFonts } from "@expo-google-fonts/public-sans";
 import AppLoading from "expo-app-loading";
 
-export default function OnTheWayScreen() {
+export default function OnTheWayScreen({navigation}) {
     
      let [fontsLoaded] = useFonts({  PublicSans_600SemiBold, });
    if (!fontsLoaded) {
@@ -52,7 +52,7 @@ export default function OnTheWayScreen() {
           3.we will refund you if the delevery fail{" "}
         </AppText>
       </View>
-      <PrimaryButton title="Continue" width="75%" />
+      <PrimaryButton title="Continue" width="75%"  onPress={()=>{navigation.goBack()}} />
     </View>
   );
 }}

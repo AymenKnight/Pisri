@@ -2,45 +2,8 @@ import React from "react";
 import { FlatList } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
 import OffreItem from "./OffreItem";
-const finishedArray = [
-  {
-    type: "finished",
-    reciept_ID: 123456789,
-    num_request: 1,
-    price: 900,
-    currency: "dzd",
-    reminingTime: 30,
-    here: false,
-  },
-  {
-    type: "finished",
-    reciept_ID: 1234567,
-    num_request: 1,
-    price: 1000,
-    currency: "dzd",
-    reminingTime: 30,
-    here: false,
-  },
-  {
-    type: "finished",
-    reciept_ID: 1234,
-    num_request: 1,
-    price: 500,
-    currency: "dzd",
-    reminingTime: 30,
-    here: false,
-  },
-  {
-    type: "finished",
-    reciept_ID: 1234567844,
-    num_request: 1,
-    price: 400,
-    currency: "dzd",
-    reminingTime: 30,
-    here: false,
-  },
-];
-export default function FinishedTab({ route, navigation }) {
+
+export default function FinishedTab({ route, navigation, finishedArray }) {
   return (
     <FlatList
       data={finishedArray}
