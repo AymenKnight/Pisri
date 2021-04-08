@@ -54,7 +54,7 @@ export default function Step03({
         title="Confirm"
         width="80%"
         onPress={() => {
-          navigation.navigate(routes.ACTIVITY);
+          navigation.navigate(routes.DELEVERY_FINISHED);
         }}
       />
       <PrimaryButton

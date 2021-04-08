@@ -5,5 +5,7 @@ export default Object.freeze({
   WELCOME: "Welcome",
   APP: "App",
   ACTIVITY: "Activity",
-  CHECK:"check"
+  CHECK:"check",
+  DELEVERY_FINISHED:"Delevery finished",
+  ORDER_ON_WAY:"Order_On_Way"
 });

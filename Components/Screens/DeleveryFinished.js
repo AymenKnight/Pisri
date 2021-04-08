@@ -10,8 +10,9 @@ import Colors from '../config/Colors';
 import AppText from '../Basic/AppText';
 import font from '../config/font';
 import PrimaryButton from '../Basic/PrimaryButton';
+import routes from '../navigation/routes';
 
-export default function DeleveryFinished() {
+export default function DeleveryFinished({navigation}) {
     return (
       <View style={styles.container}>
         <TopNavigation backButton={true} />
@@ -42,7 +43,7 @@ export default function DeleveryFinished() {
             3.we will refund you if the delevery fail{" "}
           </AppText>
         </View>
-        <PrimaryButton title="Continue" width="75%" />
+        <PrimaryButton title="Continue" width="75%" onPress={()=>{navigation.navigate(routes.ACTIVITY)}} />
       </View>
     );
 }

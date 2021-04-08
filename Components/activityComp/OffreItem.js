@@ -230,8 +230,10 @@ export default function OffreItem({
         <Animatable.View
           style={styles.here}
           animation="swing"
-          iterationCount="infinite"
           duration={1200}
+          useNativeDriver={true}
+          iterationDelay={5000}
+          iterationCount='infinite'
         >
           <TouchableOpacity onPress={showFinishedModal}>
             <AppText style={styles.hereText}>Its here!</AppText>
