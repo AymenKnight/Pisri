@@ -1,5 +1,6 @@
 export default Object.freeze({
-  HOME: "home",
+  HOME_Stack: "home_Stack",
+  STORE:"Store",
   MY_BAG: "my_bag",
   DELEVERY: "delevery",
   WELCOME: "Welcome",

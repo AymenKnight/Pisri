@@ -7,7 +7,8 @@ import CategoriesPicker from '../homeComp/picker/CategoriesPicker'
 import ItemShowcase from '../homeComp/popup/ItemShowcase'
 import ProductContainer from '../homeComp/ProductContainer'
 import SearchFeild from '../homeComp/SearchFeild'
-import TopNavigation from '../topNavigation/TopNavigation'
+import routes from '../navigation/routes';
+import TopNavigation from '../navigation/topNavigation/TopNavigation'
 
 
 const categories = [
@@ -102,7 +103,7 @@ const marks=[
   },
 ]
 
-export default function StoreScreen() {
+export default function StoreScreen({navigation}) {
     const [selectedCategorie, setselectedCategorie] = useState(categories[0])
     const [showcaseVisible, setshowcaseVisible] = useState(false)
     const [itemSelected, setitemSelected] = useState(null)
@@ -111,11 +112,14 @@ export default function StoreScreen() {
           setitemSelected(item);
           setshowcaseVisible(true)  
     }
+     const goToActivityScreen = () => {
+       navigation.push(routes.ACTIVITY);
+     };
     return (
       <Provider  >
         <View style={styles.screen}>
-          <TopNavigation />
-          <SearchFeild width="80%" />
+          <TopNavigation hundleLeftBtn={goToActivityScreen}   />
+          <SearchFeild width="80%"   />
           <BigTitle title="Categories" />
           <CategoriesPicker
             categories={categories}

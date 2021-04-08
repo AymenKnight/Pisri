@@ -10,6 +10,7 @@ import MyBagScreen from  "../Screens/MyBagScreen"
 import Colors from '../config/Colors';
 import HomeButton from './HomeButton';
 import StepNavigator from './StepNavigator';
+import ActivityNavigator from './ActivityNavigator';
 
 
 
@@ -21,13 +22,12 @@ export default function AppNavigator() {
           style: styles.tabBar,
           showLabel: false,
           activeTintColor: Colors.primary,
-          inactiveTintColor :Colors.primary ,
-          
+          inactiveTintColor: Colors.primary,
         }}
       >
         <BottomTab.Screen
-          name={routes.HOME}
-          component={StoreScreen}
+          name={routes.HOME_Stack}
+          component={ActivityNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
               <AntDesign
@@ -42,10 +42,10 @@ export default function AppNavigator() {
 
         <BottomTab.Screen
           name={routes.APP}
-          component={StoreScreen}
+          component={ActivityNavigator}
           options={({ navigation }) => ({
             tabBarButton: () => (
-              <HomeButton onPress={() => navigation.navigate("home")} />
+              <HomeButton onPress={() => navigation.navigate(routes.APP)} />
             ),
           })}
         />

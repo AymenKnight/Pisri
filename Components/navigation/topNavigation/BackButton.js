@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native';
 import { StyleSheet, Text, View } from 'react-native'
 import { MaterialIcons } from "@expo/vector-icons"; 
-import Colors from '../config/Colors';
+import Colors from '../../config/Colors';
 
 export default function BackButton({onPress}) {
     return (
