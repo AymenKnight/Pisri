@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
   content: {
     justifyContent: "center",
     alignItems: "center",
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    backgroundColor: "white",
   },
   mainTitle: {
     color: Colors.fontColor,
@@ -55,17 +58,17 @@ const styles = StyleSheet.create({
     fontFamily: font.PublicSans_700Bold,
     fontSize: 15,
     marginBottom: 15,
-    padding:5,
+    padding: 5,
   },
-  options :{
-    alignSelf:'center',
-    width:"88%",
-    alignItems:'center',
-    marginBottom:100,
-    borderWidth:1,
-    borderColor:Colors.borders,
-    borderStyle:'solid',
-    borderRadius:20,
-    padding:10,
+  options: {
+    alignSelf: "center",
+    width: "88%",
+    alignItems: "center",
+    marginBottom: 100,
+    borderWidth: 1,
+    borderColor: Colors.borders,
+    borderStyle: "solid",
+    borderRadius: 20,
+    padding: 10,
   },
 });

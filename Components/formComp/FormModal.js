@@ -19,6 +19,7 @@ export default function FormModal({ visible, children, onClosed, }) {
       onBackdropPress={onClosed}
       onBackButtonPress={onClosed}
       animationIn="slideInUp"
+      animationInTiming={0}
       animationOutTiming={1000}
       backdropTransitionOutTiming={2000}
       propagateSwipe={true}

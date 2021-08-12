@@ -11,9 +11,7 @@ export default function App() {
 
   return (
     <NavigationContainer theme={{ colors: { background: Colors.white } }}>
-      <BreadProvider>
         <AuthNavigator />
-      </BreadProvider>
     </NavigationContainer>
   );
 }

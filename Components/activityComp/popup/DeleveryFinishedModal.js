@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
   content: {
     justifyContent: "center",
     alignItems: "center",
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    backgroundColor: "white",
   },
   mainTitle: {
     color: Colors.fontColor,
@@ -121,10 +124,10 @@ const styles = StyleSheet.create({
     fontSize: 21,
     textAlign: "center",
     paddingVertical: 10,
-    marginBottom:5,
+    marginBottom: 5,
   },
-  not_verifedContainer :{
-   justifyContent:"center",
-   alignItems:"center",
+  not_verifedContainer: {
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
