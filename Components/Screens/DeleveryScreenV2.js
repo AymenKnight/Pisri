@@ -5,7 +5,7 @@ import DotedScroll from "../DeleveryComp/DotedScroll";
 import Step01 from "../DeleveryComp/steps/Step01";
 import Step02 from "../DeleveryComp/steps/Step02";
 import Step03 from "../DeleveryComp/steps/Step03";
-import TopNavigation from "../topNavigation/TopNavigation";
+import TopNavigation from "../navigation/topNavigation/TopNavigation";
 import * as Animatable from "react-native-animatable";
 import { ScrollView } from "react-native";
 import {

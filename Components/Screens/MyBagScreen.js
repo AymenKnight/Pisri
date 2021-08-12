@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import FormTitle from '../formComp/FormTitle'
 import BagContainer from '../mybagComp/BagContainer'
 import TotalBox from '../mybagComp/TotalBox'
-import TopNavigation from '../topNavigation/TopNavigation'
+import TopNavigation from "../navigation/topNavigation/TopNavigation";
 import PrimaryButton from "../Basic/PrimaryButton";
 import routes from '../navigation/routes'
 

@@ -163,6 +163,9 @@ const styles = MediaQueryStyleSheet.create(
     container: {
       padding: 10,
       paddingTop: 20,
+      borderTopLeftRadius: 35,
+      borderTopRightRadius: 35,
+      backgroundColor: "white",
     },
     inputs_Container: {
       justifyContent: "center",
@@ -183,8 +186,8 @@ const styles = MediaQueryStyleSheet.create(
       },
     },
     "@media (min-device-height: 721)": {
-      help_Container: { 
-        marginTop: 10 
+      help_Container: {
+        marginTop: 10,
       },
     },
   }

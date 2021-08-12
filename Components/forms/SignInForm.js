@@ -82,25 +82,26 @@ export default function SignInForm({visible,setVisible}) {
 }
 
 const styles = StyleSheet.create({
-    container :{
-       flex: 1,
-        padding:10,
-        paddingTop:20,
-        paddingBottom :30,
-     
-    },
-    inputs_Container :{
-        justifyContent:'center',
-        alignItems:'center',
-        marginBottom :10,
-        width:"100%",
-    },
-      help_Container :{
-    flexDirection:"row",
-    marginTop:17,
-    width:"100%",
-    justifyContent :'center',
-    alignItems:'center',
-    },
-  
-})
+  container: {
+    width: "100%",
+    padding: 10,
+    paddingTop: 20,
+    paddingBottom: 30,
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    backgroundColor: "white",
+  },
+  inputs_Container: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 10,
+    width: "100%",
+  },
+  help_Container: {
+    flexDirection: "row",
+    marginTop: 17,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

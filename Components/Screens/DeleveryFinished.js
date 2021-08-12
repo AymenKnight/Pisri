@@ -5,7 +5,7 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 import * as Animatable from "react-native-animatable";
 
 import OptionsContainer from '../DeleveryComp/OptionsContainer'
-import TopNavigation from '../topNavigation/TopNavigation'
+import TopNavigation from "../navigation/topNavigation/TopNavigation";
 import Colors from '../config/Colors';
 import AppText from '../Basic/AppText';
 import font from '../config/font';

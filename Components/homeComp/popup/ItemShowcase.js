@@ -25,7 +25,7 @@ export default function ItemShowcase({
 
   const [quantity, setQuantity] = useState(0);
   return (
-    <FormModal visible={visible} onClosed={setVisible} height="72%"  >
+    <FormModal visible={visible} onClosed={setVisible}  >
       <View style={styles.content}>
         <CloseButton onPress={setVisible} />
         <ItemWithQuantity name={name} image={image} quantity={quantity} setQuantity={setQuantity} />
@@ -56,28 +56,30 @@ export default function ItemShowcase({
 }
 
 const styles = StyleSheet.create({
-  content :{
-      justifyContent:'flex-start',
-      alignItems:'center',
+  content: {
+    justifyContent: "flex-start",
+    alignItems: "center",
+    backgroundColor: "white",
+    borderTopLeftRadius: 35,
+    borderTopRightRadius: 35,
+    borderWidth:1,
+    borderColor: Colors.borders,
   },
-    AddCostumContainer :{
-        flexDirection:'row',
-        justifyContent:'flex-start',
-        alignItems:'center',
-        marginBottom:20,
-        marginTop:10,
-        width:"100%",
-        marginLeft:50,
-
-    },
-    AddCostumText :{
-      color:Colors.Unfocused_Blue,
-      marginRight:45,
-    },
-    SelectiveContainer :{
-      width :"100%",
-      paddingLeft:8,
-    },
-
-    
-})
+  AddCostumContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginBottom: 20,
+    marginTop: 10,
+    width: "100%",
+    marginLeft: 50,
+  },
+  AddCostumText: {
+    color: Colors.Unfocused_Blue,
+    marginRight: 45,
+  },
+  SelectiveContainer: {
+    width: "100%",
+    paddingLeft: 8,
+  },
+});

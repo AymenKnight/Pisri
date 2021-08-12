@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet,  } from 'react-native'
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import TopNavigation from '../topNavigation/TopNavigation';
+import TopNavigation from '../navigation/topNavigation/TopNavigation';
 import ActiveTab from '../activityComp/ActiveTab';
 import FinishedTab from '../activityComp/FinishedTab';
 import Colors from '../config/Colors';

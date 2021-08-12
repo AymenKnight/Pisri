@@ -1,27 +1,29 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
-import Modal from 'react-native-modalbox';
+import Modal from "react-native-modal";
 import { Dimensions } from "react-native";
 import { ScrollView } from "react-native";
 import Colors from "../config/Colors";
-import { responsiveHeight, responsiveScreenHeight } from "react-native-responsive-dimensions";
 
 const window = Dimensions.get("window");
 const screen = Dimensions.get("screen");
-export default function FormModal({ visible, children, top, onClosed,height="75%"  }) {
+export default function FormModal({ visible, children, onClosed, }) {
   const [dimensions, setDimensions] = useState({ window, screen });
   return (
     <Modal
-      style={[styles.modal, { top: top, height: height }]}
-      isOpen={visible}
-      backdropPressToClose={true}
-      swipeToClose={true}
-      position="bottom"
-      entry="bottom"
-      backButtonClose={true}
+      isVisible={visible}
+      style={styles.newModel}
+      hasBackdrop={true}
+      backdropColor="white"
+      backdropOpacity={0}
+      onBackdropPress={onClosed}
+      onBackButtonPress={onClosed}
+      animationIn="slideInUp"
+      animationOutTiming={1000}
+      backdropTransitionOutTiming={2000}
+      propagateSwipe={true}
+      useNativeDriverForBackdrop={true}
       useNativeDriver={true}
-      onClosed={onClosed}
-      coverScreen={true}
     >
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -36,6 +38,13 @@ export default function FormModal({ visible, children, top, onClosed,height="75%
 }
 
 const styles = StyleSheet.create({
+  newModel: {
+    width: "100%",
+    margin: 0,
+    position: "absolute",
+    bottom: 0,
+   
+  },
   modal: {
     backgroundColor: "white",
     borderTopLeftRadius: 35,
@@ -45,7 +54,6 @@ const styles = StyleSheet.create({
     borderWidth: 2.5,
     borderStyle: "solid",
     flexShrink: 1,
-    
   },
   contentContainerStyle: {
     width: "100%",

@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import TopNavigation from '../topNavigation/TopNavigation'
+import TopNavigation from "../navigation/topNavigation/TopNavigation";
 
 export default function CongratulationScreen() {
     return (

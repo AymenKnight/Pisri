@@ -5,12 +5,15 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import Colors from './Components/config/Colors';
 import AuthNavigator from './Components/navigation/AuthNavigator';
+import { BreadProvider } from 'material-bread';
 
 export default function App() {
 
   return (
     <NavigationContainer theme={{ colors: { background: Colors.white } }}>
-      <AuthNavigator />
+      <BreadProvider>
+        <AuthNavigator />
+      </BreadProvider>
     </NavigationContainer>
   );
 }
