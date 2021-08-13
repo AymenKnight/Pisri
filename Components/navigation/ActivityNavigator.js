@@ -12,7 +12,7 @@ export default function ActivityNavigator() {
 
 
   return (
-    <ActivityStack.Navigator screenOptions={{ headerShown: false }}>
+    <ActivityStack.Navigator  initialRouteName={routes.STORE}  screenOptions={{ headerShown: false }}>
       <ActivityStack.Screen name={routes.STORE} component={StoreScreen} />
       <ActivityStack.Screen name={routes.ACTIVITY} component={ActivityScreen} />
     </ActivityStack.Navigator>
