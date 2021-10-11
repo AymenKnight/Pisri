@@ -15,7 +15,7 @@ export default function TopNavigation({hundleLeftBtn,hundleProfilePress ,backBut
         )}
         {backButton && <BackButton onPress={hundleLeftBtn} />}
         <Image
-          source={require("../../assets/welcomeLogo.png")}
+          source={require("../../../assets/welcomeLogo.png")}
           style={styles.logo}
         />
         <ProfileButton style={styles.profile} onPress={hundleProfilePress} />

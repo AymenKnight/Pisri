@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { StyleSheet, View ,Image, ImageBackground} from 'react-native';
 import {  Provider } from "react-native-paper";
 
-import AppButton from '../Basic/AppButton';
-import Colors from '../config/Colors';
-import { SignVisibleContext } from '../context/SignVisibleContext';
-import SignInForm from '../forms/SignInForm';
-import SignUpForm from '../forms/SignUpForm';
+import AppButton from '../Components/Basic/AppButton';
+import Colors from '../Components/config/Colors';
+import { SignVisibleContext } from '../Components/context/SignVisibleContext';
+import SignInForm from '../Components/forms/SignInForm';
+import SignUpForm from '../Components/forms/SignUpForm';
 
 
 export default function WelcomeScreen({navigation,route}) {

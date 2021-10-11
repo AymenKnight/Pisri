@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import FormTitle from '../formComp/FormTitle'
-import BagContainer from '../mybagComp/BagContainer'
-import TotalBox from '../mybagComp/TotalBox'
-import TopNavigation from "../navigation/topNavigation/TopNavigation";
-import PrimaryButton from "../Basic/PrimaryButton";
-import routes from '../navigation/routes'
+
+import FormTitle from '../Components/formComp/FormTitle'
+import BagContainer from '../Components/mybagComp/BagContainer'
+import TotalBox from '../Components/mybagComp/TotalBox'
+import TopNavigation from "../Components/navigation/topNavigation/TopNavigation";
+import PrimaryButton from "../Components/Basic/PrimaryButton";
+import routes from '../Components/navigation/routes'
 
 const ini_data = [
   {

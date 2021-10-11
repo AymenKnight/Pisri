@@ -3,12 +3,12 @@ import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { AuthContext } from "../context/AuthContext";
 import routes from "./routes";
-import DeleveryScreen from "../Screens/DeleveryScreen";
-import ActivityScreen from "../Screens/ActivityScreen";
-import MyBagScreen from "../Screens/MyBagScreen";
-import DeleveryFinished from "../Screens/DeleveryFinished";
-import OnTheWayScreen from "../Screens/OnTheWayScreen";
-import CongratulationScreen from "../Screens/CongratulationScreen";
+import DeleveryScreen from "../../Screens/DeleveryScreen";
+import ActivityScreen from "../../Screens/ActivityScreen";
+import MyBagScreen from "../../Screens/MyBagScreen";
+import DeleveryFinished from "../../Screens/DeleveryFinished";
+import OnTheWayScreen from "../../Screens/OnTheWayScreen";
+import CongratulationScreen from "../../Screens/CongratulationScreen";
 
 const StepStack = createStackNavigator();
 

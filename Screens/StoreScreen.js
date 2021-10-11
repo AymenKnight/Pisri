@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import {  Provider } from "react-native-paper";
 
-import BigTitle from '../homeComp/BigTitle'
-import CategoriesPicker from '../homeComp/picker/CategoriesPicker'
-import ItemShowcase from '../homeComp/popup/ItemShowcase'
-import ProductContainer from '../homeComp/ProductContainer'
-import SearchFeild from '../homeComp/SearchFeild'
-import routes from '../navigation/routes';
-import TopNavigation from '../navigation/topNavigation/TopNavigation'
+import BigTitle from '../Components/homeComp/BigTitle'
+import CategoriesPicker from '../Components/homeComp/picker/CategoriesPicker'
+import ItemShowcase from '../Components/homeComp/popup/ItemShowcase'
+import ProductContainer from '../Components/homeComp/ProductContainer'
+import SearchFeild from '../Components/homeComp/SearchFeild'
+import routes from '../Components/navigation/routes';
+import TopNavigation from '../Components/navigation/topNavigation/TopNavigation'
 
 
 const categories = [

@@ -1,13 +1,15 @@
 import React, { useState, useContext } from "react";
 import { StyleSheet, View } from "react-native";
-import PrimaryButton from "../Basic/PrimaryButton";
-import DotedScroll from "../DeleveryComp/DotedScroll";
-import Step01 from "../DeleveryComp/steps/Step01";
-import Step02 from "../DeleveryComp/steps/Step02";
-import Step03 from "../DeleveryComp/steps/Step03";
-import TopNavigation from "../navigation/topNavigation/TopNavigation";
 import * as Animatable from "react-native-animatable";
 import { ScrollView } from "react-native";
+
+import PrimaryButton from "../Components/Basic/PrimaryButton";
+import DotedScroll from "../Components/DeleveryComp/DotedScroll";
+import Step01 from "../Components/DeleveryComp/steps/Step01";
+import Step02 from "../Components/DeleveryComp/steps/Step02";
+import Step03 from "../Components/DeleveryComp/steps/Step03";
+import TopNavigation from "../Components/navigation/topNavigation/TopNavigation";
+
 import {
   CardStyleInterpolators,
   createStackNavigator,

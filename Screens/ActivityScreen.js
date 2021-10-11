@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { StyleSheet,  } from 'react-native'
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import TopNavigation from '../navigation/topNavigation/TopNavigation';
-import ActiveTab from '../activityComp/ActiveTab';
-import FinishedTab from '../activityComp/FinishedTab';
-import Colors from '../config/Colors';
-import font from '../config/font';
+import TopNavigation from '../Components/navigation/topNavigation/TopNavigation';
+import ActiveTab from '../Components/activityComp/ActiveTab';
+import FinishedTab from '../Components/activityComp/FinishedTab';
+import Colors from '../Components/config/Colors';
+import font from '../Components/config/font';
 import { useFonts,  PublicSans_700Bold,} from "@expo-google-fonts/public-sans";
 import AppLoading from "expo-app-loading";
-import DeleveryReqModal from '../activityComp/popup/DeleveryReqModal';
-import DeleveryFinishedModal from "../activityComp/popup/DeleveryFinishedModal";
-import { ActivityContext } from '../context/ActivityContext';
+import DeleveryReqModal from '../Components/activityComp/popup/DeleveryReqModal';
+import DeleveryFinishedModal from "../Components/activityComp/popup/DeleveryFinishedModal";
+import { ActivityContext } from '../Components/context/ActivityContext';
 
 
 const initialActiveArray = [

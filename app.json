@@ -4,9 +4,9 @@
     "slug": "AwesomeProject",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./Components/assets/favicon.png",
+    "icon": "./assets/favicon.png",
     "splash": {
-      "image": "./Components/assets/favicon.png",
+      "image": "./assets/favicon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
       "bundleIdentifier": "com.daouadji.AwesomeProject"
     },
     "web": {
-      "favicon": "./Components/assets/favicon.png"
+      "favicon": "./assets/favicon.png"
     },
     "description": "",
     "android": {

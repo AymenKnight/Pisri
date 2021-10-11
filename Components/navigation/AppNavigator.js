@@ -4,9 +4,9 @@ import { MaterialCommunityIcons, AntDesign, Feather } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
 
 import routes from "./routes";
-import StoreScreen from "../Screens/StoreScreen";
-import DeleveryScreen from "../Screens/DeleveryScreen";
-import MyBagScreen from "../Screens/MyBagScreen";
+import StoreScreen from "../../Screens/StoreScreen";
+import DeleveryScreen from "../../Screens/DeleveryScreen";
+import MyBagScreen from "../../Screens/MyBagScreen";
 import Colors from "../config/Colors";
 import HomeButton from "./HomeButton";
 import StepNavigator from "./StepNavigator";

@@ -2,8 +2,8 @@ import React, { useMemo, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import routes from "./routes";
-import StoreScreen from "../Screens/StoreScreen";
-import ActivityScreen from "../Screens/ActivityScreen";
+import StoreScreen from "../../Screens/StoreScreen";
+import ActivityScreen from "../../Screens/ActivityScreen";
 
 const HomeStack = createStackNavigator();
 

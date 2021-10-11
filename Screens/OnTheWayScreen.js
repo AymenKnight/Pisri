@@ -3,15 +3,16 @@ import { View  ,StyleSheet } from "react-native";
 import {Feather } from "@expo/vector-icons";
 import { MediaQueryStyleSheet } from "react-native-responsive";
 import * as Animatable from 'react-native-animatable';
-
-import OptionsContainer from "../DeleveryComp/OptionsContainer";
-import TopNavigation from "../navigation/topNavigation/TopNavigation";
-import Colors from "../config/Colors";
-import AppText from "../Basic/AppText";
-import font from "../config/font";
-import PrimaryButton from "../Basic/PrimaryButton";
 import { PublicSans_600SemiBold , useFonts } from "@expo-google-fonts/public-sans";
 import AppLoading from "expo-app-loading";
+
+import OptionsContainer from "../Components/DeleveryComp/OptionsContainer";
+import TopNavigation from "../Components/navigation/topNavigation/TopNavigation";
+import Colors from "../Components/config/Colors";
+import AppText from "../Components/Basic/AppText";
+import font from "../Components/config/font";
+import PrimaryButton from "../Components/Basic/PrimaryButton";
+
 
 export default function OnTheWayScreen({navigation}) {
     
