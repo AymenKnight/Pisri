@@ -1,5 +1,5 @@
 import React,{useContext, useState} from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, View } from 'react-native'
 import * as yup from 'yup';
 import { Dimensions } from "react-native";
  import { MediaQueryStyleSheet ,MediaQuery} from "react-native-responsive";
@@ -13,6 +13,7 @@ import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
 import { AuthContext } from '../context/AuthContext';
 import { SignVisibleContext } from '../context/SignVisibleContext';
+import { auth } from '../../firebase/firebase.utils';
 
 const SignUp_validationSchema=yup.object().shape(
 {
@@ -34,8 +35,25 @@ export default function SignUpForm({visible,setVisible}) {
         setSignUpVisible,
       } = useContext(SignVisibleContext);
     const onSubmit=(values)=>{
-      console.log(values.Email)
-      setUser(values.Email)
+      auth.createUserWithEmailAndPassword(values.Email,values.Password).then((userInfo)=>{
+          setUser(userInfo.user)
+      }).catch(error=>{
+        setUser(null)
+                     Alert.alert(
+    "Sign Up error !",
+    error.message,
+    [
+      {
+        text: "Retry",
+        style: "cancel",
+      },
+    ],
+    {
+      cancelable: true,
+    }
+  );
+      })
+     
     }
     const openSignIn=()=>{
                 setSignUpVisible(!SignUpVisible)

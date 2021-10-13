@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { StyleSheet, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
 import * as yup from 'yup';
 
 import Form from '../formComp/Form'
@@ -12,6 +12,7 @@ import SubmitButton from '../formComp/SubmitButton';
 import { AuthContext } from "../context/AuthContext";
 import { UserInterfaceIdiom } from "expo-constants";
 import { SignVisibleContext } from "../context/SignVisibleContext";
+import { auth } from "../../firebase/firebase.utils";
 
 const SignIn_validationSchema=yup.object().shape(
 {
@@ -22,7 +23,7 @@ const SignIn_validationSchema=yup.object().shape(
 
 
 export default function SignInForm({visible,setVisible}) {
-    const { user ,setUser} = useContext(AuthContext);
+   const {user,setUser}=useContext(AuthContext)
     const {
       SignInVisible,
       setSignInVisible,
@@ -34,8 +35,25 @@ export default function SignInForm({visible,setVisible}) {
         <View style={styles.container}>
           <Form
             onSubmit={(values)=>{
-              setUser(values.Email)
-              console.log(values.Email)
+              auth.signInWithEmailAndPassword(values.Email,values.Password).then((userinfo)=>{
+                setUser(userinfo.user)
+              }).catch((error)=>{
+                console.log(error)
+                  Alert.alert(
+    "Sign Up error !",
+    error.message,
+    [
+      {
+        text: "Retry",
+        style: "cancel",
+      },
+    ],
+    {
+      cancelable: true,
+    }
+  );
+
+              })
             }}
             validationSchema={SignIn_validationSchema}
             initialValues={{
