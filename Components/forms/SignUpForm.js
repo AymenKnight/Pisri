@@ -27,7 +27,6 @@ const SignUp_validationSchema=yup.object().shape(
 
 export default function SignUpForm({visible,setVisible}) {
     const [dimensions, setDimensions] = useState({ window, screen });
-    const {user,setUser}=useContext(AuthContext)
       const {
         SignInVisible,
         setSignInVisible,
@@ -37,7 +36,6 @@ export default function SignUpForm({visible,setVisible}) {
     const onSubmit=(values)=>{
       auth.createUserWithEmailAndPassword(values.Email,values.Password).then((userInfo)=>{  
         if(userInfo){
-            console.log(userInfo)
             const userRef =  addUserOnSignUp(userInfo,values.Full_Name)
         } 
         

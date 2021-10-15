@@ -35,9 +35,7 @@ export default function SignInForm({visible,setVisible}) {
         <View style={styles.container}>
           <Form
             onSubmit={(values)=>{
-              auth.signInWithEmailAndPassword(values.Email,values.Password).then((userinfo)=>{
-                setUser(userinfo.user)
-              }).catch((error)=>{
+              auth.signInWithEmailAndPassword(values.Email,values.Password).catch((error)=>{
                 console.log(error)
                   Alert.alert(
     "Sign Up error !",
