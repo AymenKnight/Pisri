@@ -2,7 +2,6 @@ import React from 'react'
 import { View } from 'react-native'
 import { ScrollView } from 'react-native'
 import { StyleSheet } from 'react-native'
-import { FlatList } from 'react-native-gesture-handler'
 import ItemWithPrice from "../homeComp/ItemWithPrice"
 
 

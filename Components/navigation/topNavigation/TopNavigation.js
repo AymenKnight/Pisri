@@ -4,8 +4,14 @@ import { Entypo } from "@expo/vector-icons";
 import ProfileButton from './ProfileButton';
 import { TouchableOpacity } from 'react-native';
 import BackButton from './BackButton';
+import { auth } from '../../../firebase/firebase.utils';
 
-export default function TopNavigation({hundleLeftBtn,hundleProfilePress ,backButton=false}) {
+export default function TopNavigation({hundleLeftBtn ,backButton=false}) {
+
+   const hundleProfilePress =()=>{
+     auth.signOut();
+   }
+
     return (
       <View style={styles.container}>
         {!backButton && (

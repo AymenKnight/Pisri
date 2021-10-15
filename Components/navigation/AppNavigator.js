@@ -64,7 +64,7 @@ export default function AppNavigator() {
 const styles = StyleSheet.create({
   tabBar: {
     alignSelf: "center",
-    width: "80%",
+    width: "85%",
     height: 75,
     justifyContent: "center",
     alignItems: "center",
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     backgroundColor: "white",
     marginBottom: 15,
+    elevation:0,
   },
   tab1: {
     position: "absolute",
