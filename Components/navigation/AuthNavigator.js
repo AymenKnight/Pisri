@@ -18,7 +18,6 @@ export default function AuthNavigator() {
 
      useEffect(() => {
       let unsubscribe =auth.onAuthStateChanged(async (userAuth)=>{
-          console.log(userAuth)
           setUser(userAuth)
           setLoading(false)
           

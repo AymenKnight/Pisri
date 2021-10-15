@@ -14,23 +14,20 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 
-const createUserProfileDocument= async (userAuth,additionalData)=>{
-   if(!userAuth) return ;
-   const userRef= firestore.doc(`users/${userAuth.uid}`) 
-   const snapshot=  await userRef.get()
-   if(!snapshot.exists){
-     const {displayName,email} = userAuth
-     const createdDate= new Date()
-     try {
-       userRef.set({
-         displayName,email,createdDate,...additionalData
-       })
-     } catch (error) {
-        console.log("error creating user",error.message)
-        return error;
-     }
-   }
-   return userRef;
+ export const addUserOnSignUp=(userAuth,displayName)=>{
+  if(!userAuth)return null;
+  
+    const email=userAuth.user.email
+
+  firestore.collection("users").add({
+    email,
+    displayName: displayName,
+  }).then(userRef=>{
+     console.log("Document written with ID: ", userRef.id);
+     return userRef ;
+  }).catch(error=>{
+    console.log("Error adding document: ", error.message);
+  })
 }
 
 export const auth =firebase.auth()

@@ -13,7 +13,7 @@ import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
 import { AuthContext } from '../context/AuthContext';
 import { SignVisibleContext } from '../context/SignVisibleContext';
-import { auth } from '../../firebase/firebase.utils';
+import { addUserOnSignUp, auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
 const SignUp_validationSchema=yup.object().shape(
 {
@@ -35,10 +35,13 @@ export default function SignUpForm({visible,setVisible}) {
         setSignUpVisible,
       } = useContext(SignVisibleContext);
     const onSubmit=(values)=>{
-      auth.createUserWithEmailAndPassword(values.Email,values.Password).then((userInfo)=>{
-          setUser(userInfo.user)
+      auth.createUserWithEmailAndPassword(values.Email,values.Password).then((userInfo)=>{  
+        if(userInfo){
+            console.log(userInfo)
+            const userRef =  addUserOnSignUp(userInfo,values.Full_Name)
+        } 
+        
       }).catch(error=>{
-        setUser(null)
                      Alert.alert(
     "Sign Up error !",
     error.message,
