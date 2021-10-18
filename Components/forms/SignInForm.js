@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, } from "react";
 import { Alert, StyleSheet, View } from 'react-native'
 import * as yup from 'yup';
 
@@ -9,8 +9,6 @@ import FormTitle from '../formComp/FormTitle'
 import Help_Button from '../formComp/Help_Button';
 import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
-import { AuthContext } from "../context/AuthContext";
-import { UserInterfaceIdiom } from "expo-constants";
 import { SignVisibleContext } from "../context/SignVisibleContext";
 import { auth } from "../../firebase/firebase.utils";
 
@@ -23,7 +21,6 @@ const SignIn_validationSchema=yup.object().shape(
 
 
 export default function SignInForm({visible,setVisible}) {
-   const {user,setUser}=useContext(AuthContext)
     const {
       SignInVisible,
       setSignInVisible,

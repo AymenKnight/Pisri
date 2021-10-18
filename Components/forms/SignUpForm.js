@@ -1,5 +1,5 @@
 import React,{useContext, useState} from 'react'
-import { Alert, StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
 import * as yup from 'yup';
 import { Dimensions } from "react-native";
  import { MediaQueryStyleSheet ,MediaQuery} from "react-native-responsive";
@@ -11,9 +11,9 @@ import FormTitle from '../formComp/FormTitle'
 import Help_Button from '../formComp/Help_Button';
 import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
-import { AuthContext } from '../context/AuthContext';
+
 import { SignVisibleContext } from '../context/SignVisibleContext';
-import { addUserOnSignUp, auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { addUserOnSignUp, auth, } from '../../firebase/firebase.utils';
 
 const SignUp_validationSchema=yup.object().shape(
 {

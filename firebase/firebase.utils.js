@@ -30,6 +30,11 @@ firebase.initializeApp(firebaseConfig)
   })
 }
 
+export const getUserInfo = async (userAuth)=>{
+   const userRef= await firestore.collection("users").doc(userAuth.uid);
+  return userRef;
+}
+
 export const auth =firebase.auth()
 export const firestore =firebase.firestore()
 

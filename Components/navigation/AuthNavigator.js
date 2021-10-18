@@ -5,7 +5,7 @@ import AppNavigator from './AppNavigator';
 import { createStackNavigator } from "@react-navigation/stack";
 import { AuthContext } from '../context/AuthContext';
 import routes from './routes';
-import { auth } from '../../firebase/firebase.utils';
+import { auth, getUserInfo } from '../../firebase/firebase.utils';
 import AppLoading from 'expo-app-loading';
 
 
@@ -18,8 +18,22 @@ export default function AuthNavigator() {
 
      useEffect(() => {
       let unsubscribe =auth.onAuthStateChanged(async (userAuth)=>{
-          setUser(userAuth)
+        if(userAuth){
+           const userRef=  await getUserInfo(userAuth)
+           userRef.onSnapshot(snapShot=>{
+             console.log(snapShot.id)
+             setUser({id:snapShot.id,
+            ...snapShot.data()})
+            setLoading(false)
+           })
+            
+        }
+        else{
+          setUser(null)
           setLoading(false)
+        }
+        
+          
           
       })
       return () => {
@@ -29,12 +43,12 @@ export default function AuthNavigator() {
   
     return (
         loading ? <AppLoading/> :
-      <AuthContext.Provider value={{ user: user, setUser: setUser }}>
+     
         <SignStack.Navigator screenOptions={{ headerShown: false }}>
         {user && <SignStack.Screen name={routes.APP} component={AppNavigator} /> }
         {!user && <SignStack.Screen name={routes.WELCOME} component={WelcomeScreen} />}
         </SignStack.Navigator>
-      </AuthContext.Provider>
+    
       
     );
  
