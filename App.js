@@ -5,14 +5,17 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import Colors from './Components/config/Colors';
 import AuthNavigator from './Components/navigation/AuthNavigator';
-import { BreadProvider } from 'material-bread';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 export default function App() {
 
   return (
+    <Provider store={store} >
     <NavigationContainer theme={{ colors: { background: Colors.white } }}>
         <AuthNavigator />
     </NavigationContainer>
+    </Provider>
   );
 }
 

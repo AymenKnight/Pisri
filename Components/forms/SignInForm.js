@@ -11,6 +11,9 @@ import Help_Text from '../formComp/Help_Text';
 import SubmitButton from '../formComp/SubmitButton';
 import { SignVisibleContext } from "../context/SignVisibleContext";
 import { auth } from "../../firebase/firebase.utils";
+import { connect } from "react-redux";
+import { set_Current_user } from "../../redux/user/user.actions";
+
 
 const SignIn_validationSchema=yup.object().shape(
 {
@@ -20,7 +23,7 @@ const SignIn_validationSchema=yup.object().shape(
 ) 
 
 
-export default function SignInForm({visible,setVisible}) {
+ function SignInForm({visible,setVisible}) {
     const {
       SignInVisible,
       setSignInVisible,
@@ -33,6 +36,7 @@ export default function SignInForm({visible,setVisible}) {
           <Form
             onSubmit={(values)=>{
               auth.signInWithEmailAndPassword(values.Email,values.Password).catch((error)=>{
+              
                 console.log(error)
                   Alert.alert(
     "Sign Up error !",
@@ -94,6 +98,7 @@ export default function SignInForm({visible,setVisible}) {
     );     
 }
 
+
 const styles = StyleSheet.create({
   container: {
     width: "100%",
@@ -118,3 +123,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+
+export default SignInForm;
