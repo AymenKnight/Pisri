@@ -5,11 +5,11 @@ import AppText from '../Basic/AppText'
 import Colors from '../config/Colors'
 import font from '../config/font';
 
-export default function Item({name,image,imageWidth=70,imageHeight=115,textSize=17,style}) {
+export default function Item({name,image,imageWidth=70,imageHeight=70,textSize=17,style}) {
   
     return (
         <View style={styles.container} >
-           {  image &&  <Image source={image} resizeMode="contain"   style={styles.image}  width={imageWidth} height={imageHeight}  />}
+           {  image &&  <Image source={image} resizeMode="center"   style={styles.image}  width={imageWidth} height={imageHeight}  />}
             <AppText style={styles.name} >{name} </AppText>      
         </View>
     )
@@ -18,6 +18,7 @@ export default function Item({name,image,imageWidth=70,imageHeight=115,textSize=
 
 const styles = StyleSheet.create({
     container :{
+        padding:0,
         borderWidth:0,
         alignContent :"center",
         justifyContent:"center",
@@ -25,6 +26,8 @@ const styles = StyleSheet.create({
     image :{
         alignSelf:"center",
         marginBottom:3,
+        width:100,
+        height:110,
     },
     name :{
           alignSelf:"center",

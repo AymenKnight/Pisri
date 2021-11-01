@@ -21,6 +21,7 @@ const SignStack=createStackNavigator()
         if(userAuth){
            const userRef=  await getUserInfo(userAuth)
            userRef.onSnapshot(snapShot=>{
+             console.log("id : ",snapShot.id)
            set_user({
              ...snapShot.data(),
              id:snapShot.id,
@@ -32,10 +33,7 @@ const SignStack=createStackNavigator()
          set_user(null)
           setLoading(false)
         }
-       
-        
-          
-          
+
       })
       return () => {
         unsubscribe()

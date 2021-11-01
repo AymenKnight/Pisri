@@ -1,20 +1,18 @@
 import React from 'react'
-import { View } from 'react-native'
+import { FlatList, View } from 'react-native'
 import { ScrollView } from 'react-native'
 import { StyleSheet } from 'react-native'
+import { Dimensions } from 'react-native';
+
 import ItemWithPrice from "../homeComp/ItemWithPrice"
 
-
+const windowWidth = Dimensions.get('window').width;
 export default function ProductContainer({productArray=[],onSelectProduct}) {
  
     return (
-      <View  style={styles.center} >
-        <ScrollView
-          style={styles.FlatList}
-          contentContainerStyle={styles.productsContainer}
-        >
-          {productArray.map((item) => (
-            <ItemWithPrice
+   <FlatList
+     data={productArray}
+     renderItem={({item})=>  <ItemWithPrice
               name={item.name}
               image={item.image}
               tag={item.tag}
@@ -23,10 +21,10 @@ export default function ProductContainer({productArray=[],onSelectProduct}) {
               onPress={() => {
                 onSelectProduct(item);
               }}
-            />
-          ))}
-        </ScrollView>
-      </View>
+            />}
+      keyExtractor={(item)=>item.name}
+      numColumns={2}
+   />
     );
 }
 
@@ -43,7 +41,7 @@ const styles = StyleSheet.create({
   center: {
     justifyContent: "center",
     alignItems: "center",
-    height: "51.2%",
+   
     
   },
 });

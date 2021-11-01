@@ -11,7 +11,7 @@ import routes from '../Components/navigation/routes'
 const ini_data = [
   {
     productName: "Milk",
-    image: require("../assets/milk.png"),
+    image: require("../assets/categories/DairyProducts/milk.png"),
     productOptions: [
       {
         optionName: "mark",
@@ -57,7 +57,7 @@ const ini_data = [
   },
   {
     productName: "candia",
-    image: require("../assets/milk.png"),
+    image: require("../assets/categories/DairyProducts/milk.png"),
     productOptions: [
       {
         optionName: "mark",
@@ -103,7 +103,7 @@ const ini_data = [
   },
   {
     productName: "jus",
-    image: require("../assets/milk.png"),
+    image: require("../assets/categories/DairyProducts/milk.png"),
     productOptions: [
       {
         optionName: "mark",
@@ -149,7 +149,7 @@ const ini_data = [
   },
   {
     productName: "water",
-    image: require("../assets/milk.png"),
+    image: require("../assets/categories/DairyProducts/milk.png"),
     productOptions: [
       {
         optionName: "mark",

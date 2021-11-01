@@ -12,78 +12,107 @@ import TopNavigation from '../Components/navigation/topNavigation/TopNavigation'
 
 
 const categories = [
-  {
-    name: "Pastries",
+  { 
+    id:1,
+    name: "Dairy products",
     products: [
-      {
+      { 
+        id:1,
         name: "Milk",
         price: "30-180",
         tag: "Dzd",
-        image: require("../assets/milk.png"),
+         image: require("../assets/categories/DairyProducts/milk_candia.png"),
       },
-      {
-        name: "water",
+      { 
+        id:2,
+        name: "cheese",
         price: "30-180",
         tag: "Dzd",
-        image: require("../assets/milk.png"),
+        image: require("../assets/categories/DairyProducts/cheese.jpg"),
       },
-      {
-        name: "coca",
+      { id:3,
+        name: "Yogurt",
         price: "30-180",
         tag: "Dzd",
-        image: require("../assets/milk.png"),
+        image: require("../assets/categories/DairyProducts/Yogurt.jpg"),
       },
-      {
-        name: "machroub",
+      { 
+        id:4,
+        name: "Milk2",
         price: "30-180",
         tag: "Dzd",
-        image: require("../assets/milk.png"),
+         image: require("../assets/categories/DairyProducts/milk_candia.png"),
       },
-      {
-        name: "jus",
+      { 
+        id:5,
+        name: "chees2e",
         price: "30-180",
         tag: "Dzd",
-        image: require("../assets/milk.png"),
+        image: require("../assets/categories/DairyProducts/cheese.jpg"),
       },
-      {
-        name: "yes",
+      { 
+        id:6,
+        name: "Yogurt2",
         price: "30-180",
         tag: "Dzd",
-        image: require("../assets/milk.png"),
+        image: require("../assets/categories/DairyProducts/Yogurt.jpg"),
       },
-      {
-        name: "no",
-        price: "30-180",
-        tag: "Dzd",
-        image: require("../assets/milk.png"),
-      },
+      
+     
     ],
   },
   {
-    name: "food",
-    products: [],
+    id:2,
+    name: "candies",
+    products: [
+        {
+        name: "Chocolate",
+        price: "30-180",
+        tag: "Dzd",
+        image: require("../assets/categories/DairyProducts/big_milk.png"),
+      },
+       {
+        name: "Yogurt5",
+        price: "30-180",
+        tag: "Dzd",
+        image: require("../assets/categories/DairyProducts/milk.png"),
+      },
+       {
+        name: "Yogurt6",
+        price: "30-180",
+        tag: "Dzd",
+        image:require("../assets/categories/DairyProducts/milk.png"),
+      },
+     
+    ],
   },
-  {
+  { 
+    id:3,
     name: "jus",
     products: [],
   },
   {
+    id:4,
     name: "frit",
     products: [],
   },
   {
+    id:5,
     name: "machroub",
     products: [],
   },
   {
+    id:6,
     name: "mafchroub",
     products: [],
   },
   {
+    id:7,
     name: "mafhhhub",
     products: [],
   },
   {
+    id:8,
     name: "waterr",
     products: [],
   },

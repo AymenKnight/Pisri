@@ -75,8 +75,11 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderStyle: "solid",
     backgroundColor: "white",
-    marginBottom: 15,
     elevation:0,
+    position:"absolute",
+    left:30,
+    bottom:15,
+    
   },
   tab1: {
     position: "absolute",
