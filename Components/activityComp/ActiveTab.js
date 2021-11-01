@@ -52,11 +52,13 @@ export default function ActiveTab({
 
 const styles = StyleSheet.create({
   content: {
-      paddingTop:20
+      paddingTop:20,
+      paddingBottom:100,     
   },
   FlatList: {
     width:"100%",
      flexGrow:0,
      alignSelf:'center',
+
   },
 });

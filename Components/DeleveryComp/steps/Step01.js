@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View,ScrollView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Dimensions } from 'react-native';
 
 import PrimaryButton from "../../Basic/PrimaryButton";
 import DeleveryOption from "../DeleveryOption";
@@ -11,6 +12,7 @@ import Colors from "../../config/Colors";
 import TimerSnipper from "../../Basic/Snippers/TimerSnipper";
 import PriceSnipper from "../../Basic/Snippers/PriceSnipper";
 import DistanceSnipper from "../../Basic/Snippers/DistanceSnipper";
+
 
 const initialSetting = {
   offreAlive: {
@@ -30,7 +32,7 @@ const initialSetting = {
     distance: 200,
   },
 };
-
+const windowHeight = Dimensions.get('window').height;
 export default function Step01({
   stepOption = { step, setstep },
   animationOption = { animation, setanimation },
@@ -43,7 +45,7 @@ export default function Step01({
   const { animation, setanimation } = animationOption;
   const fadeInRight = "fadeInRight";
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container} style={styles.scrollView} >
       <AppText style={styles.stepTitle}>Step 1: delevery options</AppText>
       <OptionsContainer>
         <DeleveryOption
@@ -89,11 +91,15 @@ export default function Step01({
       <AppText style={styles.notice}>
         Notice: we need your location to in order to deliver our services
       </AppText>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  scrollView :{
+    height:(windowHeight*70)/100,
+   
+  },
   container: {
     width: "100%",
     justifyContent: "center",

@@ -17,6 +17,7 @@ import { useFocusEffect } from "@react-navigation/core";
 export const AnimationContext = React.createContext();
 
 
+
 export default function Delevery({navigation}) {
 
   
@@ -36,7 +37,7 @@ export default function Delevery({navigation}) {
       }
    }
   return (
-    <ScrollView style={styles.screen}>
+    <View style={styles.screen}>
       <TopNavigation backButton={true} hundleLeftBtn={goBack}   />
       <DotedScroll fill={step} />
       <View style={styles.step}>
@@ -90,12 +91,13 @@ export default function Delevery({navigation}) {
           </Animatable.View>
         )}
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   step: {
     width: "100%",
+    
   },
 });

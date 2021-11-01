@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     elevation:0,
     position:"absolute",
-    left:30,
+    left:"7.5%",
     bottom:15,
     
   },

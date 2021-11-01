@@ -23,7 +23,7 @@ export default function ProductContainer({productArray=[],onSelectProduct}) {
               }}
             />}
       keyExtractor={(item)=>item.name}
-      numColumns={2}
+      numColumns={parseInt(windowWidth/175,10)}
    />
     );
 }

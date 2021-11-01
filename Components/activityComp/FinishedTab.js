@@ -29,6 +29,7 @@ export default function FinishedTab({ route, navigation, finishedArray }) {
 const styles = StyleSheet.create({
   content: {
     paddingTop: 20,
+    paddingBottom:100,   
   },
   FlatList: {
     width: "100%",
