@@ -20,7 +20,7 @@ export default function ItemWithQuantity({ name, image, quantity, setQuantity })
     <View style={styles.container}>
       <View style={styles.itemContainer}>
         {image && (
-          <Image source={image} resizeMode="contain" style={styles.image} />
+          <Image source={image} resizeMode="center" style={styles.image} />
         )}
         <AppText style={styles.name}>{name} </AppText>
       </View>
@@ -50,6 +50,8 @@ const styles = StyleSheet.create({
       image :{
         alignSelf:"center",
         marginBottom:3,
+        width:100,
+        height:120,
     },
        name :{
           alignSelf:"center",

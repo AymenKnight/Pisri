@@ -24,6 +24,7 @@ export default function ProductContainer({productArray=[],onSelectProduct}) {
             />}
       keyExtractor={(item)=>item.name}
       numColumns={parseInt(windowWidth/175,10)}
+      contentContainerStyle={styles.contentContainerStyle}
    />
     );
 }
@@ -31,6 +32,9 @@ export default function ProductContainer({productArray=[],onSelectProduct}) {
 const styles = StyleSheet.create({
   FlatList: {
     width: "100%",
+  },
+  contentContainerStyle :{
+    paddingBottom:100,   
   },
   productsContainer: {
     flexDirection: "row",

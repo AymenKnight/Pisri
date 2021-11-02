@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         height:110,
     },
     name :{
+        paddingBottom:10,
           alignSelf:"center",
         fontFamily:font.PublicSans_700Bold,
         textAlign:'center',
