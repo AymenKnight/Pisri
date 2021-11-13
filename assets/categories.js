@@ -1,5 +1,5 @@
-export const categories = [
-  { 
+export const categories = {
+    dairy_products :  { 
     id:1,
     name: "Dairy products",
     products: [
@@ -25,6 +25,7 @@ export const categories = [
       },
     ],
   },
+  candies :
   {
     id:2,
     name: "candies",
@@ -68,37 +69,85 @@ export const categories = [
      
     ],
   },
+  qachir :
   { 
     id:3,
-    name: "jus",
-    products: [],
+    name: "qachir",
+    products: [
+          { 
+        id:1,
+        name: "Qachir normal",
+        price: "30-180",
+        tag: "Dzd",
+         image: require("../assets/categories/qachir/qachir.jpeg"),
+      },
+          { 
+        id:2,
+        name: "Pati Poulet",
+        price: "30-180",
+        tag: "Dzd",
+         image: require("../assets/categories/qachir/pati_poulet.jpg"),
+      },
+    ],
   },
+  wheat_products :
   {
     id:4,
-    name: "frit",
-    products: [],
+    name: "Wheat Products",
+    products: [
+            { 
+        id:1,
+        name: "Farine",
+        price: "30-180",
+        tag: "Dzd",
+         image: require("../assets/categories/wheat/farine.jpg"),
+      },
+            { 
+        id:2,
+        name: "Samide",
+        price: "30-180",
+        tag: "Dzd",
+         image: require("../assets/categories/wheat/samide.jpg"),
+      },
+            { 
+        id:3,
+        name: "Khamira",
+        price: "30-180",
+        tag: "Dzd",
+         image: require("../assets/categories/wheat/khamira.jpg"),
+      },
+    ],
   },
+  drinks : 
   {
     id:5,
-    name: "machroub",
-    products: [],
+    name: "drinks",
+    products: [
+            { 
+        id:1,
+        name: "jus",
+        price: "30-180",
+        tag: "Dzd",
+         image: require("../assets/categories/drinks/jus.jpg"),
+      },
+            { 
+        id:2,
+        name: "Soft drinks",
+        price: "30-180",
+        tag: "Dzd",
+         image: require("../assets/categories/drinks/soft_drinks.jpg"),
+      },
+            { 
+        id:3,
+        name: "Water",
+        price: "30-180",
+        tag: "Dzd",
+         image: require("../assets/categories/drinks/water.jpg"),
+      },
+    ],
   },
-  {
-    id:6,
-    name: "mafchroub",
-    products: [],
-  },
-  {
-    id:7,
-    name: "mafhhhub",
-    products: [],
-  },
-  {
-    id:8,
-    name: "waterr",
-    products: [],
-  },
-];
+  
+};
  export const marks=[
   {
     value :"candia",

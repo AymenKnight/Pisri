@@ -7,14 +7,14 @@ import CategoriesItem from './CategoriesItem';
 
 
 
-export default function CategoriesPicker({categories,onSelect,selected=categories[0]}) {
+export default function CategoriesPicker({categories,onSelect,selected=categories[Object.keys(categories)[0]]}) {
     const scrollview =useRef()  
 
     return (
         <View style={styles.container} >
              
              <ScrollView
-             pagingEnabled={true}
+             pagingEnabled={false}
              ref={scrollview}
              style={styles.scrollview}   
              horizontal={true} 
@@ -23,14 +23,16 @@ export default function CategoriesPicker({categories,onSelect,selected=categorie
              showsHorizontalScrollIndicator={false}
             contentContainerStyle={[styles.categoriesContainer,]}
               >
-             {categories.map((categorie)=>
-             <CategoriesItem 
-               categorie={categorie}
-               selected={selected.name==categorie.name}
+             {
+               Object.keys(categories).map(key=>  
+               <CategoriesItem 
+               categorie={categories[key]}
+               selected={selected.name==categories[key].name}
                onSelect={onSelect}
-               key={categorie.name}
-             />
-             )}
+               key={categories[key].name}
+             /> )
+ 
+             }
              </ScrollView>
         </View>
     )

@@ -16,7 +16,8 @@ import TopNavigation from '../Components/navigation/topNavigation/TopNavigation'
 
 
  function StoreScreen({navigation,categories}) {
-    const [selectedCategorie, setselectedCategorie] = useState(categories[0])
+   console.log("first selected categorie : ",categories[Object.keys(categories)[0]])
+    const [selectedCategorie, setselectedCategorie] = useState(categories[Object.keys(categories)[0]])
     const [showcaseVisible, setshowcaseVisible] = useState(false)
     const [itemSelected, setitemSelected] = useState(null)
     
