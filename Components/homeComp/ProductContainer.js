@@ -1,17 +1,25 @@
-import React from 'react'
-import { FlatList, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { ActivityIndicator, FlatList, View } from 'react-native'
 import { ScrollView } from 'react-native'
 import { StyleSheet } from 'react-native'
 import { Dimensions } from 'react-native';
+import Colors from '../config/Colors';
 
 import ItemWithPrice from "../homeComp/ItemWithPrice"
 
 const windowWidth = Dimensions.get('window').width;
-export default function ProductContainer({productArray=[],onSelectProduct}) {
+export default function ProductContainer({selectedCategorie,onSelectProduct}) {
+   
+  useEffect(() => {
+    console.log("selectedCategorie : ",selectedCategorie)
+    return () => {
+      
+    }
+  }, [selectedCategorie])
  
     return (
    <FlatList
-     data={productArray}
+     data={selectedCategorie.products }
      renderItem={({item})=>  <ItemWithPrice
               name={item.name}
               image={item.image}
@@ -41,11 +49,9 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     width: "100%",
   },
-  indicatorStyle: {},
+
   center: {
     justifyContent: "center",
     alignItems: "center",
-   
-    
   },
 });

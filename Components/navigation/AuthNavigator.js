@@ -33,7 +33,6 @@ const SignStack=createStackNavigator()
          set_user(null)
           setLoading(false)
         }
-
       })
       return () => {
         unsubscribe()

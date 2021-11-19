@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import  "firebase/auth"
 import "firebase/firestore"
+import { categories } from "../assets/categories";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDD_71rSezjEGs9_4RaXPjkPINDp5qHSsc",
@@ -34,6 +35,32 @@ export const getUserInfo = async (userAuth)=>{
    const userRef= await firestore.collection("users").doc(userAuth.uid);
   return userRef;
 }
+
+export const  addCollectionToFirebase =  async (collectionKey,categoriesArray)=>{
+   const collectionRef =firestore.collection(collectionKey)
+   const batch = firestore.batch()
+   categoriesArray.forEach(obj => {
+      const newDocRef=collectionRef.doc()
+      batch.set(newDocRef,obj)
+   });
+   return await batch.commit()
+}
+
+export const convertCollectionsSnapshotToMap= (snapshot)=> {
+  const transformatedCollections= snapshot.docs.map(doc=>{
+    const {name,products} = doc.data();
+    return {
+      id : doc.id ,
+      name , products
+    }
+  })
+  console.log("final transformatedCollections : " ,transformatedCollections)
+  return transformatedCollections.reduce((acc,collection)=>{
+    acc[collection.name.toLowerCase()] = collection ;
+    return acc;
+  },{} )
+}
+
 
 export const auth =firebase.auth()
 export const firestore =firebase.firestore()
