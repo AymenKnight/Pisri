@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { Alert, StyleSheet, View } from 'react-native'
+import Modal from "react-native-modal";
 
 import AppText from '../../Basic/AppText'
 import PrimaryButton from '../../Basic/PrimaryButton'
@@ -24,8 +25,9 @@ export default function ItemShowcase({
 }) {
 
   const [quantity, setQuantity] = useState(0);
+  const [customDetailVaisble, setcustomDetail] = useState(false)
   return (
-    <FormModal visible={visible} onClosed={setVisible}  >
+    <FormModal visible={visible} onClosed={setVisible}   >
       <View style={styles.content}>
         <CloseButton onPress={setVisible} />
         <ItemWithQuantity name={name} image={image} quantity={quantity} setQuantity={setQuantity} />
@@ -42,14 +44,20 @@ export default function ItemShowcase({
         </View>
         <View style={styles.AddCostumContainer}>
           <AppText style={styles.AddCostumText}>Add Costume detail </AppText>
-          <AddCostumBtn />
+          <AddCostumBtn  onPress={()=>{
+            setcustomDetail(true)
+          }} />
         </View>
         <PrimaryButton
           title="add to bag"
           width="70%"
           icon="shopping-bag"
           IconComp={iconLib.Feather}
+          onPress={()=>{}}
         />
+        <Modal  isVisible={customDetailVaisble} style={styles.addCustomDetail} >
+          <AppText>"Provide your detail below : "</AppText>
+        </Modal>
       </View>
     </FormModal>
   );
@@ -81,5 +89,10 @@ const styles = StyleSheet.create({
   SelectiveContainer: {
     width: "100%",
     paddingLeft: 8,
+  },
+  addCustomDetail :{
+    width: "100%",
+    margin: 0,
+    height : 200,
   },
 });

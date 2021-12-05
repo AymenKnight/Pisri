@@ -54,7 +54,6 @@ export const convertCollectionsSnapshotToMap= (snapshot)=> {
       name , products
     }
   })
-  console.log("final transformatedCollections : " ,transformatedCollections)
   return transformatedCollections.reduce((acc,collection)=>{
     acc[collection.name.toLowerCase()] = collection ;
     return acc;

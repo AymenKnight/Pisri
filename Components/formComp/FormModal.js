@@ -22,7 +22,6 @@ export default function FormModal({ visible, children, onClosed, }) {
       animationInTiming={0}
       animationOutTiming={1000}
       backdropTransitionOutTiming={2000}
-      propagateSwipe={true}
       useNativeDriverForBackdrop={true}
       useNativeDriver={true}
     >

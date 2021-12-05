@@ -14,20 +14,16 @@ import TopNavigation from '../Components/navigation/topNavigation/TopNavigation'
 import { fetch_categories_startAsync, } from '../redux/categories/categories.actions';
 
 
- function StoreScreen({navigation,categories,categoriesLoaded,categoriesIsFetching,fetch_categories_startAsyncFromTheStore}) {
+ function StoreScreen({navigation,categories,categoriesLoaded,fetch_categories_startAsyncFromTheStore}) {
   useEffect(() => {
        fetch_categories_startAsyncFromTheStore()
+       console.log("here render")
         if(categoriesLoaded){
         setselectedCategorie(categories[Object.keys(categories)[0]])
       }
     return () => {
     }
   }, [categoriesLoaded])
-
-  const fetch=async ()=>{
-        
-     
-  }
 
     const [selectedCategorie, setselectedCategorie] = useState({})
     const [showcaseVisible, setshowcaseVisible] = useState(false)
@@ -70,7 +66,9 @@ import { fetch_categories_startAsync, } from '../redux/categories/categories.act
             name={itemSelected.name}
             image={itemSelected.image}
             visible={showcaseVisible}
-            setVisible={() => setshowcaseVisible(false)}
+            setVisible={() => {
+              setshowcaseVisible(false)
+              setitemSelected(null)}}
             firstOptionTitle="marks"
             firstOptionArray={marks}
             secondOptionTitle="Wieght/volume"

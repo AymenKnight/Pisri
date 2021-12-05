@@ -10,13 +10,6 @@ import ItemWithPrice from "../homeComp/ItemWithPrice"
 const windowWidth = Dimensions.get('window').width;
 export default function ProductContainer({selectedCategorie,onSelectProduct}) {
    
-  useEffect(() => {
-    console.log("selectedCategorie : ",selectedCategorie)
-    return () => {
-      
-    }
-  }, [selectedCategorie])
- 
     return (
    <FlatList
      data={selectedCategorie.products }

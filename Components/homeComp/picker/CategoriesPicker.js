@@ -1,7 +1,5 @@
 import React, { useRef } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { MaterialCommunityIcons   } from '@expo/vector-icons'; 
-import Colors from '../../config/Colors';
 import { ScrollView } from 'react-native-gesture-handler';
 import CategoriesItem from './CategoriesItem';
 
