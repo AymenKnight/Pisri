@@ -26,6 +26,9 @@ export default function ItemShowcase({
 
   const [quantity, setQuantity] = useState(0);
   const [customDetailVaisble, setcustomDetail] = useState(false)
+  const closeCustomDetailModal =()=>{
+    setcustomDetail(false)
+  }
   return (
     <FormModal visible={visible} onClosed={setVisible}   >
       <View style={styles.content}>
@@ -55,10 +58,21 @@ export default function ItemShowcase({
           IconComp={iconLib.Feather}
           onPress={()=>{}}
         />
-        <Modal  isVisible={customDetailVaisble} style={styles.addCustomDetail} >
-          <AppText>"Provide your detail below : "</AppText>
-        </Modal>
       </View>
+           <Modal
+      isVisible={customDetailVaisble} style={styles.addCustomDetail}
+      hasBackdrop={true}
+      backdropColor="white"
+      backdropOpacity={0}
+      onBackdropPress={closeCustomDetailModal}
+      onBackButtonPress={closeCustomDetailModal}
+      coverScreen={false}
+       >
+       <View style={styles.addCustomModalContainer} >
+          <AppText>"Provide your detail below : "</AppText>
+          
+       </View>
+        </Modal>
     </FormModal>
   );
 }
@@ -91,8 +105,18 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
   },
   addCustomDetail :{
-    width: "100%",
+    width: "80%",
     margin: 0,
     height : 200,
+    backgroundColor:"white",
+    position:'absolute',
+    alignSelf:'center',
+    bottom:"50%",
+    elevation:7,
   },
+  addCustomModalContainer :{
+    height:"100%",
+    alignItems:'center',
+    padding:14,
+  }
 });

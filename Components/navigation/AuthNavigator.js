@@ -4,7 +4,7 @@ import WelcomeScreen from '../../Screens/WelcomeScreen';
 import AppNavigator from './AppNavigator';
 import { createStackNavigator } from "@react-navigation/stack";
 import routes from './routes';
-import { auth, getUserInfo } from '../../firebase/firebase.utils';
+import { auth, getUserInfo, initializeFirebase } from '../../firebase/firebase.utils';
 import Colors from '../config/Colors';
 import { connect } from 'react-redux';
 import { set_Current_user } from '../../redux/user/user.actions';

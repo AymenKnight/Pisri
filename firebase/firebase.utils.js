@@ -12,7 +12,12 @@ const firebaseConfig = {
   appId: "1:995205827781:web:47aa246bf2a3a8ad8a74ac"
 };
 
+if (!firebase.apps.length) {
 firebase.initializeApp(firebaseConfig)
+}
+else {
+    firebase.app()
+}
 
 
  export const addUserOnSignUp=(userAuth,displayName)=>{
