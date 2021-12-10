@@ -14,10 +14,11 @@ import TopNavigation from '../Components/navigation/topNavigation/TopNavigation'
 import { fetch_categories_startAsync, } from '../redux/categories/categories.actions';
 
 
- function StoreScreen({navigation,categories,categoriesLoaded,fetch_categories_startAsyncFromTheStore}) {
+ function StoreScreen({navigation,categories,categoriesLoaded,categoriesIsFetching,fetch_categories_startAsyncFromTheStore}) {
   useEffect(() => {
-       fetch_categories_startAsyncFromTheStore()
-       console.log("here render")
+     if(categoriesIsFetching){
+        fetch_categories_startAsyncFromTheStore()
+     } 
         if(categoriesLoaded){
         setselectedCategorie(categories[Object.keys(categories)[0]])
       }
