@@ -24,7 +24,6 @@ import categories_actions from "./categories.actions.Constants";
           dispatch(fetch_categories_success(collectionMap))  
     }).catch(error=>{
               dispatch(fetch_categories_failure(error.message))
-              console.log("error is here bro !",error.message)
     })
     }
  }

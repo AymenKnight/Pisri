@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Alert, StyleSheet, View } from 'react-native'
+import { Alert, StyleSheet, TextInput, View } from 'react-native'
 import Modal from "react-native-modal";
 
 import AppText from '../../Basic/AppText'
+import AppTextInput from '../../Basic/AppTextInput'
 import PrimaryButton from '../../Basic/PrimaryButton'
 import Colors from '../../config/Colors'
 import iconLib from '../../config/iconLib'
@@ -64,12 +65,20 @@ export default function ItemShowcase({
       hasBackdrop={true}
       backdropColor="white"
       backdropOpacity={0}
-      onBackdropPress={closeCustomDetailModal}
       onBackButtonPress={closeCustomDetailModal}
       coverScreen={false}
        >
        <View style={styles.addCustomModalContainer} >
-          <AppText>"Provide your detail below : "</AppText>
+          <AppText style={styles.provideText} >Provide your detail below : </AppText>
+          <TextInput  
+          style={styles.customInput}
+          clearButtonMode='while-editing' 
+          multiline={true}
+          
+           />
+          <View style={styles.AddCustomModalButtons} >  
+
+          </View>
           
        </View>
         </Modal>
@@ -111,12 +120,26 @@ const styles = StyleSheet.create({
     backgroundColor:"white",
     position:'absolute',
     alignSelf:'center',
-    bottom:"50%",
-    elevation:7,
+    bottom:100,
+    elevation:2,
+       borderRadius:15,
+     borderColor: Colors.borders,
+    borderWidth: 1,
+    borderStyle: "solid",
   },
   addCustomModalContainer :{
     height:"100%",
-    alignItems:'center',
     padding:14,
-  }
+  },
+  customInput : {
+    borderColor:Colors.borders,
+    height:"80%",
+     borderWidth: 1,
+    borderStyle: "solid",
+    marginTop:10,
+    borderRadius:15,
+  },
+  provideText :{
+    fontSize:16,
+  },
 });
