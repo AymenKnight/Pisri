@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, StyleSheet, TextInput, View } from 'react-native'
+import { Alert, StyleSheet, TextInput, View,Pressable } from 'react-native'
 import Modal from "react-native-modal";
 
 import AppText from '../../Basic/AppText'
@@ -60,13 +60,17 @@ export default function ItemShowcase({
           onPress={()=>{}}
         />
       </View>
-           <Modal
+      <Modal
       isVisible={customDetailVaisble} style={styles.addCustomDetail}
       hasBackdrop={true}
       backdropColor="white"
       backdropOpacity={0}
       onBackButtonPress={closeCustomDetailModal}
-      coverScreen={false}
+      coverScreen={true}
+      onBackdropPress={closeCustomDetailModal}
+      animationIn='bounceIn'
+      animationOut="bounceOut"
+       
        >
        <View style={styles.addCustomModalContainer} >
           <AppText style={styles.provideText} >Provide your detail below : </AppText>
@@ -74,10 +78,8 @@ export default function ItemShowcase({
           style={styles.customInput}
           clearButtonMode='while-editing' 
           multiline={true}
-          
            />
           <View style={styles.AddCustomModalButtons} >  
-
           </View>
           
        </View>
@@ -133,11 +135,14 @@ const styles = StyleSheet.create({
   },
   customInput : {
     borderColor:Colors.borders,
-    height:"80%",
+    height:"70%",
      borderWidth: 1,
     borderStyle: "solid",
     marginTop:10,
     borderRadius:15,
+    padding:10,
+    textAlignVertical:'top',
+    fontSize:16,
   },
   provideText :{
     fontSize:16,

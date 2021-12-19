@@ -22,8 +22,8 @@ export default function FormModal({ visible, children, onClosed, }) {
       animationInTiming={0}
       animationOutTiming={1000}
       backdropTransitionOutTiming={2000}
-      useNativeDriverForBackdrop={true}
-      useNativeDriver={true}
+      onSwipeComplete={onClosed}
+      swipeDirection="down"
     >
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -41,8 +41,6 @@ const styles = StyleSheet.create({
   newModel: {
     width: "100%",
     margin: 0,
-    position: "absolute",
-    bottom: 0,
    
   },
   modal: {
@@ -60,5 +58,7 @@ const styles = StyleSheet.create({
   },
   ScrollView: {
     width: "100%",
+    position:"absolute",
+    bottom:0,
   },
 });
