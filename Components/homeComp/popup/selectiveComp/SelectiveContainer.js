@@ -8,7 +8,7 @@ export default function SelectiveContainer({title,optionsArray=[],}) {
     const [selectedOption, setselectedOption] = useState(!!undefined)
     return (
         <View  style={styles.container} >
-            <AppText style={styles.title} >  {title} </AppText>
+            <AppText style={styles.title} >{title}</AppText>
         <View  style={styles.optionContainer}  >
           {optionsArray.map((option)=>
           <SelectiveButton option={option}  key={option.value} selected={selectedOption.value==option.value} onSelect={setselectedOption} />
@@ -21,15 +21,16 @@ export default function SelectiveContainer({title,optionsArray=[],}) {
 
 const styles = StyleSheet.create({
     container :{
-    
+    justifyContent:'flex-start',
+    width:"100%"
     },
     optionContainer: {
         flexDirection:'row',
-        padding:10,
+        paddingVertical:10,
 
     },
     title :{
         color :Colors.Unfocused_Blue,
-        padding:5,
+        paddingVertical:5,
     }
 })

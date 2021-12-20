@@ -12,7 +12,7 @@ export default function LineSeperator() {
 const styles = StyleSheet.create({
     container :{
         alignSelf:"center",
-        width:"90%",
+        width:"100%",
         borderColor:Colors.borders,
         borderStyle:'solid',
         borderWidth:1,

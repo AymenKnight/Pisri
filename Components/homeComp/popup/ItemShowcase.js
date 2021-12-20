@@ -55,12 +55,20 @@ export default function ItemShowcase({
           />
         </View>
         <View style={styles.AddCostumContainer}>
-          <AppText style={styles.AddCostumText}>Add Costume detail </AppText>
+          <AppText style={styles.AddCostumText}>Add Costume detail</AppText>
           <AddCostumBtn  onPress={()=>{
             setcustomDetailVaisbitly(true)
           }} />
         </View>
-        <AppText> {customDetail} </AppText>
+        {
+          customDetail.length > 3 && !customDetailVaisble ? 
+             <View style={styles.customDetailLabelView}  >
+           <AppText style={styles.customDetailLabel} >{customDetail}</AppText>  
+        </View> 
+        : null
+        }
+     
+       
         <PrimaryButton
           title="add to bag"
           width="70%"
@@ -88,6 +96,7 @@ export default function ItemShowcase({
           style={styles.customInput}
           clearButtonMode='while-editing' 
           multiline={true}
+          autoFocus={true}
           onChangeText={(text)=>{setcustomDetail(text)}}
            />
           <View style={styles.AddCustomModalButtons} >  
@@ -100,7 +109,8 @@ export default function ItemShowcase({
             width={16}
             onPress={()=>{
               setcustomDetail("")
-              closeCustomDetailModal}}
+              closeCustomDetailModal()
+                }}
              />
            <AppButton 
            title="Add" 
@@ -128,23 +138,30 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 35,
     borderWidth:1,
     borderColor: Colors.borders,
+    paddingHorizontal:20,
   },
   AddCostumContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    marginBottom: 20,
-    marginTop: 10,
+    marginBottom: 5,
+    marginTop: 8,
     width: "100%",
-    marginLeft: 50,
+   
+  },
+  customDetailLabelView :{
+   marginBottom:20,
+   width:"100%",
+  },
+  customDetailLabel :{   
+    alignSelf:'flex-start',
   },
   AddCostumText: {
     color: Colors.Unfocused_Blue,
-    marginRight: 45,
+    marginRight: 20,
   },
   SelectiveContainer: {
     width: "100%",
-    paddingLeft: 8,
   },
   addCustomDetail :{
     width: "80%",
