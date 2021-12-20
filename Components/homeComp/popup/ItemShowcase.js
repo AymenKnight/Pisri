@@ -13,6 +13,7 @@ import CloseButton from '../../Basic/CloseButton'
 import ItemWithQuantity from './ItemWithQuantity'
 import LineSeperator from './LineSeperator'
 import SelectiveContainer from './selectiveComp/SelectiveContainer'
+import AppButton from '../../Basic/AppButton';
 
 export default function ItemShowcase({
   name,
@@ -26,10 +27,17 @@ export default function ItemShowcase({
 }) {
 
   const [quantity, setQuantity] = useState(0);
-  const [customDetailVaisble, setcustomDetail] = useState(false)
+  const [customDetail, setcustomDetail] = useState("")
+  const [customDetailVaisble, setcustomDetailVaisbitly] = useState(false)
+
   const closeCustomDetailModal =()=>{
-    setcustomDetail(false)
+    setcustomDetailVaisbitly(false)
   }
+  const addCustomDetail =()=>{
+    closeCustomDetailModal()
+    console.log("custom deatil is :", customDetail)
+  }
+
   return (
     <FormModal visible={visible} onClosed={setVisible}   >
       <View style={styles.content}>
@@ -49,9 +57,10 @@ export default function ItemShowcase({
         <View style={styles.AddCostumContainer}>
           <AppText style={styles.AddCostumText}>Add Costume detail </AppText>
           <AddCostumBtn  onPress={()=>{
-            setcustomDetail(true)
+            setcustomDetailVaisbitly(true)
           }} />
         </View>
+        <AppText> {customDetail} </AppText>
         <PrimaryButton
           title="add to bag"
           width="70%"
@@ -75,11 +84,33 @@ export default function ItemShowcase({
        <View style={styles.addCustomModalContainer} >
           <AppText style={styles.provideText} >Provide your detail below : </AppText>
           <TextInput  
+          value={customDetail}
           style={styles.customInput}
           clearButtonMode='while-editing' 
           multiline={true}
+          onChangeText={(text)=>{setcustomDetail(text)}}
            />
           <View style={styles.AddCustomModalButtons} >  
+           <AppButton
+            title="Cancel" 
+            more_Style={styles.cancelBtn} 
+            backgroundcolor={Colors.gray}
+            fontSize={14}
+            height={30}
+            width={16}
+            onPress={()=>{
+              setcustomDetail("")
+              closeCustomDetailModal}}
+             />
+           <AppButton 
+           title="Add" 
+           more_Style={styles.addBtn} 
+           backgroundcolor={Colors.primary}
+           fontSize={14}
+           height={30}
+           width={12}
+           onPress={addCustomDetail}
+            />
           </View>
           
        </View>
@@ -118,24 +149,26 @@ const styles = StyleSheet.create({
   addCustomDetail :{
     width: "80%",
     margin: 0,
-    height : 200,
     backgroundColor:"white",
     position:'absolute',
     alignSelf:'center',
     bottom:100,
     elevation:2,
-       borderRadius:15,
-     borderColor: Colors.borders,
+    borderRadius:15,
+    borderColor: Colors.borders,
     borderWidth: 1,
     borderStyle: "solid",
+    overflow:'hidden',
+    paddingBottom:15,
   },
   addCustomModalContainer :{
-    height:"100%",
     padding:14,
+    height : 200,
+  
   },
   customInput : {
     borderColor:Colors.borders,
-    height:"70%",
+    height:120,
      borderWidth: 1,
     borderStyle: "solid",
     marginTop:10,
@@ -146,5 +179,12 @@ const styles = StyleSheet.create({
   },
   provideText :{
     fontSize:16,
+  },
+  AddCustomModalButtons :{
+    flexDirection:'row',
+    justifyContent:'flex-end',
+  },
+  addBtn :{
+   marginLeft:10,
   },
 });
