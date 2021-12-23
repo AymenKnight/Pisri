@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux';
-import {  marks ,} from '../assets/categories';
+import {  categories, marks ,} from '../assets/categories';
 import Colors from '../Components/config/Colors';
 
 import BigTitle from '../Components/homeComp/BigTitle'
@@ -11,11 +11,12 @@ import ProductContainer from '../Components/homeComp/ProductContainer'
 import SearchFeild from '../Components/homeComp/SearchFeild'
 import routes from '../Components/navigation/routes';
 import TopNavigation from '../Components/navigation/topNavigation/TopNavigation'
+import { addCollectionToFirebase } from '../firebase/firebase.utils';
 import { fetch_categories_startAsync, } from '../redux/categories/categories.actions';
 
 
- function StoreScreen({navigation,categories,categoriesLoaded,categoriesIsFetching,fetch_categories_startAsyncFromTheStore}) {
-  useEffect(() => {
+ function StoreScreen({navigation,categoriesLoaded,categoriesIsFetching,fetch_categories_startAsyncFromTheStore}) {
+  /* useEffect(() => {
      if(categoriesIsFetching){
         fetch_categories_startAsyncFromTheStore()
      } 
@@ -24,7 +25,13 @@ import { fetch_categories_startAsync, } from '../redux/categories/categories.act
       }
     return () => {
     }
-  }, [categoriesLoaded])
+  }, [categoriesLoaded]) */
+ /* useEffect(() => {
+    addCollectionToFirebase("Categories",categories)
+    return () => {
+      
+    }
+  }, []) */
 
     const [selectedCategorie, setselectedCategorie] = useState({})
     const [showcaseVisible, setshowcaseVisible] = useState(false)

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, StyleSheet, TextInput, View,Pressable } from 'react-native'
+import { Alert, StyleSheet, TextInput, View,ScrollView } from 'react-native'
 import Modal from "react-native-modal";
 
 import AppText from '../../Basic/AppText'

@@ -30,6 +30,7 @@ export default function FormModal({ visible, children, onClosed, }) {
         keyboardShouldPersistTaps="handled"
         style={styles.ScrollView}
         contentContainerStyle={[styles.contentContainerStyle]}
+        scrollEnabled={true}
       >
         {children}
       </ScrollView>
