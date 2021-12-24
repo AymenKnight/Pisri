@@ -33,7 +33,7 @@ export default function SelectiveButton({option,selected,onSelect}) {
 
 const styles = StyleSheet.create({
     container :{
-        width:"auto",
+        width:200,
         height:"auto",
         borderColor:Colors.borders,
         borderStyle:'solid',
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:'center',
         borderRadius:20,  
-        marginRight:10,  
+        marginRight:10, 
     },
 })

@@ -37,6 +37,33 @@ export const categories = {
              label :"2L"
           },
         ]
+      },
+           {
+        optionTitle :"liters4",
+        optionValues :[
+           {
+             value :"1L",
+             label :"1L"
+          },
+           {
+             value :"2L",
+             label :"2L"
+          },
+        ]
+      }
+      ,
+           {
+        optionTitle :"lite5rs",
+        optionValues :[
+           {
+             value :"1L",
+             label :"1L"
+          },
+           {
+             value :"2L",
+             label :"2L"
+          },
+        ]
       }
       ],
         tag: "Dzd",

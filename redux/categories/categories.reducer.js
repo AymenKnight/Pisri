@@ -1,10 +1,11 @@
+import { categories } from "../../assets/categories";
 import categories_actions from "./categories.actions.Constants";
 
 
 
 
 const initial_State={
-    categories:null,
+    categories:categories,
     categoriesIsFetching :true,
     errorMessage : undefined
 }

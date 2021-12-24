@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, StyleSheet, View } from 'react-native'
 import { connect } from 'react-redux';
-import {  categories, marks ,} from '../assets/categories';
+import {  marks ,} from '../assets/categories';
 import Colors from '../Components/config/Colors';
 
 import BigTitle from '../Components/homeComp/BigTitle'
@@ -15,7 +15,7 @@ import { addCollectionToFirebase } from '../firebase/firebase.utils';
 import { fetch_categories_startAsync, } from '../redux/categories/categories.actions';
 
 
- function StoreScreen({navigation,categoriesLoaded,categoriesIsFetching,fetch_categories_startAsyncFromTheStore}) {
+ function StoreScreen({navigation,categories,categoriesLoaded,categoriesIsFetching,fetch_categories_startAsyncFromTheStore}) {
   /* useEffect(() => {
      if(categoriesIsFetching){
         fetch_categories_startAsyncFromTheStore()
@@ -77,10 +77,7 @@ import { fetch_categories_startAsync, } from '../redux/categories/categories.act
             setVisible={() => {
               setshowcaseVisible(false)
               setitemSelected(null)}}
-            firstOptionTitle="marks"
-            firstOptionArray={marks}
-            secondOptionTitle="Wieght/volume"
-            secondOptionArray={marks}
+            options={itemSelected.options}  
           />
         )}
       </>

@@ -20,10 +20,7 @@ export default function ItemShowcase({
   image,
   visible,
   setVisible,
-  firstOptionTitle,
-  secondOptionTitle,
-  firstOptionArray,
-  secondOptionArray,
+  options
 }) {
 
   const [quantity, setQuantity] = useState(0);
@@ -44,16 +41,21 @@ export default function ItemShowcase({
         <CloseButton onPress={setVisible} />
         <ItemWithQuantity name={name} image={image} quantity={quantity} setQuantity={setQuantity} />
         <LineSeperator />
-        <View style={styles.SelectiveContainer}>
-          <SelectiveContainer
-            title={firstOptionTitle}
-            optionsArray={firstOptionArray}
-          />
-          <SelectiveContainer
-            title={secondOptionTitle}
-            optionsArray={secondOptionArray}
-          />
-        </View>
+        <ScrollView 
+        style={[styles.ScrollView,{height:options.length==1 ? 100 : 200}]}
+        contentContainerStyle={styles.SelectiveContainer}
+        scrollEnabled={true}
+        >
+            {
+              options.map(option=>
+              <SelectiveContainer 
+                title={option.optionTitle}
+                optionsArray={option.optionValues}
+                key={option.optionTitle}
+              />
+              )
+            }
+        </ScrollView>
         <View style={styles.AddCostumContainer}>
           <AppText style={styles.AddCostumText}>Add Costume detail</AppText>
           <AddCostumBtn  onPress={()=>{
@@ -160,8 +162,13 @@ const styles = StyleSheet.create({
     color: Colors.Unfocused_Blue,
     marginRight: 20,
   },
+  ScrollView :{
+    width :"100%",
+    
+  },
   SelectiveContainer: {
     width: "100%",
+    justifyContent:'flex-start',
   },
   addCustomDetail :{
     width: "80%",
