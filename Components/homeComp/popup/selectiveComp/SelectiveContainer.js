@@ -10,15 +10,17 @@ export default function SelectiveContainer({title,optionsArray=[],}) {
     return (
         <View  style={styles.container} >
             <AppText style={styles.title} >{title}</AppText>
-        <ScrollView  
-        scrollEnabled ={true}
-          horizontal={true}  
-          style={styles.ScrollView}
-        contentContainerStyle={styles.optionContainer}  >
+        <View  
+        style={styles.optionContainer}  >
           {optionsArray.map((option)=>
-          <SelectiveButton option={option}  key={option.value} selected={selectedOption.value==option.value} onSelect={setselectedOption} />
+          <SelectiveButton 
+          option={option}  
+          key={option.value} 
+          selected={selectedOption.value==option.value} 
+          onSelect={setselectedOption} 
+          />
           )}
-        </ScrollView>
+        </View>
             </View>
       
     )
@@ -27,20 +29,16 @@ export default function SelectiveContainer({title,optionsArray=[],}) {
 const styles = StyleSheet.create({
     container :{
     justifyContent:'flex-start',
-    width:"100%"
-    },
-    ScrollView :{
-        
-        width :"100%"
+    width:"100%",
     },
     optionContainer: {
         width:"100%",
         flexDirection:'row',
         paddingVertical:10,
+        flexWrap:'wrap',
 
     },
     title :{
-        color :Colors.Unfocused_Blue,
-        paddingVertical:5,
+        color :Colors.Unfocused_Blue,    
     }
 })

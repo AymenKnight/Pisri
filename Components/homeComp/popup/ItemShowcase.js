@@ -42,7 +42,7 @@ export default function ItemShowcase({
         <ItemWithQuantity name={name} image={image} quantity={quantity} setQuantity={setQuantity} />
         <LineSeperator />
         <ScrollView 
-        style={[styles.ScrollView,{height:options.length==1 ? 100 : 200}]}
+        style={[styles.ScrollView,{height:options.length==1 ? 140 : 200}]}
         contentContainerStyle={styles.SelectiveContainer}
         scrollEnabled={true}
         >
@@ -55,13 +55,14 @@ export default function ItemShowcase({
               />
               )
             }
-        </ScrollView>
-        <View style={styles.AddCostumContainer}>
+          <View style={styles.AddCostumContainer}>
           <AppText style={styles.AddCostumText}>Add Costume detail</AppText>
           <AddCostumBtn  onPress={()=>{
             setcustomDetailVaisbitly(true)
           }} />
         </View>
+        </ScrollView>
+  
         {
           customDetail.length > 3 && !customDetailVaisble ? 
              <View style={styles.customDetailLabelView}  >
@@ -147,7 +148,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     marginBottom: 5,
-    marginTop: 8,
     width: "100%",
    
   },

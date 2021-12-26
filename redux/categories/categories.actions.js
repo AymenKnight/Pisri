@@ -17,11 +17,11 @@ import categories_actions from "./categories.actions.Constants";
 
  export const fetch_categories_startAsync = ()=>{
     return  dispatch =>{
-           const collectionsRef =firestore.collection("Collections");
+           const categoriesRef =firestore.collection("Categories");
            dispatch(fetch_categories_start());
-    collectionsRef.get().then( (snapShot)=>{
-     const collectionMap =  convertCollectionsSnapshotToMap(snapShot);
-          dispatch(fetch_categories_success(collectionMap))  
+    categoriesRef.get().then( (snapShot)=>{
+     const categoriesMap =  convertCollectionsSnapshotToMap(snapShot);
+          dispatch(fetch_categories_success(categoriesMap))  
     }).catch(error=>{
               dispatch(fetch_categories_failure(error.message))
     })

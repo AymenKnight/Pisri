@@ -38,33 +38,7 @@ export const categories = {
           },
         ]
       },
-           {
-        optionTitle :"liters4",
-        optionValues :[
-           {
-             value :"1L",
-             label :"1L"
-          },
-           {
-             value :"2L",
-             label :"2L"
-          },
-        ]
-      }
-      ,
-           {
-        optionTitle :"lite5rs",
-        optionValues :[
-           {
-             value :"1L",
-             label :"1L"
-          },
-           {
-             value :"2L",
-             label :"2L"
-          },
-        ]
-      }
+          
       ],
         tag: "Dzd",
          image: require("../assets/categories/DairyProducts/milk_candia.png"),
@@ -245,8 +219,8 @@ export const categories = {
             label :"Ballete Qachir"
               },
             {
-            value :"ballete",
-            label :"Ballete Qachir"
+            value :"torino",
+            label :"Torino Qachir"
           },
             ]
           },
@@ -280,8 +254,8 @@ export const categories = {
             label :"Ballete Pati"
               },
             {
-            value :"ballete",
-            label :"Ballete Pati"
+            value :"torino",
+            label :"Torino Pati"
           },
             ]
           },
