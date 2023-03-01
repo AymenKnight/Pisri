@@ -1,7 +1,15 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // if you use expo remove this line
 import { AppRegistry } from 'react-native';
+import { name as appName } from '../app.json';
+import { loadStories } from './storyLoader';
 
-import { getStorybookUI, configure, addDecorator } from '@storybook/react-native';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {
+  getStorybookUI,
+  configure,
+  addDecorator,
+} from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 
 import './rn-addons';
@@ -11,15 +19,15 @@ addDecorator(withKnobs);
 
 // import stories
 configure(() => {
-  require('./stories');
+  loadStories();
 }, module);
 
-// Refer to https://github.com/storybookjs/storybook/tree/master/app/react-native#start-command-parameters
+// Refer to https://github.com/storybookjs/react-native/tree/master/app/react-native#getstorybookui-options
 // To find allowed options for getStorybookUI
 const StorybookUIRoot = getStorybookUI({});
 
 // If you are using React Native vanilla and after installation you don't see your app name here, write it manually.
 // If you use Expo you should remove this line.
-AppRegistry.registerComponent('%APP_NAME%', () => StorybookUIRoot);
+AppRegistry.registerComponent(appName, () => StorybookUIRoot);
 
 export default StorybookUIRoot;
