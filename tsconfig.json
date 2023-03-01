@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-native",
+    "lib": ["dom", "esnext"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "noEmit": true,
+    "target": "es6",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "*": ["node_modules/*"],
+      "@components/*": ["./Components/*"],
+      "@buttons/*": ["./Components/basic/buttons/*"],
+      // "@containers/*": ["src/renderer/ui/containers/*"],
+      "@Screens/*": ["./Components/Screens/*"],
+      "@assets/*": ["./assets/*"],
+      // "@libs/*": ["src/renderer/libs/*"],
+      "@config/*": ["./Components/config/*"],
+      // "@helpers/*": ["src/renderer/utils/helpers/*"],
+      // "@models/*": ["src/renderer/models/*"],
+      "toSvg/*": ["./assets/svg/*"],
+      "toPng/*": ["./assets/pictures/*"],
+      "@api/*": ["./API/*"],
+      "@redux/*": ["./services/redux/*"],
+      "@colors": ["./Components/config/Colors.ts"],
+      "@stores/*": ["./services/zustand/*"]
+    }
+  },
+  "extends": "expo/tsconfig.base"
+  // "exclude": ["__tests__/**/*-test.ts"]
+}
