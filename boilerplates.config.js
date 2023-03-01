@@ -1,46 +1,68 @@
 [
-  {name:"react",variants:["componentName"],template:[
-    [
-      '{{componentName}sc}/{{componentName}pc}.tsx',
-`import React from 'react';
-import '.style/index.scss';
-interface I{{componentName}cc} {
-}
+  {
+    name: 'react native',
+    variants: ['componentName'],
+    template: [
+      [
+        '{{componentName}sc}/{{componentName}pc}.tsx',
+        `import { View } from 'react-native';
+import styles from './style/index';
 
-function {{componentName}pc}({}: I{{componentName}cc}) {
-  return (
-    <div className="{{componentName}kc}"></div>
-  );
+interface {{componentName}pc}Props {}
+export default function {{componentName}pc}({}: {{componentName}pc}Props) {
+  return <View style={styles.{{componentName}pc}}></View>;
 }
-    
-export default {{componentName}pc};
-
 `,
+      ],
+      [
+        '{{componentName}sc}/index.ts',
+        `import {{componentName}pc} from './{{componentName}pc}';
+export default {{componentName}pc};
+`,
+      ],
+      [
+        '{{componentName}sc}/style/index.ts',
+        `import { StyleSheet } from 'react-native';
+import Colors from '@colors';
+
+export default StyleSheet.create({
+  {{componentName}pc}: {},
+});
+`,
+      ],
+      //       [
+      //         '{{componentName}sc}/{{componentName}pc}.stories.tsx',
+      //         `import { ComponentProps } from 'react';
+      // import type { Story } from '@storybook/react';
+      // import {{componentName}pc} from './{{componentName}pc}';
+      // export default {
+      //   title: '{{componentName}pc}',
+      //   component: {{componentName}pc},
+      // };
+      // const Template: Story<ComponentProps<typeof {{componentName}pc}>> = (args) => (
+      //   <{{componentName}pc} {...args} />
+      // );
+      // export const FirstStory = Template
+      // FirstStory.args = {};
+      // `,
+      //       ],
     ],
-    [
-      '{{componentName}sc}/index.ts',
-`import {{componentName}pc} from './{{componentName}pc}';
-export default {{componentName}pc};`,
+  },
+  {
+    name: 'zustand',
+    variants: ['storeName'],
+    template: [
+      [
+        '{{storeName}cc}Store.ts',
+        `import create from 'zustand';
+
+interface {{storeName}pc}State {}
+
+export const use{{storeName}pc}Store = create<{{storeName}pc}State>(
+  (set) => ({}),
+);
+`,
+      ],
     ],
-    [
-      '{{componentName}sc}/style/index.scss',
-      `.{{componentName}kc}{
-}`,
-    ],
-    ["{{componentName}sc}/{{componentName}pc}.stories.tsx",
-    `import React, { ComponentProps } from 'react';
-import type { Story } from '@storybook/react';
-import  {{componentName}pc}  from './{{componentName}pc}';
-//👇 This default export determines where your story goes in the story list
-export default {
-  title: '{{componentName}pc}',
-  component: {{componentName}pc},
-};
-const Template: Story<ComponentProps<typeof {{componentName}pc}>> = (args) => <{{componentName}pc} {...args} />;
-export const FirstStory = Template.bind({});
-FirstStory.args = {
-};`
-  ]
-  ]
-  }
+  },
 ];
