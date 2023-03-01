@@ -1,6 +1,6 @@
 export default {
   primary: "#E97854",
-  seconadry: "#80D8FF",
+  secondary: "#80D8FF",
   medium: "#6e6969",
   light: "#f8f4f4",
   dark: "#0c0c0c",
