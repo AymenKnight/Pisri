@@ -7,15 +7,13 @@ interface PrimaryButtonProps {
   text?: string;
   onPress?: () => void;
   style?: ViewStyle;
-  width?: number;
-  height?: number;
+
   icon?: ReactNode;
 }
 export default function PrimaryButton({
   text,
   onPress,
-  width,
-  height,
+
   style,
   icon,
 }: PrimaryButtonProps) {

@@ -10,8 +10,7 @@ export interface AppButtonProps {
   style?: ViewStyle;
   backgroundColor?: string;
   borderColor?: string;
-  width?: number;
-  height?: number;
+
   icon?: ReactNode;
   itemsDirection?: 'row' | 'row-reverse';
   padding?: number;
@@ -23,8 +22,7 @@ const AppButton = ({
   onPress,
 
   backgroundColor,
-  width,
-  height,
+
   style,
   icon,
   itemsDirection = 'row',
@@ -40,8 +38,7 @@ const AppButton = ({
         styles.container,
         {
           backgroundColor: backgroundColor,
-          width: width,
-          height: height,
+
           flexDirection: itemsDirection,
           padding,
           borderRadius,
