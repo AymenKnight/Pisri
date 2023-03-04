@@ -3,4 +3,4 @@ export default {
   MaterialCommunityIcons: MaterialCommunityIcons,
   Entypo: Entypo,
   Feather: Feather,
-};
+} as const;
