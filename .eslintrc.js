@@ -1,7 +1,7 @@
 module.exports = {
-    root: true,
+  root: true,
 
-      extends: [
+  extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
@@ -13,7 +13,7 @@ module.exports = {
     'plugin:react/jsx-runtime',
     'plugin:prettier/recommended',
   ],
-      settings: {
+  settings: {
     react: {
       version: 'detect', // React version. "detect" automatically picks the version you have installed.
     },
@@ -21,7 +21,7 @@ module.exports = {
       typescript: {},
     },
   },
-   parser: '@typescript-eslint/parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -30,12 +30,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-    'react-hooks',
-    'unused-imports',
-  ],
+  plugins: ['react', '@typescript-eslint', 'react-hooks', 'unused-imports'],
   globals: { Atomics: 'readonly', SharedArrayBuffer: 'readonly' },
   rules: {
     'no-unused-vars': 'off',
@@ -43,7 +38,6 @@ module.exports = {
       'warn',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
-
 
     'react/prop-types': 0,
     'no-console': 'warn',
