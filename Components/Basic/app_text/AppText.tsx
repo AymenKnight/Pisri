@@ -17,7 +17,7 @@ import * as SplashScreen from 'expo-splash-screen';
 SplashScreen.preventAutoHideAsync();
 interface AppTextProps {
   style?: TextStyle;
-  text: string;
+  text: string | number;
   other?: any;
 }
 export default function AppText({ style, text, ...other }: AppTextProps) {
