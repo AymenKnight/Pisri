@@ -24,14 +24,15 @@
       "@config/*": ["./Components/config/*"],
       // "@helpers/*": ["src/renderer/utils/helpers/*"],
       // "@models/*": ["src/renderer/models/*"],
-      "toSvg/*": ["./assets/svg/*"],
-      "toPng/*": ["./assets/pictures/*"],
+      "@toSvg/*": ["./assets/svg/*"],
+      "@toPng/*": ["./assets/pictures/*"],
       "@api/*": ["./API/*"],
       "@redux/*": ["./services/redux/*"],
       "@colors": ["./Components/config/Colors.ts"],
       "@stores/*": ["./services/zustand/*"]
     }
   },
+  "include": ["**/*.ts", "**/*.tsx", "images.d.ts"],
   "extends": "expo/tsconfig.base"
   // "exclude": ["__tests__/**/*-test.ts"]
 }
