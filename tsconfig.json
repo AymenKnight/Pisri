@@ -19,7 +19,7 @@
       "@buttons/*": ["./UI/Components/basic/buttons/*"],
       "@containers/*": ["./UI/containers/*"],
       "@navigation/*": ["./navigation/*"],
-      "@Screens/*": ["./UI/Components/Screens/*"],
+      "@screens/*": ["./UI/Components/Screens/*"],
       "@assets/*": ["./assets/*"],
       // "@libs/*": ["src/renderer/libs/*"],
       "@config/*": ["./UI/Components/config/*"],
@@ -30,6 +30,7 @@
       "@api/*": ["./API/*"],
       "@redux/*": ["./services/redux/*"],
       "@colors": ["./UI/Components/config/Colors.ts"],
+      "@routes": ["./navigation/routes.ts"],
       "@stores/*": ["./services/zustand/*"]
     }
   },
