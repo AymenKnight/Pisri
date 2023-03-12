@@ -4,6 +4,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
+    "cleanStart": "expo start -c   ",
     "android": "expo start --android",
     "storybook": "start-storybook -p 7007",
     "prestorybook": "rnstl",
