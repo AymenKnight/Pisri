@@ -12,23 +12,28 @@ interface OverlayProps {
   modalProps?: ModalProps;
 }
 export default function Overlay({ modalProps }: OverlayProps) {
-  const { visible, close, children } = useOverlayStore();
+  const { visible, close, children, options } = useOverlayStore();
   return (
     <>
       <Modal
-        animationType="slide"
         transparent={true}
         visible={visible}
+        animationType={options?.modalProps?.animationType ?? 'slide'}
         onRequestClose={close}
         {...modalProps}
       >
-        <TouchableOpacity
-          activeOpacity={1}
-          style={styles.modalContainer}
-          onPressOut={close}
-        >
-          <View style={styles.modalContent}>{children}</View>
-        </TouchableOpacity>
+        <TouchableWithoutFeedback onPress={close}>
+          <View style={styles.modalContainer}>
+            <TouchableOpacity
+              activeOpacity={1}
+              onPress={(event) => {
+                event.stopPropagation();
+              }}
+            >
+              <View style={{ ...options?.modalStyle }}>{children}</View>
+            </TouchableOpacity>
+          </View>
+        </TouchableWithoutFeedback>
       </Modal>
       {visible && (
         <TouchableWithoutFeedback onPress={close}>
