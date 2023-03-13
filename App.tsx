@@ -1,6 +1,6 @@
-import { NavigationContainer } from '@react-navigation/native';
-import AuthNavigator from '@navigation/auth_navigator';
 import Overlay from '@containers/modals/overlay';
+import AuthNavigator from '@navigation/auth_navigator';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
   return (
