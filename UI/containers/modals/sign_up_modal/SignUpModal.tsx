@@ -106,7 +106,7 @@ export default function SignUpModal({}: SignUpModalProps) {
             action={{
               text: 'Sign In',
               onPress: () => {
-                close();
+                // close();
                 modal(<SignInModal />).open();
               },
             }}

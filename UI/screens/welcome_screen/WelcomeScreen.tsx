@@ -6,6 +6,7 @@ import sign_background from '@toPng/sign_background.png';
 import WelcomeLogo from '@toSvg/welcome_logo.svg';
 import { useOverlayStore } from '@stores/overlayStore';
 import SignInModal from '@containers/modals/sign_in_modal';
+import SignUpModal from '@containers/modals/sign_up_modal';
 
 interface WelcomeScreenProps {}
 export default function WelcomeScreen({}: WelcomeScreenProps) {
@@ -19,7 +20,7 @@ export default function WelcomeScreen({}: WelcomeScreenProps) {
             text="Sign Up "
             backgroundColor={Colors.primary}
             onPress={() => {
-              close();
+              modal(<SignUpModal />).open();
             }}
           />
           <AppButton
