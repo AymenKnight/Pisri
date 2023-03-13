@@ -5,9 +5,5 @@ import AppButton from './TextButton';
 import Colors from '../../../config/Colors';
 
 storiesOf('Test Component', module).add('example', () => (
-  <AppButton
-    text="hello hhhhhhhhh"
-    backgroundColor={Colors.primary}
-    color={Colors.white}
-  />
+  <AppButton text="hello hhhhhhhhh" backgroundColor={Colors.primary} />
 ));

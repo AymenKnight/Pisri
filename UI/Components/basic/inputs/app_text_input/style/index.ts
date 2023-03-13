@@ -30,4 +30,5 @@ export default StyleSheet.create({
     textAlign: 'left',
     flexGrow: 1,
   },
+  errorStyle: { color: 'red' },
 });

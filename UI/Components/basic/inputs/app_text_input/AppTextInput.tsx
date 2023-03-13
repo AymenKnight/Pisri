@@ -34,6 +34,7 @@ interface AppTextInputProps {
   inputStyle?: TextStyle;
   itemsDirection?: 'row' | 'row-reverse';
   label?: string;
+  error?: string;
 }
 export default function AppTextInput({
   svg,
@@ -43,6 +44,7 @@ export default function AppTextInput({
   itemsDirection = 'row',
   expoIcon,
   label,
+  error,
 }: AppTextInputProps) {
   const [focus, setFocus] = useState(false);
 
@@ -90,7 +92,11 @@ export default function AppTextInput({
         <AppText
           style={{
             ...styles.labelStyle,
-            color: focus ? Colors.primary : Colors.Unfocused_Blue,
+            color: focus
+              ? error
+                ? Colors.hot_red
+                : Colors.primary
+              : Colors.gray,
           }}
           text={label}
         />
@@ -102,7 +108,11 @@ export default function AppTextInput({
           {
             flexDirection: itemsDirection,
             width: width,
-            borderColor: focus ? Colors.primary : Colors.gray,
+            borderColor: focus
+              ? error
+                ? Colors.hot_red
+                : Colors.primary
+              : Colors.gray,
           },
         ]}
       >
@@ -119,6 +129,7 @@ export default function AppTextInput({
           {...inputProps}
         />
       </View>
+      {error && <AppText style={styles.errorStyle} text={error} />}
     </View>
   );
 }
