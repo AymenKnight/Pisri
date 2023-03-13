@@ -14,4 +14,7 @@ export default {
   borders: '#D1CFD5',
   eliminatedRed: '#E95454',
   coldBlue: '#2D9CDB',
+  hot_red: '#f44336',
+  cold_red: '#ff4b59',
+  cold_blue: '#01b9ca',
 };
