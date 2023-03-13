@@ -6,9 +6,7 @@ import {
   TextStyle,
 } from 'react-native';
 import styles from './style/index';
-import { useCallback, ReactNode, useState, useMemo } from 'react';
-import * as SplashScreen from 'expo-splash-screen';
-import { useFonts, PublicSans_500Medium } from '@expo-google-fonts/public-sans';
+import { ReactNode, useState, useMemo } from 'react';
 import Colors from '@components/config/Colors';
 import { defaultStyle } from '@components/config/styles';
 import iconLib from '@components/config/iconLib';
@@ -73,19 +71,6 @@ export default function AppTextInput({
       />
     ) : null;
 
-  const [fontsLoaded] = useFonts({
-    PublicSans_500Medium,
-  });
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
-
   return (
     <View style={styles.wrapper}>
       {label && (
@@ -102,7 +87,6 @@ export default function AppTextInput({
         />
       )}
       <View
-        onLayout={onLayoutRootView}
         style={[
           styles.AppTextInput,
           {

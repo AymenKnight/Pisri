@@ -21,7 +21,7 @@ export default StyleSheet.create({
     borderRadius: 15,
     padding: 5,
     borderStyle: 'solid',
-    borderWidth: 1,
+    borderWidth: 2,
     maxHeight: 55,
   },
   icon: {},
