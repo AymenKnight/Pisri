@@ -14,7 +14,7 @@ import {
 import { defaultStyle } from '@components/config/styles';
 import * as SplashScreen from 'expo-splash-screen';
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 interface AppTextProps {
   style?: TextStyle;
   text: string | number;
