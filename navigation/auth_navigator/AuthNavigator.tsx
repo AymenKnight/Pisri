@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WelcomeScreen from '@components/Screens/welcome_screen';
+import WelcomeScreen from '@screens/welcome_screen';
 
 const AuthStack = createNativeStackNavigator();
 
