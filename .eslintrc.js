@@ -5,7 +5,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
-    'plugin:import/electron',
     'plugin:import/typescript',
     'airbnb-typescript',
     'airbnb/hooks',
@@ -30,7 +29,13 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint', 'react-hooks', 'unused-imports'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'react-hooks',
+    'unused-imports',
+    'prettier',
+  ],
   globals: { Atomics: 'readonly', SharedArrayBuffer: 'readonly' },
   rules: {
     'no-unused-vars': 'off',
