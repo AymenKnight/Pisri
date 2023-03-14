@@ -8,7 +8,6 @@ import { useOverlayStore } from '@stores/overlayStore';
 import style from './style';
 import AppText from '@components/basic/app_text';
 import TipFooter from '@components/tip_footer';
-import SignUpModal from '@containers/modals/sign_up_modal';
 
 const SignInValidationSchema = yup.object().shape({
   email: yup
@@ -26,8 +25,10 @@ interface LoginFormValues {
   email: string;
   password: string;
 }
-interface SignInModalProps {}
-export default function SignInModal({}: SignInModalProps) {
+interface SignInModalProps {
+  handleToggle: () => void;
+}
+export default function SignInModal({ handleToggle }: SignInModalProps) {
   const { modal, close } = useOverlayStore();
   const initialValues: LoginFormValues = { email: '', password: '' };
   const onSubmit = (values: LoginFormValues) => {
@@ -84,7 +85,8 @@ export default function SignInModal({}: SignInModalProps) {
               onPress: () => {
                 // close();
 
-                modal(<SignUpModal />).open();
+                // modal(<SignUpModal />).open();
+                handleToggle();
               },
             }}
           />

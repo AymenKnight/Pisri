@@ -8,7 +8,6 @@ import { Formik } from 'formik';
 import { useOverlayStore } from '@stores/overlayStore';
 import * as yup from 'yup';
 import style from './style';
-import SignInModal from '@containers/modals/sign_in_modal';
 
 const SignUpValidationSchema = yup.object().shape({
   fullName: yup
@@ -32,8 +31,10 @@ interface RegisterFormValues {
   password: string;
   fullName: string;
 }
-interface SignUpModalProps {}
-export default function SignUpModal({}: SignUpModalProps) {
+interface SignUpModalProps {
+  handleToggle: () => void;
+}
+export default function SignUpModal({ handleToggle }: SignUpModalProps) {
   const { modal, close } = useOverlayStore();
   const initialValues: RegisterFormValues = {
     fullName: '',
@@ -107,7 +108,8 @@ export default function SignUpModal({}: SignUpModalProps) {
               text: 'Sign In',
               onPress: () => {
                 // close();
-                modal(<SignInModal />).open();
+                // modal(<SignInModal />).open();
+                handleToggle();
               },
             }}
           />
