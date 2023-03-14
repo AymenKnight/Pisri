@@ -5,8 +5,7 @@ import Colors from '@components/config/Colors';
 import sign_background from '@toPng/sign_background.png';
 import WelcomeLogo from '@toSvg/welcome_logo.svg';
 import { useOverlayStore } from '@stores/overlayStore';
-import SignInModal from '@containers/modals/sign_in_modal';
-import SignUpModal from '@containers/modals/sign_up_modal';
+import AuthSwitcher from '@containers/modals/auth_switcher';
 
 interface WelcomeScreenProps {}
 export default function WelcomeScreen({}: WelcomeScreenProps) {
@@ -20,14 +19,14 @@ export default function WelcomeScreen({}: WelcomeScreenProps) {
             text="Sign Up "
             backgroundColor={Colors.primary}
             onPress={() => {
-              modal(<SignUpModal />).open();
+              modal(<AuthSwitcher authType="signUp" />).open();
             }}
           />
           <AppButton
             text="Sign In "
             backgroundColor={Colors.secondary}
             onPress={() => {
-              modal(<SignInModal />).open();
+              modal(<AuthSwitcher authType="signIn" />).open();
             }}
           />
         </View>
