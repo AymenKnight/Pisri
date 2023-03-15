@@ -1,17 +1,19 @@
 import { create } from 'zustand';
 
 interface AuthState {
-  signInVisible: boolean;
-  signUpVisible: boolean;
-  changeSignInVisible: () => void;
-  changeSignUpVisible: () => void;
+  user: firebase.User | null;
+  isLoading: boolean;
+  error: string | null;
+  setUser: (user: firebase.User | null) => void;
+  setIsLoading: (isLoading: boolean) => void;
+  setError: (error: string | null) => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
-  signInVisible: false,
-  signUpVisible: false,
-  changeSignInVisible: () =>
-    set((state) => ({ signInVisible: !state.signInVisible })),
-  changeSignUpVisible: () =>
-    set((state) => ({ signUpVisible: !state.signUpVisible })),
+  user: null,
+  isLoading: false,
+  error: null,
+  setUser: (user: firebase.User | null) => set({ user }),
+  setIsLoading: (isLoading: boolean) => set({ isLoading }),
+  setError: (error: string | null) => set({ error }),
 }));
