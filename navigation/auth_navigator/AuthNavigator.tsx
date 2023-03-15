@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from '@screens/welcome_screen';
 import { View } from 'react-native';
@@ -14,6 +14,8 @@ import {
   PublicSans_900Black,
 } from '@expo-google-fonts/public-sans';
 import * as SplashScreen from 'expo-splash-screen';
+import { auth } from '@api/firebase/firebase.utils';
+import { useAuthStore } from '@stores/authStore';
 
 const AuthStack = createNativeStackNavigator();
 SplashScreen.preventAutoHideAsync();
@@ -21,6 +23,7 @@ SplashScreen.preventAutoHideAsync();
 interface AuthNavigatorProps {}
 export default function AuthNavigator({}: AuthNavigatorProps) {
   const [loading, setLoading] = useState(true);
+  const {} = useAuthStore();
   const [fontsLoaded] = useFonts({
     PublicSans_800ExtraBold,
     PublicSans_300Light,
@@ -41,27 +44,27 @@ export default function AuthNavigator({}: AuthNavigatorProps) {
     return null;
   }
 
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
-  //     if (userAuth) {
-  //       const userRef = await getUserInfo(userAuth);
-  //       userRef.onSnapshot((snapShot) => {
-  //         console.log('id : ', snapShot.id);
-  //         set_user({
-  //           ...snapShot.data(),
-  //           id: snapShot.id,
-  //         });
-  //         setLoading(false);
-  //       });
-  //     } else {
-  //       set_user(null);
-  //       setLoading(false);
-  //     }
-  //   });
-  //   return () => {
-  //     unsubscribe();
-  //   };
-  // }, [set_user]);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await getUserInfo(userAuth);
+        userRef.onSnapshot((snapShot) => {
+          console.log('id : ', snapShot.id);
+          setUser({
+            ...snapShot.data(),
+            id: snapShot.id,
+          });
+          setLoading(false);
+        });
+      } else {
+        setUser(null);
+        setLoading(false);
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, [set_user]);
 
   return (
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
