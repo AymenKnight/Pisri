@@ -1,7 +1,7 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import WelcomeScreen from '@screens/welcome_screen';
-import { View } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import {
   useFonts,
   PublicSans_800ExtraBold,
@@ -14,16 +14,58 @@ import {
   PublicSans_900Black,
 } from '@expo-google-fonts/public-sans';
 import * as SplashScreen from 'expo-splash-screen';
-import { auth } from '@api/firebase/firebase.utils';
+import { auth, db } from '@api/firebase/firebase.utils';
 import { useAuthStore } from '@stores/authStore';
+import AppText from '@components/basic/app_text';
+import { onAuthStateChanged } from 'firebase/auth';
+import { onSnapshot, doc } from 'firebase/firestore';
+import Colors from '@components/config/Colors';
 
 const AuthStack = createNativeStackNavigator();
-SplashScreen.preventAutoHideAsync();
 
 interface AuthNavigatorProps {}
 export default function AuthNavigator({}: AuthNavigatorProps) {
-  const [loading, setLoading] = useState(true);
-  const {} = useAuthStore();
+  const {
+    setUser,
+    user: currnetUser,
+    isLoading,
+    setIsLoading,
+    isFetching,
+    setIsFetching,
+  } = useAuthStore();
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userRef = await doc(db, 'users', user.uid);
+        setIsFetching(true);
+        onSnapshot(userRef, async (document) => {
+          setIsFetching(false);
+          if (document.exists()) {
+            // The user's data exists in Firestore
+            setUser({
+              id: document.id,
+              displayName: document.data()?.displayName,
+              email: document.data()?.email,
+            });
+          } else {
+            // The user's data doesn't exist in Firestore yet
+
+            setUser(null);
+          }
+        });
+      } else {
+        // The user is signed out
+
+        setUser(null);
+      }
+      setIsLoading(false);
+    });
+    return unsubscribe;
+  }, []);
+
   const [fontsLoaded] = useFonts({
     PublicSans_800ExtraBold,
     PublicSans_300Light,
@@ -43,33 +85,29 @@ export default function AuthNavigator({}: AuthNavigatorProps) {
   if (!fontsLoaded) {
     return null;
   }
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await getUserInfo(userAuth);
-        userRef.onSnapshot((snapShot) => {
-          console.log('id : ', snapShot.id);
-          setUser({
-            ...snapShot.data(),
-            id: snapShot.id,
-          });
-          setLoading(false);
-        });
-      } else {
-        setUser(null);
-        setLoading(false);
-      }
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, [set_user]);
-
-  return (
+  const NoAuth = () => (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <AppText text={' authenticated'} />
+    </View>
+  );
+  return isLoading || isFetching ? (
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <ActivityIndicator color={Colors.primary} size={50} />
+    </View>
+  ) : (
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <AuthStack.Navigator screenOptions={{ headerShown: false }}>
-        <AuthStack.Screen name="Home" component={WelcomeScreen} />
+        {currnetUser ? (
+          <AuthStack.Screen name="Home" component={NoAuth} />
+        ) : (
+          <AuthStack.Screen name="Welcome" component={WelcomeScreen} />
+        )}
       </AuthStack.Navigator>
     </View>
   );
