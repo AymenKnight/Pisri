@@ -22,7 +22,8 @@ import { onSnapshot, doc } from 'firebase/firestore';
 import Colors from '@components/config/Colors';
 
 const AuthStack = createNativeStackNavigator();
-
+//TODO move authentication logic to another file
+//TODO move font loads logic to another file
 interface AuthNavigatorProps {}
 export default function AuthNavigator({}: AuthNavigatorProps) {
   const {
