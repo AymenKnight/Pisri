@@ -8,6 +8,7 @@ import { Formik } from 'formik';
 import { useOverlayStore } from '@stores/overlayStore';
 import * as yup from 'yup';
 import style from './style';
+import { addUserOnSignUp } from '@api/firebase/firebase.utils';
 
 const SignUpValidationSchema = yup.object().shape({
   fullName: yup
@@ -42,7 +43,9 @@ export default function SignUpModal({ handleToggle }: SignUpModalProps) {
     password: '',
   };
   const onSubmit = (values: RegisterFormValues) => {
-    close();
+    addUserOnSignUp(values.fullName, values.email, values.password).then(() => {
+      close();
+    });
   };
   return (
     <Formik
