@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { Formik } from 'formik';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import AppTextInput from '@components/basic/inputs/app_text_input';
 import PasswordInput from '@components/basic/inputs/password_input';
 import PrimaryButton from '@components/basic/buttons/primary_button';
@@ -8,6 +8,8 @@ import { useOverlayStore } from '@stores/overlayStore';
 import style from './style';
 import AppText from '@components/basic/app_text';
 import TipFooter from '@components/tip_footer';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@api/firebase/firebase.utils';
 
 const SignInValidationSchema = yup.object().shape({
   email: yup
@@ -29,11 +31,31 @@ interface SignInModalProps {
   handleToggle: () => void;
 }
 export default function SignInModal({ handleToggle }: SignInModalProps) {
-  const { modal, close } = useOverlayStore();
+  const { close } = useOverlayStore();
   const initialValues: LoginFormValues = { email: '', password: '' };
   const onSubmit = (values: LoginFormValues) => {
-    close();
+    signInWithEmailAndPassword(auth, values.email, values.password)
+      .then(() => {
+        close();
+      })
+      .catch((error) => {
+        console.log(error);
+        Alert.alert(
+          'Sign Up error !',
+          error.message,
+          [
+            {
+              text: 'Retry',
+              style: 'cancel',
+            },
+          ],
+          {
+            cancelable: true,
+          },
+        );
+      });
   };
+
   return (
     <Formik
       validationSchema={SignInValidationSchema}
