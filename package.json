@@ -1,5 +1,6 @@
 {
   "name": "new_pisri",
+  "main": "node_modules/expo/AppEntry.js",
   "version": "1.0.0",
   "scripts": {
     "start": "expo start",
@@ -14,6 +15,7 @@
   "dependencies": {
     "@expo-google-fonts/public-sans": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
+    "@react-native-async-storage/async-storage": "1.17.11",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@types/react": "~18.0.24",
@@ -21,11 +23,12 @@
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "expo": "^48.0.0",
+    "expo-constants": "^14.2.1",
     "expo-font": "~11.1.1",
     "expo-splash-screen": "^0.18.1",
     "expo-status-bar": "~1.4.4",
+    "firebase": "^9.18.0",
     "formik": "^2.2.9",
-    "firebase": "8.2.3",
     "prettier": "^2.8.4",
     "react": "18.2.0",
     "react-native": "0.71.3",
