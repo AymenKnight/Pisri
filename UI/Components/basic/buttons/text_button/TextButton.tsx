@@ -9,8 +9,6 @@ export interface AppButtonProps {
   onPress?: () => void;
   style?: ViewStyle;
   backgroundColor?: string;
-  borderColor?: string;
-
   icon?: ReactNode;
   itemsDirection?: 'row' | 'row-reverse';
   padding?: number;
