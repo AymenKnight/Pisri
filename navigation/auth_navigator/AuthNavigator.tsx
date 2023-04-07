@@ -1,6 +1,5 @@
 import { useCallback, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WelcomeScreen from '@screens/welcome_screen';
 import { View, ActivityIndicator } from 'react-native';
 import {
   useFonts,
@@ -16,10 +15,12 @@ import {
 import * as SplashScreen from 'expo-splash-screen';
 import { auth, db } from '@api/firebase/firebase.utils';
 import { useAuthStore } from '@stores/authStore';
-import AppText from '@components/basic/app_text';
 import { onAuthStateChanged } from 'firebase/auth';
 import { onSnapshot, doc } from 'firebase/firestore';
 import Colors from '@components/config/Colors';
+import StoreScreen from '@screens/store_screen';
+import TopNavigation from '@components/top_navigation';
+import HomeNavigator from '@navigation/home_navigator';
 
 const AuthStack = createNativeStackNavigator();
 //TODO move authentication logic to another file
@@ -86,11 +87,7 @@ export default function AuthNavigator({}: AuthNavigatorProps) {
   if (!fontsLoaded) {
     return null;
   }
-  const NoAuth = () => (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <AppText text={' authenticated'} />
-    </View>
-  );
+
   return isLoading || isFetching ? (
     <View
       style={{
@@ -105,9 +102,9 @@ export default function AuthNavigator({}: AuthNavigatorProps) {
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <AuthStack.Navigator screenOptions={{ headerShown: false }}>
         {currnetUser ? (
-          <AuthStack.Screen name="Home" component={NoAuth} />
+          <AuthStack.Screen name="Home" component={StoreScreen} />
         ) : (
-          <AuthStack.Screen name="Welcome" component={WelcomeScreen} />
+          <AuthStack.Screen name="Welcome" component={HomeNavigator} />
         )}
       </AuthStack.Navigator>
     </View>
