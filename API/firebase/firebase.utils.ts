@@ -1,6 +1,13 @@
 import { getApp, getApps, initializeApp } from 'firebase/app';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { collection, doc, getFirestore, setDoc } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  query,
+  setDoc,
+} from 'firebase/firestore';
 import {
   initializeAuth,
   getReactNativePersistence,
@@ -84,5 +91,17 @@ export const addUserOnSignUp = async (
 //     {},
 //   );
 // };
+
+export const fetchCategoriesNames = async () => {
+  const categoriesCollection = collection(db, 'CategoriesNames');
+  const q = query(categoriesCollection);
+  const querySnapshot = await getDocs(q);
+
+  return querySnapshot.docs.map((document) => {
+    console.log(document.data().name);
+    return document.data().name;
+  });
+};
+
 export { auth, db };
 export default firebaseApp;
