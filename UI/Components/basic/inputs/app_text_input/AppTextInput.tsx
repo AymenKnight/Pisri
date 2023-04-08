@@ -10,11 +10,12 @@ import { ReactNode, useState, useMemo } from 'react';
 import Colors from '@components/config/Colors';
 import { defaultStyle } from '@components/config/styles';
 import iconLib from '@components/config/iconLib';
-import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
+import {
+  Feather,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from '@expo/vector-icons';
 import AppText from '@components/basic/app_text';
-
-const window = Dimensions.get('window');
-const screen = Dimensions.get('screen');
 
 type ExpoIcons = keyof typeof iconLib;
 interface ExpoIconsProps {
@@ -27,12 +28,13 @@ interface ExpoIconsProps {
 interface AppTextInputProps {
   svg?: ReactNode;
   expoIcon?: ExpoIconsProps;
-  width?: number;
+  width?: number | string;
   inputProps?: Omit<TextInputProps, 'style'>;
   inputStyle?: TextStyle;
   itemsDirection?: 'row' | 'row-reverse';
   label?: string;
   error?: string;
+  alignSelf?: 'flex-start' | 'flex-end' | 'center' | 'stretch';
 }
 export default function AppTextInput({
   svg,
@@ -43,6 +45,7 @@ export default function AppTextInput({
   expoIcon,
   label,
   error,
+  alignSelf,
 }: AppTextInputProps) {
   const [focus, setFocus] = useState(false);
 
@@ -50,6 +53,8 @@ export default function AppTextInput({
     switch (expoIcon?.expoIconLibrary) {
       case 'Feather':
         return Feather;
+      case 'FontAwesome':
+        return FontAwesome;
 
       case 'MaterialCommunityIcons':
         return MaterialCommunityIcons;
@@ -92,6 +97,7 @@ export default function AppTextInput({
           {
             flexDirection: itemsDirection,
             width: width,
+            alignSelf: alignSelf,
             borderColor: focus
               ? error
                 ? Colors.hot_red
