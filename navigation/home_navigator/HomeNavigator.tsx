@@ -24,18 +24,7 @@ export default function HomeNavigator({}: HomeNavigatorProps) {
         header: (props) => <TopNavigation />,
       }}
       tabBar={(props) => <BottomTabBar props={props} />}
-      // tabBarOptions={{
-      //   style: styles.tabBar,
-      //   showLabel: false,
-      //   activeTintColor: Colors.primary,
-      //   inactiveTintColor: Colors.primary,
-      // }}
     >
-      {/* <BottomTab.Screen
-        name={routes.HOME_Stack}
-        component={StoreScreen}
-      ></BottomTab.Screen> */}
-
       <BottomTab.Screen name={routes.STORE} component={StoreScreen} />
       <BottomTab.Screen name={routes.CHECK} component={CheckView} />
     </BottomTab.Navigator>
