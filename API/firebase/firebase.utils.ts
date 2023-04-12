@@ -7,6 +7,7 @@ import {
   getFirestore,
   query,
   setDoc,
+  where,
 } from 'firebase/firestore';
 import {
   initializeAuth,
@@ -98,9 +99,24 @@ export const fetchCategoriesNames = async () => {
   const querySnapshot = await getDocs(q);
 
   return querySnapshot.docs.map((document) => {
-    console.log(document.data().name);
+    // console.log(document.data().name);
     return document.data().name;
   });
+};
+
+export type Category = {
+  name: string;
+  products: any[];
+};
+
+export const fetchProductsByCategoryName = async (categoryName: string) => {
+  const categoriesRef = collection(db, 'Categories');
+  const categoryQuery = query(categoriesRef, where('name', '==', categoryName));
+  const querySnapshot = await getDocs(categoryQuery);
+
+  const categoryDoc = querySnapshot.docs[0];
+  // console.log(categoryDoc.data());
+  return categoryDoc.data() as Category;
 };
 
 export { auth, db };
