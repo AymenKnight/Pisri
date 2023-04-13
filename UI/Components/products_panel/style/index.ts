@@ -4,6 +4,7 @@ import Colors from '@colors';
 export default StyleSheet.create({
   ProductsPanel: {
     flex: 1,
+    width: '100%',
   },
   pickerContainer: {
     flexGrow: 0,
@@ -22,15 +23,16 @@ export default StyleSheet.create({
     flex: 1,
   },
   productsListContainer: {
-    alignSelf: 'center',
+    alignSelf: 'stretch',
     flex: 1,
+    paddingLeft: 10,
   },
   productsList: {
     display: 'flex',
     flexDirection: 'column',
     gap: 10,
     flexGrow: 1,
-    paddingBottom: 50,
+    paddingBottom: 100,
   },
   columnWrapper: {
     display: 'flex',
