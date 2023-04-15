@@ -10,6 +10,7 @@ import styles from './style/index';
 import CategoriesItem from '@components/categories_item';
 import { useQuery } from '@tanstack/react-query';
 import {
+  Product,
   fetchCategoriesNames,
   fetchProductsByCategoryID,
 } from '@api/firebase/firebase.utils';
@@ -19,9 +20,10 @@ import ProductItem from '@components/product_item';
 import milk from '@toPng/milk_candia.png';
 import AppText from '@components/basic/app_text';
 
-const windowWidth = Dimensions.get('window').width;
-interface ProductsPanelProps {}
-export default function ProductsPanel({}: ProductsPanelProps) {
+interface ProductsPanelProps {
+  products?: Product[];
+}
+export default function ProductsPanel({ products }: ProductsPanelProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const {
     isLoading,
@@ -31,6 +33,7 @@ export default function ProductsPanel({}: ProductsPanelProps) {
   } = useQuery({
     queryKey: ['categoriesNames'],
     queryFn: fetchCategoriesNames,
+    enabled: !products,
   });
   const selectedCategory = categoriesIsSuccess
     ? categories[selectedIndex]
@@ -39,7 +42,7 @@ export default function ProductsPanel({}: ProductsPanelProps) {
     isLoading: selectedCategoryIsLoading,
     isFetching: selectedCategoryIsFetching,
     error: selectedCategorieError,
-    data: products,
+    data: queryProducts,
     isSuccess: selectedCategoryIsSuccess,
     refetch,
   } = useQuery({
@@ -48,12 +51,36 @@ export default function ProductsPanel({}: ProductsPanelProps) {
       if (selectedCategory)
         return fetchProductsByCategoryID(selectedCategory.id);
     },
-    enabled: !!selectedCategory,
+    enabled: !!selectedCategory && !products,
   });
 
   return (
     <View style={styles.ProductsPanel}>
-      {isLoading ? (
+      {products ? (
+        <FlatList
+          data={products}
+          renderItem={({ item }) => {
+            if (!item) return null;
+            return (
+              <ProductItem
+                name={item.name}
+                price={item.brands[0].variants[0].price.amount.toString()}
+                tag={item.brands[0].variants[0].price.currency}
+                image={milk}
+              />
+            );
+          }}
+          keyExtractor={(item) => {
+            return item.id;
+          }}
+          numColumns={2}
+          style={styles.productsListContainer}
+          contentContainerStyle={styles.productsList}
+          scrollEnabled={true}
+          columnWrapperStyle={styles.columnWrapper}
+          showsHorizontalScrollIndicator={false}
+        />
+      ) : isLoading ? (
         <View
           style={{
             alignItems: 'center',
@@ -93,15 +120,15 @@ export default function ProductsPanel({}: ProductsPanelProps) {
             selectedCategoryIsSuccess && (
               // <AppText text="no data" />
               <FlatList
-                data={products}
+                data={queryProducts}
                 renderItem={({ item }) => {
                   if (!item) return null;
                   //TODO  fix the images url in firebase
                   return (
                     <ProductItem
                       name={item.name}
-                      price={item.price.amount.toString()}
-                      tag={item.price.currency}
+                      price={item.brands[0].variants[0].price.amount.toString()}
+                      tag={item.brands[0].variants[0].price.currency}
                       image={milk}
                     />
                   );
@@ -125,6 +152,11 @@ export default function ProductsPanel({}: ProductsPanelProps) {
                   >
                     <ActivityIndicator color={Colors.primary} size={50} />
                   </RefreshControl>
+                }
+                ListEmptyComponent={
+                  <View>
+                    <AppText text="no products with this name!" />
+                  </View>
                 }
               />
             )
