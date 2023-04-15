@@ -6,19 +6,18 @@ import AppText from '@components/basic/app_text';
 import ProductsPanel from '@components/products_panel';
 import { useQuery } from '@tanstack/react-query';
 import { useFormik } from 'formik';
-import milk from '@toPng/milk_candia.png';
 import {
   addCategories,
-  addProducts,
   fetchProductsByName,
+  uploadData,
 } from '@api/firebase/firebase.utils';
 import ProductItem from '@components/product_item';
+import { useEffect } from 'react';
 
 interface StoreScreenProps {}
 export default function StoreScreen({}: StoreScreenProps) {
   // useEffect(() => {
-  //   addCategories();
-  //   addProducts();
+  //   uploadData();
   // });
 
   const formik = useFormik({
@@ -54,12 +53,8 @@ export default function StoreScreen({}: StoreScreenProps) {
         alignSelf="center"
         itemsDirection="row-reverse"
         inputProps={{
-          onChangeText: (e) => {
-            formik.handleChange('searchQuery')(e);
-          },
-          onBlur: (e) => {
-            formik.handleBlur('searchQuery')(e);
-          },
+          onChangeText: formik.handleChange('searchQuery'),
+          onBlur: formik.handleBlur('searchQuery'),
           value: formik.values.searchQuery,
           placeholder: 'Search',
         }}
@@ -75,22 +70,8 @@ export default function StoreScreen({}: StoreScreenProps) {
           >
             <ActivityIndicator color={Colors.primary} size={50} />
           </View>
-        ) : isSuccess ? (
-          searchProducts && searchProducts.length > 0 ? (
-            searchProducts.map(({ name, categoryID, id, price }) => (
-              <ProductItem
-                key={id}
-                name={name}
-                price={price.amount.toString()}
-                tag={price.currency}
-                image={milk}
-              />
-            ))
-          ) : (
-            <View>
-              <AppText text="no products with this name!" />
-            </View>
-          )
+        ) : isSuccess && searchProducts ? (
+          <ProductsPanel products={searchProducts} />
         ) : (
           <View>
             <AppText text="Error" />
