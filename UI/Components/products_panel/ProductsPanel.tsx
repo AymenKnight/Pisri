@@ -19,6 +19,8 @@ import { useState } from 'react';
 import ProductItem from '@components/product_item';
 import milk from '@toPng/milk_candia.png';
 import AppText from '@components/basic/app_text';
+import ItemShowcase from '@containers/modals/item_showcase';
+import { useOverlayStore } from '@stores/overlayStore';
 
 interface ProductsPanelProps {
   products?: Product[];
@@ -53,7 +55,7 @@ export default function ProductsPanel({ products }: ProductsPanelProps) {
     },
     enabled: !!selectedCategory && !products,
   });
-
+  const { modal, close } = useOverlayStore();
   return (
     <View style={styles.ProductsPanel}>
       {products ? (
@@ -67,6 +69,9 @@ export default function ProductsPanel({ products }: ProductsPanelProps) {
                 price={item.brands[0].variants[0].price.amount.toString()}
                 tag={item.brands[0].variants[0].price.currency}
                 image={milk}
+                onPress={() => {
+                  modal(<ItemShowcase product={item} />).open();
+                }}
               />
             );
           }}
@@ -79,6 +84,11 @@ export default function ProductsPanel({ products }: ProductsPanelProps) {
           scrollEnabled={true}
           columnWrapperStyle={styles.columnWrapper}
           showsHorizontalScrollIndicator={false}
+          ListEmptyComponent={
+            <View>
+              <AppText text="no products with this name!" />
+            </View>
+          }
         />
       ) : isLoading ? (
         <View
@@ -130,6 +140,9 @@ export default function ProductsPanel({ products }: ProductsPanelProps) {
                       price={item.brands[0].variants[0].price.amount.toString()}
                       tag={item.brands[0].variants[0].price.currency}
                       image={milk}
+                      onPress={() => {
+                        modal(<ItemShowcase product={item} />).open();
+                      }}
                     />
                   );
                 }}
