@@ -15,7 +15,6 @@ export default StyleSheet.create({
     paddingHorizontal: 15,
     alignSelf: 'stretch',
     textAlignVertical: 'center',
-    flexGrow: 1,
     textAlign: 'center',
   },
 });
