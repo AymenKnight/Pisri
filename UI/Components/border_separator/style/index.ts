@@ -6,5 +6,6 @@ export default StyleSheet.create({
     borderStyle: 'solid',
     borderWidth: 1,
     alignSelf: 'stretch',
+    borderRadius: 100,
   },
 });
