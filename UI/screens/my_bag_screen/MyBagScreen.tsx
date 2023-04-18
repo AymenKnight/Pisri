@@ -13,7 +13,6 @@ export default function MyBagScreen({}: MyBagScreenProps) {
     <View style={styles.MyBagScreen}>
       <AppText text="My Bag" style={styles.bigTitle} />
       <BagPanel />
-      <BorderSeparator borderColor={Colors.primary} />
       <PrimaryButton text="Checkout" />
     </View>
   );
