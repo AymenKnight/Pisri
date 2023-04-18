@@ -13,7 +13,7 @@ import OptionSelector from '@components/option_selector';
 import { useState } from 'react';
 import AppTextInput from '@components/basic/inputs/app_text_input';
 import { useBagStore } from '@stores/bagStore';
-
+import * as Crypto from 'expo-crypto';
 interface ItemShowcaseProps {
   product: Product;
 }
@@ -24,7 +24,7 @@ export default function ItemShowcase({ product }: ItemShowcaseProps) {
   const [variant, setVariant] = useState(0);
   const [costumeDetail, setCostumeDetail] = useState('');
 
-  const addItemToBag = useBagStore((state) => state.addItem);
+  const { addItem, updateItemByIndex, bagItems } = useBagStore();
   return (
     <View style={styles.ItemShowcase}>
       <AppButton
@@ -71,14 +71,31 @@ export default function ItemShowcase({ product }: ItemShowcaseProps) {
         icon={<Feather name="shopping-bag" size={20} color={Colors.white} />}
         style={{ width: '70%', alignSelf: 'center' }}
         onPress={() => {
-          addItemToBag({
-            id: product.id,
-            name: product.name,
-            brand: product.brands[brandIndex].name,
-            variant: product.brands[brandIndex].variants[variant].volume,
-            quantity: quantity,
-            costumeDetail,
-          });
+          const alreadyAdded = bagItems.findIndex(
+            (item) =>
+              item.name === product.name &&
+              item.brand === product.brands[brandIndex].name &&
+              item.variant.volume ===
+                product.brands[brandIndex].variants[variant].volume,
+          );
+          if (alreadyAdded > -1) {
+            updateItemByIndex(alreadyAdded, {
+              id: Crypto.randomUUID(),
+              name: product.name,
+              brand: product.brands[brandIndex].name,
+              variant: product.brands[brandIndex].variants[variant],
+              quantity: quantity,
+              costumeDetail,
+            });
+          } else
+            addItem({
+              id: Crypto.randomUUID(),
+              name: product.name,
+              brand: product.brands[brandIndex].name,
+              variant: product.brands[brandIndex].variants[variant],
+              quantity: quantity,
+              costumeDetail,
+            });
           close();
         }}
       />
