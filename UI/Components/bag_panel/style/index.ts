@@ -1,9 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import Colors from '@colors';
+const screenHeight = Dimensions.get('window').height;
 
 export default StyleSheet.create({
-  BagPanel: { maxHeight: '50%', flexGrow: 0 },
-  BagPanelContent: {
+  BagPanel: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'stretch',
+    gap: 20,
+    overflow: 'hidden',
+    flexGrow: 0,
+    maxHeight: '70%',
+  },
+  BagPanelScrollView: { flexGrow: 0 },
+  BagPanelScrollViewContent: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',
