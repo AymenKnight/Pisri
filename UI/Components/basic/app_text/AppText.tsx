@@ -3,7 +3,7 @@ import { Text, TextStyle } from 'react-native';
 import { defaultStyle } from '@components/config/styles';
 
 interface AppTextProps {
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
   text: string | number;
   other?: any;
 }
