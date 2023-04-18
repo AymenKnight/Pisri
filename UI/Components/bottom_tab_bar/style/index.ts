@@ -19,9 +19,21 @@ export default StyleSheet.create({
     alignSelf: 'center',
     paddingVertical: 5,
   },
-  smallButton: {},
+  smallButton: { position: 'relative' },
   homeButton: {
     backgroundColor: Colors.primary,
+    borderRadius: 100,
+  },
+  numItemsStyle: {},
+  numItemsTextStyle: {
+    color: Colors.white,
+    fontSize: 10,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    backgroundColor: Colors.hot_red,
+    position: 'absolute',
+    right: -5,
+    top: 0,
     borderRadius: 100,
   },
 });
