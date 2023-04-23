@@ -28,4 +28,22 @@ export default StyleSheet.create({
     color: Colors.fontColor,
     fontSize: 18,
   },
+  priceContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    alignSelf: 'center',
+  },
+  price: {
+    color: Colors.goodGreen,
+    fontFamily: font.PublicSans_800ExtraBold,
+    fontSize: 18,
+  },
+  tag: {
+    alignSelf: 'flex-end',
+    color: Colors.primary,
+    fontFamily: font.PublicSans_800ExtraBold,
+    fontSize: 15,
+  },
 });

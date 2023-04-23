@@ -9,6 +9,8 @@ interface ItemWithQuantityProps {
   onPlus?: () => void;
   image: ImageSourcePropType;
   name: string;
+  price: string;
+  tag: string;
 }
 export default function ItemWithQuantity({
   value,
@@ -16,6 +18,8 @@ export default function ItemWithQuantity({
   onPlus,
   image,
   name,
+  price,
+  tag,
 }: ItemWithQuantityProps) {
   return (
     <View style={styles.ItemWithQuantity}>
@@ -24,6 +28,10 @@ export default function ItemWithQuantity({
           <Image source={image} resizeMode="center" style={styles.image} />
         )}
         <AppText style={styles.name} text={name} />
+      </View>
+      <View style={styles.priceContainer}>
+        <AppText style={styles.price} text={price} />
+        <AppText style={styles.tag} text={tag} />
       </View>
       <CountSnipper value={value} onMinus={onMinus} onPlus={onPlus} />
     </View>
