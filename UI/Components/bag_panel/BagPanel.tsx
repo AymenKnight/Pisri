@@ -1,10 +1,8 @@
-import { ImageSourcePropType, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import styles from './style/index';
 import BagItem from '@components/bag_item';
 import { useBagStore } from '@stores/bagStore';
 import milk from '@toPng/milk_candia.png';
-import BorderSeparator from '@components/border_separator';
-import Colors from '@components/config/Colors';
 import BagTotal from '@components/bag_total';
 
 interface BagPanelProps {}
