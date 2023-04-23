@@ -1,8 +1,9 @@
 import Colors from '@components/config/Colors';
 import { ReactNode } from 'react';
-import { ViewStyle, ModalProps } from 'react-native';
+import { ViewStyle, ModalProps, Dimensions } from 'react-native';
 import { create } from 'zustand';
 
+const screenHeight = Dimensions.get('window').height;
 interface ModalOptions {
   modalProps?: ModalProps;
   modalStyle?: ViewStyle;
@@ -13,9 +14,11 @@ interface OverlayState {
   close: () => void;
   modal: (
     children: ReactNode,
+    header?: ReactNode,
     options?: ModalOptions,
   ) => { open: () => void; close: () => void };
   children?: React.ReactNode;
+  header?: React.ReactNode;
 }
 
 export const useOverlayStore = create<OverlayState>((set) => ({
@@ -35,13 +38,17 @@ export const useOverlayStore = create<OverlayState>((set) => ({
       bottom: 0,
       overflow: 'hidden',
       padding: 20,
-      paddingTop: 30,
+      maxHeight: screenHeight * 0.9,
     },
   },
   visible: false,
   close: () => set(() => ({ visible: false })),
-  modal: (children, options) => {
-    set((state) => ({ children, options: { ...state.options, ...options } }));
+  modal: (children, header, options) => {
+    set((state) => ({
+      children,
+      header,
+      options: { ...state.options, ...options },
+    }));
     return {
       open: () => set(() => ({ visible: true })),
       close: () => set(() => ({ visible: false })),
