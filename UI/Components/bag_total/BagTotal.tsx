@@ -9,7 +9,7 @@ interface BagTotalProps {}
 export default function BagTotal({}: BagTotalProps) {
   const bagItems = useBagStore((state) => state.bagItems);
   const totalPrice = bagItems.reduce((total, item) => {
-    return total + item.variant.price.amount;
+    return total + item.variant.price.amount * item.quantity;
   }, 0);
   return (
     <View style={styles.BagTotalWrapper}>
