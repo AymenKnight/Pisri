@@ -21,6 +21,9 @@ import milk from '@toPng/milk_candia.png';
 import AppText from '@components/basic/app_text';
 import ItemShowcase from '@containers/modals/item_showcase';
 import { useOverlayStore } from '@stores/overlayStore';
+import AppButton from '@components/basic/buttons/text_button/TextButton';
+import { AntDesign } from '@expo/vector-icons';
+import CloseButton from '@components/basic/buttons/close_button';
 
 interface ProductsPanelProps {
   products?: Product[];
@@ -70,7 +73,10 @@ export default function ProductsPanel({ products }: ProductsPanelProps) {
                 tag={item.brands[0].variants[0].price.currency}
                 image={milk}
                 onPress={() => {
-                  modal(<ItemShowcase product={item} />).open();
+                  modal(
+                    <ItemShowcase product={item} />,
+                    <CloseButton onPress={close} />,
+                  ).open();
                 }}
               />
             );
@@ -141,7 +147,10 @@ export default function ProductsPanel({ products }: ProductsPanelProps) {
                       tag={item.brands[0].variants[0].price.currency}
                       image={milk}
                       onPress={() => {
-                        modal(<ItemShowcase product={item} />).open();
+                        modal(
+                          <ItemShowcase product={item} />,
+                          <CloseButton onPress={close} />,
+                        ).open();
                       }}
                     />
                   );
