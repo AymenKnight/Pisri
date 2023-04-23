@@ -18,9 +18,8 @@ import { useAuthStore } from '@stores/authStore';
 import { onAuthStateChanged } from 'firebase/auth';
 import { onSnapshot, doc } from 'firebase/firestore';
 import Colors from '@components/config/Colors';
-import StoreScreen from '@screens/store_screen';
-import TopNavigation from '@components/top_navigation';
 import HomeNavigator from '@navigation/home_navigator';
+import WelcomeScreen from '@screens/welcome_screen';
 
 const AuthStack = createNativeStackNavigator();
 //TODO move authentication logic to another file
@@ -102,9 +101,9 @@ export default function AuthNavigator({}: AuthNavigatorProps) {
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <AuthStack.Navigator screenOptions={{ headerShown: false }}>
         {currnetUser ? (
-          <AuthStack.Screen name="Home" component={StoreScreen} />
+          <AuthStack.Screen name="Home" component={HomeNavigator} />
         ) : (
-          <AuthStack.Screen name="Welcome" component={HomeNavigator} />
+          <AuthStack.Screen name="Welcome" component={WelcomeScreen} />
         )}
       </AuthStack.Navigator>
     </View>
