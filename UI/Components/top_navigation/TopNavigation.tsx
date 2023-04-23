@@ -3,6 +3,7 @@ import styles from './style/index';
 import WelcomeLogo from '@toSvg/welcome_logo.svg';
 import AppButton from '@components/basic/buttons/text_button/TextButton';
 import { Entypo, MaterialIcons } from '@expo/vector-icons';
+import { auth } from '@api/firebase/firebase.utils';
 
 interface TopNavigationProps {
   onBack?: () => void;
@@ -27,7 +28,9 @@ export default function TopNavigation({ onBack }: TopNavigationProps) {
       <WelcomeLogo width={120} />
       <AppButton
         icon={<MaterialIcons name="person-outline" size={30} color="black" />}
-        onPress={() => {}}
+        onPress={() => {
+          auth.signOut();
+        }}
         style={styles.profile}
       />
     </View>
