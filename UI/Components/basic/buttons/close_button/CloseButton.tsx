@@ -9,9 +9,13 @@ export default function CloseButton({ onPress }: CloseButtonProps) {
   return (
     <AppButton
       onPress={onPress}
-      backgroundColor={Colors.primary}
-      borderRadius={100}
-      icon={<AntDesign name="close" size={24} color="white" />}
+      icon={<AntDesign name="close" size={18} color="white" />}
+      style={{
+        backgroundColor: Colors.primary,
+        borderRadius: 100,
+        alignSelf: 'center',
+      }}
+      padding={5}
     />
   );
 }
