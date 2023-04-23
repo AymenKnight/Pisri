@@ -17,4 +17,5 @@ export default {
   hot_red: '#f44336',
   cold_red: '#ff4b59',
   cold_blue: '#01b9ca',
+  goodGreen: '#27AE60',
 };
