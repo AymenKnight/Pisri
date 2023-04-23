@@ -30,6 +30,10 @@ export default function ItemShowcase({ product }: ItemShowcaseProps) {
       <ItemWithQuantity
         value={quantity}
         name={product.name}
+        price={product.brands[brandIndex].variants[
+          variant
+        ].price.amount.toString()}
+        tag={product.brands[brandIndex].variants[variant].price.currency}
         image={milk}
         onMinus={() => {
           if (quantity > 1) setQuantity(quantity - 1);
