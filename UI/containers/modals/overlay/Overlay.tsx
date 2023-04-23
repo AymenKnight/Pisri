@@ -6,6 +6,7 @@ import {
   Animated,
   PanResponder,
   KeyboardAvoidingView,
+  ScrollView,
 } from 'react-native';
 import styles from './style/index';
 import { useOverlayStore } from '@stores/overlayStore';
@@ -15,7 +16,7 @@ interface OverlayProps {
   modalProps?: ModalProps;
 }
 export default function Overlay({ modalProps }: OverlayProps) {
-  const { visible, close, children, options } = useOverlayStore();
+  const { visible, close, children, header, options } = useOverlayStore();
 
   const position = useRef(new Animated.ValueXY()).current;
   const [isDrag, setIsDrag] = useState(false);
@@ -38,7 +39,6 @@ export default function Overlay({ modalProps }: OverlayProps) {
             duration: 2000,
             useNativeDriver: false,
           }).start();
-          console.log('still');
         }
       },
     }),
@@ -65,9 +65,16 @@ export default function Overlay({ modalProps }: OverlayProps) {
               ]}
               {...panResponder.panHandlers}
             >
-              <KeyboardAvoidingView behavior="height" enabled>
-                {children}
-              </KeyboardAvoidingView>
+              {header}
+              <ScrollView
+                style={{
+                  flexGrow: 1,
+                }}
+              >
+                <KeyboardAvoidingView behavior="height" enabled>
+                  {children}
+                </KeyboardAvoidingView>
+              </ScrollView>
             </Animated.View>
           </View>
         </TouchableWithoutFeedback>
