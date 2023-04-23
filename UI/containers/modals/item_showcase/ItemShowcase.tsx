@@ -27,12 +27,6 @@ export default function ItemShowcase({ product }: ItemShowcaseProps) {
   const { addItem, updateItemByIndex, bagItems } = useBagStore();
   return (
     <View style={styles.ItemShowcase}>
-      <AppButton
-        onPress={close}
-        icon={<AntDesign name="close" size={18} color="white" />}
-        style={{ backgroundColor: Colors.primary, borderRadius: 100 }}
-        padding={5}
-      />
       <ItemWithQuantity
         value={quantity}
         name={product.name}
