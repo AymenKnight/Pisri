@@ -26,14 +26,14 @@ export default function BottomTabBar({ props }: CustomBottomTabBarProps) {
           />
         }
         onPress={() => {
-          navigation.navigate(routes.STORE);
+          navigation.navigate(routes.Store);
         }}
         style={styles.smallButton}
       />
       <AppButton
         icon={<AntDesign name="home" size={30} color={Colors.white} />}
         onPress={() => {
-          navigation.navigate(routes.STORE);
+          navigation.navigate(routes.Store);
         }}
         style={styles.homeButton}
       />
@@ -61,7 +61,7 @@ export default function BottomTabBar({ props }: CustomBottomTabBarProps) {
           </View>
         }
         onPress={() => {
-          navigation.navigate(routes.CHECK);
+          navigation.navigate(routes.MyBag);
         }}
         style={styles.smallButton}
       />
