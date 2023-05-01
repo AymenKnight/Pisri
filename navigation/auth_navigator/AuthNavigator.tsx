@@ -20,8 +20,14 @@ import { onSnapshot, doc } from 'firebase/firestore';
 import Colors from '@components/config/Colors';
 import HomeNavigator from '@navigation/home_navigator';
 import WelcomeScreen from '@screens/welcome_screen';
+import routes from '@navigation/routes';
+import MainNavigator from '@navigation/main_navigator';
 
-const AuthStack = createNativeStackNavigator();
+export type AuthStackParamList = {
+  Main: undefined;
+  Welcome: undefined;
+};
+const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 //TODO move authentication logic to another file
 //TODO move font loads logic to another file
 interface AuthNavigatorProps {}
@@ -101,9 +107,9 @@ export default function AuthNavigator({}: AuthNavigatorProps) {
     <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
       <AuthStack.Navigator screenOptions={{ headerShown: false }}>
         {currnetUser ? (
-          <AuthStack.Screen name="Home" component={HomeNavigator} />
+          <AuthStack.Screen name={routes.Main} component={MainNavigator} />
         ) : (
-          <AuthStack.Screen name="Welcome" component={WelcomeScreen} />
+          <AuthStack.Screen name={routes.Welcome} component={WelcomeScreen} />
         )}
       </AuthStack.Navigator>
     </View>
