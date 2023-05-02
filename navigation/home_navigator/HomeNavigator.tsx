@@ -19,9 +19,7 @@ export default function HomeNavigator({}: HomeNavigatorProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <BottomTab.Navigator
-        screenOptions={{
-          header: (props) => <TopNavigation />,
-        }}
+        screenOptions={{ headerShown: false }}
         tabBar={(props) => <BottomTabBar props={props} />}
       >
         <BottomTab.Screen name={routes.Store} component={StoreScreen} />
