@@ -1,20 +1,24 @@
 import { ScrollView, View, Dimensions } from 'react-native';
 import styles from './style/index';
 import { useRef, useState } from 'react';
-import AppText from '@components/basic/app_text';
 import AppButton from '@components/basic/buttons/text_button/TextButton';
 import * as Animatable from 'react-native-animatable';
+import { useStepProgressStore } from '@stores/stepProgressStore';
+import DeliveryOptionsStep from '@components/delivery_options_step';
+import PaymentMethodStep from '@components/payment_method_step';
+import ConfirmStep from '@components/confirm_step';
 
 const screenWidth = Dimensions.get('window').width;
 const steps = [
-  { title: 'Step 1', completed: true },
-  { title: 'Step 2', completed: false },
-  { title: 'Step 3', completed: false },
+  { component: DeliveryOptionsStep, props: {} },
+  { component: PaymentMethodStep, props: {} },
+  { component: ConfirmStep, props: {} },
 ];
 interface StepIndicatorProps {}
 export default function StepIndicator({}: StepIndicatorProps) {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [currentX, setCurrentX] = useState(0);
+  const { currentStep, setCurrentStep, currentX, setCurrentX } =
+    useStepProgressStore();
+
   const scrollViewRef = useRef<ScrollView>(null);
 
   return (
@@ -36,16 +40,9 @@ export default function StepIndicator({}: StepIndicatorProps) {
         pagingEnabled={true}
       >
         {steps.map((step, index) => (
-          <View
-            key={index}
-            style={[
-              styles.step,
-              index === currentStep && styles.currentStep,
-              step.completed && styles.completedStep,
-            ]}
-          >
-            <AppText text={step.title} />
-          </View>
+          <ScrollView key={index} contentContainerStyle={[styles.step]}>
+            <step.component {...step.props} />
+          </ScrollView>
         ))}
       </ScrollView>
       <AppButton
@@ -56,6 +53,13 @@ export default function StepIndicator({}: StepIndicatorProps) {
             setCurrentX(currentX + screenWidth);
             scrollViewRef.current?.scrollTo({
               x: currentX + screenWidth,
+              animated: true,
+            });
+          } else {
+            setCurrentX(0);
+            setCurrentStep(0);
+            scrollViewRef.current?.scrollTo({
+              x: 0,
               animated: true,
             });
           }
