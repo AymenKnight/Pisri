@@ -10,12 +10,10 @@ export default StyleSheet.create({
     gap: 20,
   },
   step: {
-    backgroundColor: '#ccc',
     width: screenWidth,
-    paddingTop: 30,
+    paddingHorizontal: 20,
   },
-  currentStep: { backgroundColor: '#007AFF' },
-  completedStep: { backgroundColor: '#2ECC71' },
+
   stepDotsContainer: {
     display: 'flex',
     flexDirection: 'row',
