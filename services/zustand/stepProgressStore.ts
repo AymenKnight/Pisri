@@ -2,14 +2,14 @@ import { create } from 'zustand';
 
 interface StepProgressState {
   currentStep: number;
-  currentX: number;
   setCurrentStep: (step: number) => void;
-  setCurrentX: (x: number) => void;
+  isScroll: boolean;
+  setIsScroll: () => void;
 }
 
 export const useStepProgressStore = create<StepProgressState>((set) => ({
   currentStep: 0,
-  currentX: 0,
+  isScroll: false,
   setCurrentStep: (step) => set(() => ({ currentStep: step })),
-  setCurrentX: (x) => set(() => ({ currentX: x })),
+  setIsScroll: () => set((s) => ({ isScroll: !s.isScroll })),
 }));
