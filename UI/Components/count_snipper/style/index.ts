@@ -8,10 +8,12 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  value: {
-    fontFamily: font.PublicSans_800ExtraBold,
-    color: Colors.fontColor,
-    fontSize: 14,
+  valueContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 2,
     paddingHorizontal: 20,
     borderTopWidth: 2,
     borderBottomWidth: 2,
@@ -22,5 +24,15 @@ export default StyleSheet.create({
     textAlignVertical: 'center',
     flexGrow: 1,
     textAlign: 'center',
+  },
+  value: {
+    fontFamily: font.PublicSans_800ExtraBold,
+    color: Colors.fontColor,
+    fontSize: 14,
+  },
+  tag: {
+    fontFamily: font.PublicSans_900Black,
+    color: Colors.primary,
+    fontSize: 14,
   },
 });

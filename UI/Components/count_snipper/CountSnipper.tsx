@@ -6,7 +6,9 @@ import Colors from '@components/config/Colors';
 import AppText from '@components/basic/app_text';
 
 interface CountSnipperProps {
+  prefix?: string;
   value: number;
+  tag?: string;
   onMinus?: () => void;
   onPlus?: () => void;
 }
@@ -14,6 +16,8 @@ export default function CountSnipper({
   value,
   onMinus,
   onPlus,
+  tag,
+  prefix,
 }: CountSnipperProps) {
   return (
     <View style={styles.CountSnipper}>
@@ -24,7 +28,11 @@ export default function CountSnipper({
         padding={5}
         onPress={onMinus}
       />
-      <AppText text={'x' + value} style={styles.value} />
+      <View style={styles.valueContainer}>
+        <AppText text={`${prefix ?? ''}${value}`} style={styles.value} />
+        {tag && <AppText text={tag} style={styles.tag} />}
+      </View>
+
       <AppButton
         backgroundColor={Colors.primary}
         icon={<Entypo name="plus" size={18} color="white" />}
