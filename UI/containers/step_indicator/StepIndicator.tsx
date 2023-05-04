@@ -1,6 +1,6 @@
 import { ScrollView, View, Dimensions } from 'react-native';
 import styles from './style/index';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import AppButton from '@components/basic/buttons/text_button/TextButton';
 import * as Animatable from 'react-native-animatable';
 import { useStepProgressStore } from '@stores/stepProgressStore';
@@ -16,10 +16,31 @@ const steps = [
 ];
 interface StepIndicatorProps {}
 export default function StepIndicator({}: StepIndicatorProps) {
-  const { currentStep, setCurrentStep, currentX, setCurrentX } =
+  const { currentStep, setCurrentStep, isScroll, setIsScroll } =
     useStepProgressStore();
-
   const scrollViewRef = useRef<ScrollView>(null);
+  const currentX = useRef<number>(0);
+  const handleChange = () => {
+    if (currentStep !== steps.length - 1) {
+      setCurrentStep(currentStep + 1);
+      currentX.current = currentX.current + screenWidth;
+      scrollViewRef.current?.scrollTo({
+        x: currentX.current,
+        animated: true,
+      });
+    } else {
+      currentX.current = 0;
+      setCurrentStep(0);
+      scrollViewRef.current?.scrollTo({
+        x: 0,
+        animated: true,
+      });
+    }
+    setIsScroll();
+  };
+  useEffect(() => {
+    if (isScroll) handleChange();
+  }, [isScroll]);
 
   return (
     <View style={styles.StepIndicator}>
@@ -50,13 +71,14 @@ export default function StepIndicator({}: StepIndicatorProps) {
         onPress={() => {
           if (currentStep !== steps.length - 1) {
             setCurrentStep(currentStep + 1);
-            setCurrentX(currentX + screenWidth);
+            currentX.current = currentX.current + screenWidth;
+
             scrollViewRef.current?.scrollTo({
-              x: currentX + screenWidth,
+              x: currentX.current,
               animated: true,
             });
           } else {
-            setCurrentX(0);
+            currentX.current = 0;
             setCurrentStep(0);
             scrollViewRef.current?.scrollTo({
               x: 0,
