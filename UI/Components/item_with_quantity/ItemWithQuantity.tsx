@@ -33,7 +33,12 @@ export default function ItemWithQuantity({
         <AppText style={styles.price} text={price} />
         <AppText style={styles.tag} text={tag} />
       </View>
-      <CountSnipper value={value} onMinus={onMinus} onPlus={onPlus} />
+      <CountSnipper
+        value={value}
+        onMinus={onMinus}
+        onPlus={onPlus}
+        prefix="x"
+      />
     </View>
   );
 }
