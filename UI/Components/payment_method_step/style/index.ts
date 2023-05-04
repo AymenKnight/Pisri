@@ -14,4 +14,9 @@ export default StyleSheet.create({
     fontSize: 20,
     color: Colors.fontColor,
   },
+  hintStyle: {
+    fontFamily: font.PublicSans_800ExtraBold,
+    fontSize: 16,
+    color: Colors.black,
+  },
 });
