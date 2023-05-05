@@ -12,14 +12,17 @@ export default function PaymentMethodStep({}: PaymentMethodStepProps) {
   return (
     <View style={styles.PaymentMethodStep}>
       <AppText text="Step 2: Payment method" style={styles.stepName} />
-      <BorderContainer>
+      <BorderContainer style={styles.optionsContainer}>
         <AppText
           text="Please select a payment method"
           style={styles.hintStyle}
         />
         <PaymentItem name="PayPal/CreditCard" />
         <PaymentItem name="Mobile Pay" />
-        <PaymentItem name="Pay on arrive" />
+        <PaymentItem
+          name="Pay on arrive"
+          description="this may affect the chance to get a delivery guy"
+        />
       </BorderContainer>
       <PrimaryButton
         text="Next"
