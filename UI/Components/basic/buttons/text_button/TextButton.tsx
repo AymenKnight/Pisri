@@ -10,23 +10,22 @@ export interface AppButtonProps {
   style?: ViewStyle;
   backgroundColor?: string;
   icon?: ReactNode;
-  itemsDirection?: 'row' | 'row-reverse';
+  itemsDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   padding?: number;
   borderRadius?: number;
   textStyle?: TextStyle;
+  children?: ReactNode;
 }
 const AppButton = ({
   text,
   onPress,
-
   backgroundColor,
-
   style,
   icon,
   itemsDirection = 'row',
   padding = 10,
   borderRadius = 15,
-
+  children,
   textStyle,
 }: AppButtonProps) => {
   //  const [dimensions, setDimensions] = useState({ window, screen });
@@ -47,6 +46,7 @@ const AppButton = ({
     >
       {text && <Text style={[styles.text, textStyle]}>{text}</Text>}
       {icon}
+      {children}
     </TouchableOpacity>
   );
 };
