@@ -7,7 +7,7 @@ export default Object.freeze({
   DELIVERY: 'delivery',
   ACTIVITY: 'Activity',
   Check: 'Check',
-  DELIVERY_FINISHED: 'Delivery Finished',
+  DELIVERY_FINISHED: 'DeliveryFinished',
   ORDER_ON_WAY: 'Order_On_Way',
   CONGRATULATIONS: 'Congratulations',
 });
