@@ -3,9 +3,6 @@ import Colors from '@colors';
 import font from '@components/config/font';
 
 export default StyleSheet.create({
-  PaymentItem: {
-    position: 'relative',
-  },
   name: {
     fontFamily: font.PublicSans_600SemiBold,
     fontSize: 16,
@@ -13,7 +10,7 @@ export default StyleSheet.create({
   },
   description: {
     fontFamily: font.PublicSans_600SemiBold,
-    fontSize: 10,
+    fontSize: 12,
     color: Colors.fontColor,
   },
   logo: {
@@ -21,5 +18,14 @@ export default StyleSheet.create({
     right: 10,
     top: 10,
   },
-  button: { color: Colors.fontColor },
+  paymentItem: {
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: Colors.borders,
+    borderStyle: 'solid',
+  },
+  button: {
+    color: Colors.fontColor,
+    position: 'relative',
+  },
 });

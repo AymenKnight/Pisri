@@ -17,17 +17,20 @@ export default function PaymentItem({
   onPress,
 }: PaymentItemProps) {
   return (
-    <BorderContainer style={styles.PaymentItem}>
-      <AppButton text={name} textStyle={styles.button} onPress={onPress} />
-      {description && (
-        <AppText text="Step 2: Payment method" style={styles.description} />
-      )}
+    <AppButton
+      text={name}
+      textStyle={styles.button}
+      onPress={onPress}
+      itemsDirection="column"
+      style={styles.paymentItem}
+    >
+      {description && <AppText text={description} style={styles.description} />}
       <SimpleLineIcons
         name="exclamation"
         size={20}
         color={Colors.Unfocused_Blue}
         style={styles.logo}
       />
-    </BorderContainer>
+    </AppButton>
   );
 }
