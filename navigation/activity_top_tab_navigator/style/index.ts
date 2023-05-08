@@ -8,16 +8,14 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     gap: 5,
-    paddingHorizontal: 20,
   },
   bigTitle: {
     fontFamily: font.PublicSans_800ExtraBold,
     color: Colors.fontColor,
     fontSize: 40,
+    paddingLeft: 20,
   },
-  labelStyle: {},
   tabBarIndicatorStyle: { backgroundColor: Colors.primary },
-  indicatorStyle: {},
   tabBarStyle: {},
   tabBarLabelStyle: {
     fontFamily: font.PublicSans_700Bold,

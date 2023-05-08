@@ -20,6 +20,7 @@ export default function ActivityTopTabNavigator({}: ActivityTopTabNavigatorProps
           swipeEnabled: true,
           lazy: true,
         })}
+        sceneContainerStyle={{ paddingHorizontal: 20 }}
       >
         <Tab.Screen name="Active" component={ActivityScreen} />
         <Tab.Screen name="Finished" component={ActivityScreen} />
