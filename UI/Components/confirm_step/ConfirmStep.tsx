@@ -2,12 +2,18 @@ import { View } from 'react-native';
 import styles from './style/index';
 import AppText from '@components/basic/app_text';
 import BorderContainer from '@containers/border_container';
-import AppButton from '@components/basic/buttons/text_button/TextButton';
 import PrimaryButton from '@components/basic/buttons/primary_button';
 import AppTextInput from '@components/basic/inputs/app_text_input';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { MainStackParamList } from '@navigation/main_navigator/MainNavigator';
+import routes from '@navigation/routes';
+
+type NavigationProp = StackNavigationProp<MainStackParamList>;
 
 interface ConfirmStepProps {}
 export default function ConfirmStep({}: ConfirmStepProps) {
+  const navigation = useNavigation<NavigationProp>();
   return (
     <View style={styles.ConfirmStep}>
       <AppText text="Step 3: Confirm and publish!" style={styles.stepName} />
@@ -36,7 +42,9 @@ export default function ConfirmStep({}: ConfirmStepProps) {
         <PrimaryButton
           text="Confirm"
           style={styles.confirmButton}
-          onPress={() => {}}
+          onPress={() => {
+            navigation.navigate(routes.DELIVERY_FINISHED);
+          }}
         />
         <PrimaryButton text="Cancel" style={styles.cancelButton} />
       </View>
