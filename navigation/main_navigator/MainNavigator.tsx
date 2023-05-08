@@ -5,11 +5,14 @@ import routes from '@navigation/routes';
 import HomeNavigator from '@navigation/home_navigator';
 import TopNavigation from '@components/top_navigation';
 import DeliveryFinished from '@screens/delivery_finished';
+import ActivityScreen from '@screens/activity_screen';
+import ActivityTopTabNavigator from '@navigation/activity_top_tab_navigator';
 
 export type MainStackParamList = {
   HomeTabs: undefined;
   Check: undefined;
   DeliveryFinished: undefined;
+  Activity: undefined;
 };
 const MainStack = createNativeStackNavigator<MainStackParamList>();
 interface MainNavigatorProps {}
@@ -25,6 +28,10 @@ export default function MainNavigator({}: MainNavigatorProps) {
       <MainStack.Screen
         name={routes.DELIVERY_FINISHED}
         component={DeliveryFinished}
+      />
+      <MainStack.Screen
+        name={routes.ACTIVITY}
+        component={ActivityTopTabNavigator}
       />
     </MainStack.Navigator>
   );
