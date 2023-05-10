@@ -1,21 +1,28 @@
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import styles from './style/index';
 import AppText from '@components/basic/app_text';
 import BorderContainer from '@containers/border_container';
 import PrimaryButton from '@components/basic/buttons/primary_button';
 import AppTextInput from '@components/basic/inputs/app_text_input';
-import { useNavigation } from '@react-navigation/native';
+import {
+  CompositeNavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { MainStackParamList } from '@navigation/main_navigator/MainNavigator';
 import routes from '@navigation/routes';
+import { StepStackParamList } from '@navigation/step_navigator/StepNavigator';
+import { MainStackParamList } from '@navigation/main_navigator/MainNavigator';
 
-type NavigationProp = StackNavigationProp<MainStackParamList>;
+type NavigationProp = CompositeNavigationProp<
+  StackNavigationProp<StepStackParamList, 'ConfirmationStep'>,
+  StackNavigationProp<MainStackParamList>
+>;
 
 interface ConfirmStepProps {}
 export default function ConfirmStep({}: ConfirmStepProps) {
   const navigation = useNavigation<NavigationProp>();
   return (
-    <View style={styles.ConfirmStep}>
+    <ScrollView contentContainerStyle={styles.ConfirmStep}>
       <AppText text="Step 3: Confirm and publish!" style={styles.stepName} />
       <BorderContainer style={styles.infoWrapper}>
         <View style={styles.infoContainer}>
@@ -43,11 +50,17 @@ export default function ConfirmStep({}: ConfirmStepProps) {
           text="Confirm"
           style={styles.confirmButton}
           onPress={() => {
-            navigation.navigate(routes.DELIVERY_FINISHED);
+            navigation.replace(routes.DeliveryFinished);
           }}
         />
-        <PrimaryButton text="Cancel" style={styles.cancelButton} />
+        <PrimaryButton
+          text="Cancel"
+          style={styles.cancelButton}
+          onPress={() => {
+            navigation.replace(routes.HomeTabs);
+          }}
+        />
       </View>
-    </View>
+    </ScrollView>
   );
 }
