@@ -6,13 +6,20 @@ import Colors from '@components/config/Colors';
 import * as Animatable from 'react-native-animatable';
 import AppText from '@components/basic/app_text';
 import PrimaryButton from '@components/basic/buttons/primary_button';
-import { useNavigation } from '@react-navigation/native';
+import {
+  CompositeNavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { MainStackParamList } from '@navigation/main_navigator/MainNavigator';
 import routes from '@navigation/routes';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { BottomTabParamList } from '@navigation/home_navigator/HomeNavigator';
 
-type NavigationProp = StackNavigationProp<MainStackParamList>;
-
+type NavigationProp = CompositeNavigationProp<
+  StackNavigationProp<MainStackParamList, 'DeliveryFinished'>,
+  BottomTabNavigationProp<BottomTabParamList>
+>;
 interface DeliveryFinishedProps {}
 export default function DeliveryFinished({}: DeliveryFinishedProps) {
   const navigation = useNavigation<NavigationProp>();
