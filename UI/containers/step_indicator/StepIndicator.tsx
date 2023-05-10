@@ -66,27 +66,6 @@ export default function StepIndicator({}: StepIndicatorProps) {
           </ScrollView>
         ))}
       </ScrollView>
-      <AppButton
-        text="Next"
-        onPress={() => {
-          if (currentStep !== steps.length - 1) {
-            setCurrentStep(currentStep + 1);
-            currentX.current = currentX.current + screenWidth;
-
-            scrollViewRef.current?.scrollTo({
-              x: currentX.current,
-              animated: true,
-            });
-          } else {
-            currentX.current = 0;
-            setCurrentStep(0);
-            scrollViewRef.current?.scrollTo({
-              x: 0,
-              animated: true,
-            });
-          }
-        }}
-      />
     </View>
   );
 }
