@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import styles from './style/index';
 import AppText from '@components/basic/app_text';
 import PrimaryButton from '@components/basic/buttons/primary_button';
@@ -6,12 +6,18 @@ import { MaterialIcons } from '@expo/vector-icons';
 import OptionItem from '@components/option_item';
 import BorderContainer from '@containers/border_container';
 import { useStepProgressStore } from '@stores/stepProgressStore';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { StepStackParamList } from '@navigation/step_navigator/StepNavigator';
+import { useNavigation } from '@react-navigation/native';
+import routes from '@navigation/routes';
+
+type NavigationProp = StackNavigationProp<StepStackParamList>;
 
 interface DeliveryOptionsStepProps {}
 export default function DeliveryOptionsStep({}: DeliveryOptionsStepProps) {
-  const { setIsScroll } = useStepProgressStore();
+  const navigation = useNavigation<NavigationProp>();
   return (
-    <View style={styles.DeliveryOptionsStep}>
+    <ScrollView contentContainerStyle={styles.DeliveryOptionsStep}>
       <AppText text="Step 1: Delivery options" style={styles.stepName} />
       <BorderContainer>
         <OptionItem
@@ -45,7 +51,7 @@ export default function DeliveryOptionsStep({}: DeliveryOptionsStepProps) {
           // }
           style={{ width: '80%', alignSelf: 'center' }}
           onPress={() => {
-            setIsScroll();
+            navigation.navigate(routes.PaymentMethodStep);
           }}
         />
         <AppText
@@ -57,6 +63,6 @@ export default function DeliveryOptionsStep({}: DeliveryOptionsStepProps) {
           style={styles.noticeStyle}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 }
