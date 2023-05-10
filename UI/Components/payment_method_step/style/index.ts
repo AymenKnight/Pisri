@@ -4,10 +4,10 @@ import font from '@components/config/font';
 
 export default StyleSheet.create({
   PaymentMethodStep: {
-    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     gap: 20,
+    paddingHorizontal: 20,
   },
   stepName: {
     fontFamily: font.PublicSans_800ExtraBold,

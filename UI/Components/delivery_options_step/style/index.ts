@@ -4,10 +4,11 @@ import font from '@components/config/font';
 
 export default StyleSheet.create({
   DeliveryOptionsStep: {
-    flex: 1,
     display: 'flex',
     flexDirection: 'column',
     gap: 20,
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
   stepName: {
     fontFamily: font.PublicSans_800ExtraBold,
@@ -19,6 +20,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     gap: 5,
+    paddingBottom: 20,
   },
   hintStyle: {
     fontFamily: font.PublicSans_900Black,
