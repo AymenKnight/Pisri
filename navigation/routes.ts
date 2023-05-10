@@ -7,7 +7,10 @@ export default Object.freeze({
   DELIVERY: 'delivery',
   ACTIVITY: 'Activity',
   Check: 'Check',
-  DELIVERY_FINISHED: 'DeliveryFinished',
+  DeliveryOptionsStep: 'DeliveryOptionsStep',
+  PaymentMethodStep: 'PaymentMethodStep',
+  ConfirmationStep: 'ConfirmationStep',
+  DeliveryFinished: 'DeliveryFinished',
   ORDER_ON_WAY: 'Order_On_Way',
   CONGRATULATIONS: 'Congratulations',
 });

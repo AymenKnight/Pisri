@@ -6,10 +6,12 @@ import StoreScreen from '@screens/store_screen';
 import BottomTabBar from '@components/bottom_tab_bar';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import MyBagScreen from '@screens/my_bag_screen';
+import ActivityTopTabNavigator from '@navigation/activity_top_tab_navigator';
 
 export type BottomTabParamList = {
   Store: undefined;
   MyBag: undefined;
+  Activity: undefined;
 };
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 interface HomeNavigatorProps {}
@@ -24,6 +26,10 @@ export default function HomeNavigator({}: HomeNavigatorProps) {
       >
         <BottomTab.Screen name={routes.Store} component={StoreScreen} />
         <BottomTab.Screen name={routes.MyBag} component={MyBagScreen} />
+        <BottomTab.Screen
+          name={routes.ACTIVITY}
+          component={ActivityTopTabNavigator}
+        />
       </BottomTab.Navigator>
     </QueryClientProvider>
   );
