@@ -1,18 +1,15 @@
 import styles from './style/index';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import StepIndicator from '@containers/step_indicator';
 import routes from '@navigation/routes';
 import HomeNavigator from '@navigation/home_navigator';
 import TopNavigation from '@components/top_navigation';
 import DeliveryFinished from '@screens/delivery_finished';
-import ActivityScreen from '@screens/activity_screen';
-import ActivityTopTabNavigator from '@navigation/activity_top_tab_navigator';
+import StepNavigator from '@navigation/step_navigator';
 
 export type MainStackParamList = {
   HomeTabs: undefined;
   Check: undefined;
   DeliveryFinished: undefined;
-  Activity: undefined;
 };
 const MainStack = createNativeStackNavigator<MainStackParamList>();
 interface MainNavigatorProps {}
@@ -24,14 +21,10 @@ export default function MainNavigator({}: MainNavigatorProps) {
       }}
     >
       <MainStack.Screen name={routes.HomeTabs} component={HomeNavigator} />
-      <MainStack.Screen name={routes.Check} component={StepIndicator} />
+      <MainStack.Screen name={routes.Check} component={StepNavigator} />
       <MainStack.Screen
-        name={routes.DELIVERY_FINISHED}
+        name={routes.DeliveryFinished}
         component={DeliveryFinished}
-      />
-      <MainStack.Screen
-        name={routes.ACTIVITY}
-        component={ActivityTopTabNavigator}
       />
     </MainStack.Navigator>
   );
