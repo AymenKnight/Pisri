@@ -1,7 +1,8 @@
-import { View } from 'react-native';
+import { TouchableWithoutFeedback, View } from 'react-native';
 import styles from './style/index';
 import AppText from '@components/basic/app_text';
 import {
+  AntDesign,
   Entypo,
   Feather,
   FontAwesome,
@@ -14,21 +15,27 @@ import * as Animatable from 'react-native-animatable';
 import { useState } from 'react';
 
 type DeliveryStatus =
-  | 'delivering'
+  | { name: 'delivering'; remainingTime: string }
   | 'Finished'
   | 'pending'
   | 'onDoor'
-  | 'notified';
+  | { name: 'notified'; numRequests: number };
 
 interface ActivityItemProps {
   status?: DeliveryStatus;
+  price: {
+    amount: number;
+    currency: string;
+  };
+  receiptId: string;
 }
-export default function ActivityItem({ status }: ActivityItemProps) {
-  //TODO provide real data (props)
-  //TODO close menuBar when clicked outside or by time
-  //TODO show remaining time in some status
-  //TODO refactor menuBar to single comp
-  //TODO handle the logic (onPress and state)
+export default function ActivityItem({
+  status,
+  price,
+  receiptId,
+}: ActivityItemProps) {
+  //TODO provide menu actions functions (props)
+  //TODO refactor menuBar to single component
   //TODO handle time format
   const [menuIsShown, showMenu] = useState(false);
   return (
@@ -39,22 +46,73 @@ export default function ActivityItem({ status }: ActivityItemProps) {
       ]}
     >
       <View style={styles.headerContainer}>
-        <AppText text={`Receipt #1235467`} style={styles.ReceiptText} />
+        <AppText text={`Receipt #${receiptId}`} style={styles.ReceiptText} />
         <View style={styles.StatusContainer}>
           <AppText text={'Status:'} style={styles.StatusTitleText} />
-          <AppText text={'In the way'} style={styles.StatusText} />
-          <Feather
-            name="truck"
-            size={23}
-            color={Colors.primary}
-            style={styles.truckLogo}
-          />
+          {typeof status == 'object' ? (
+            status.name == 'delivering' ? (
+              <>
+                <AppText text={'In the way'} style={styles.StatusText} />
+                <Feather
+                  name="truck"
+                  size={15}
+                  color={Colors.primary}
+                  style={styles.truckLogo}
+                />
+              </>
+            ) : (
+              <>
+                <AppText text={'You have'} style={styles.StatusText} />
+                <AppText text={status.numRequests} style={styles.numReqText} />
+                <AppText
+                  text={`delivery ${
+                    status.numRequests > 1 ? 'requests' : 'request'
+                  }`}
+                  style={styles.StatusText}
+                />
+                <AntDesign
+                  name="exclamationcircleo"
+                  size={15}
+                  color={Colors.hot_red}
+                  style={styles.truckLogo}
+                />
+              </>
+            )
+          ) : status == 'Finished' ? (
+            <>
+              <AppText text={'Finished'} style={styles.StatusText} />
+              <SimpleLineIcons
+                name="check"
+                size={15}
+                color={Colors.goodGreen}
+                style={styles.truckLogo}
+              />
+            </>
+          ) : status == 'pending' ? (
+            <AppText
+              text={'Waiting for delivery requests'}
+              style={styles.StatusText}
+            />
+          ) : (
+            <>
+              <AppText
+                text={'the delivery guy arrived'}
+                style={styles.StatusText}
+              />
+              <AntDesign
+                name="exclamationcircleo"
+                size={15}
+                color={Colors.goodGreen}
+                style={styles.truckLogo}
+              />
+            </>
+          )}
         </View>
       </View>
       <View style={styles.footerContainer}>
         <View style={styles.priceContainer}>
-          <AppText text={'900'} style={styles.price} />
-          <AppText text={'Dzd'} style={styles.tag} />
+          <AppText text={price.amount} style={styles.price} />
+          <AppText text={price.currency} style={styles.tag} />
         </View>
         {status == 'onDoor' ? (
           <Animatable.View
@@ -152,10 +210,10 @@ export default function ActivityItem({ status }: ActivityItemProps) {
           styles.StatusIconContainer,
           {
             backgroundColor:
-              status == 'delivering'
-                ? Colors.primary
-                : status == 'notified'
-                ? Colors.goodGreen
+              typeof status == 'object'
+                ? status.name == 'delivering'
+                  ? Colors.primary
+                  : Colors.goodGreen
                 : status == 'pending'
                 ? Colors.coldBlue
                 : status == 'Finished'
@@ -166,20 +224,29 @@ export default function ActivityItem({ status }: ActivityItemProps) {
           },
         ]}
       >
-        {status == 'delivering' ? (
-          <MaterialCommunityIcons
-            name="progress-clock"
-            size={18}
-            color="white"
-            style={styles.StatusIcon}
-          />
-        ) : status == 'notified' ? (
-          <MaterialCommunityIcons
-            name="account-group"
-            size={15}
-            color="white"
-            style={styles.StatusIcon}
-          />
+        {typeof status == 'object' ? (
+          status.name == 'delivering' ? (
+            <MaterialCommunityIcons
+              name="progress-clock"
+              size={18}
+              color="white"
+              style={styles.StatusIcon}
+            />
+          ) : (
+            <View style={styles.notificationIconContainer}>
+              <MaterialCommunityIcons
+                name="account-group"
+                size={18}
+                color="white"
+                style={styles.StatusIcon}
+              />
+              <View
+                style={
+                  status.numRequests > 0 ? styles.notificationCircle : undefined
+                }
+              ></View>
+            </View>
+          )
         ) : status == 'pending' ? (
           <MaterialCommunityIcons
             name="walk"
@@ -204,10 +271,17 @@ export default function ActivityItem({ status }: ActivityItemProps) {
           <MaterialCommunityIcons name="door" size={18} color={Colors.white} />
         )}
       </View>
-      <View style={styles.timerContainer}>
-        <AppText text={'remaining:'} style={styles.timerText} />
-        <AppText text={'20:25'} style={styles.time} />
-      </View>
+      {typeof status == 'object' && status.name == 'delivering' && (
+        <View style={styles.timerContainer}>
+          <AppText text={'remaining:'} style={styles.timerText} />
+          <AppText text={status.remainingTime.toString()} style={styles.time} />
+        </View>
+      )}
+      {menuIsShown && (
+        <TouchableWithoutFeedback onPress={() => showMenu(false)}>
+          <View style={styles.overlay} />
+        </TouchableWithoutFeedback>
+      )}
     </View>
   );
 }
