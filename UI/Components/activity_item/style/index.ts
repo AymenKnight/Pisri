@@ -16,6 +16,14 @@ export default StyleSheet.create({
     minHeight: 100,
     maxHeight: 100,
   },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
   StatusIconContainer: {
     position: 'absolute',
     left: -10,
@@ -29,6 +37,16 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   StatusIcon: {},
+  notificationCircle: {
+    backgroundColor: Colors.hot_red,
+    position: 'absolute',
+    left: -5,
+    top: -5,
+    borderRadius: 100,
+    width: 10,
+    height: 10,
+  },
+  notificationIconContainer: { position: 'relative' },
   headerContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -38,7 +56,7 @@ export default StyleSheet.create({
   footerContainer: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'baseline',
     justifyContent: 'space-between',
   },
   ReceiptText: {
@@ -60,6 +78,11 @@ export default StyleSheet.create({
   StatusText: {
     fontFamily: font.PublicSans_600SemiBold,
     color: Colors.fontColor,
+    fontSize: 14,
+  },
+  numReqText: {
+    fontFamily: font.PublicSans_700Bold,
+    color: Colors.primary,
     fontSize: 14,
   },
   truckLogo: {},
