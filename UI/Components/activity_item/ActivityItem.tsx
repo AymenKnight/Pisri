@@ -111,6 +111,7 @@ export default function ActivityItem({
       </View>
       <View style={styles.footerContainer}>
         <View style={styles.priceContainer}>
+          <AppText text="Total cost:" style={styles.TotalText} />
           <AppText text={price.amount} style={styles.price} />
           <AppText text={price.currency} style={styles.tag} />
         </View>

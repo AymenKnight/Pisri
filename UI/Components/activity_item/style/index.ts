@@ -92,6 +92,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     gap: 2,
   },
+  TotalText: {
+    fontFamily: font.PublicSans_700Bold,
+    color: Colors.fontColor,
+    fontSize: 14,
+  },
   price: {
     color: Colors.goodGreen,
     fontFamily: font.PublicSans_800ExtraBold,
