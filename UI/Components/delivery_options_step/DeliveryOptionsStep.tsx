@@ -5,7 +5,6 @@ import PrimaryButton from '@components/basic/buttons/primary_button';
 import { MaterialIcons } from '@expo/vector-icons';
 import OptionItem from '@components/option_item';
 import BorderContainer from '@containers/border_container';
-import { useStepProgressStore } from '@stores/stepProgressStore';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StepStackParamList } from '@navigation/step_navigator/StepNavigator';
 import { useNavigation } from '@react-navigation/native';

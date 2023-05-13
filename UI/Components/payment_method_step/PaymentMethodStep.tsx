@@ -2,7 +2,6 @@ import { ScrollView, View } from 'react-native';
 import styles from './style/index';
 import AppText from '@components/basic/app_text';
 import PrimaryButton from '@components/basic/buttons/primary_button';
-import { useStepProgressStore } from '@stores/stepProgressStore';
 import BorderContainer from '@containers/border_container';
 import PaymentItem from '@components/payment_item';
 import { StackNavigationProp } from '@react-navigation/stack';
