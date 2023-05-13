@@ -1,9 +1,10 @@
 import { View } from 'react-native';
 import styles from './style/index';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import ActivityScreen from '@screens/activity_screen';
 import Colors from '@components/config/Colors';
 import AppText from '@components/basic/app_text';
+import ActivityTab from '@screens/activity_screen';
+import FinishedTab from '@screens/finished_tab';
 
 const Tab = createMaterialTopTabNavigator();
 interface ActivityTopTabNavigatorProps {}
@@ -20,10 +21,9 @@ export default function ActivityTopTabNavigator({}: ActivityTopTabNavigatorProps
           swipeEnabled: true,
           lazy: true,
         })}
-        sceneContainerStyle={{ paddingHorizontal: 20 }}
       >
-        <Tab.Screen name="Active" component={ActivityScreen} />
-        <Tab.Screen name="Finished" component={ActivityScreen} />
+        <Tab.Screen name="Active" component={ActivityTab} />
+        <Tab.Screen name="Finished" component={FinishedTab} />
       </Tab.Navigator>
     </View>
   );
