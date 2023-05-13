@@ -1,2 +1,2 @@
-import ActivityScreen from './ActivityScreen';
-export default ActivityScreen;
+import ActivityTab from './ActivityTab';
+export default ActivityTab;
