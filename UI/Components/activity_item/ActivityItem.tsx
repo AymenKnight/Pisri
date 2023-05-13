@@ -21,7 +21,7 @@ type DeliveryStatus =
   | 'onDoor'
   | { name: 'notified'; numRequests: number };
 
-interface ActivityItemProps {
+export interface ActivityItemProps {
   status?: DeliveryStatus;
   price: {
     amount: number;
