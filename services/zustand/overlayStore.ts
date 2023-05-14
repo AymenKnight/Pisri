@@ -20,29 +20,38 @@ interface OverlayState {
   children?: React.ReactNode;
   header?: React.ReactNode;
 }
+const defaultModalStyle: ViewStyle = {
+  backgroundColor: 'white',
+  borderTopLeftRadius: 35,
+  borderTopRightRadius: 35,
+  width: '100%',
+  borderColor: Colors.light,
+  borderWidth: 2.5,
+  borderStyle: 'solid',
+  position: 'absolute',
+  bottom: 0,
+  overflow: 'hidden',
+  padding: 20,
+  maxHeight: screenHeight * 0.9,
+};
+const defaultModalProps: ModalProps = {
+  animationType: 'slide',
+};
 
 export const useOverlayStore = create<OverlayState>((set) => ({
   options: {
-    modalProps: {
-      animationType: 'slide',
-    },
-    modalStyle: {
-      backgroundColor: 'white',
-      borderTopLeftRadius: 35,
-      borderTopRightRadius: 35,
-      width: '100%',
-      borderColor: Colors.light,
-      borderWidth: 2.5,
-      borderStyle: 'solid',
-      position: 'absolute',
-      bottom: 0,
-      overflow: 'hidden',
-      padding: 20,
-      maxHeight: screenHeight * 0.9,
-    },
+    modalProps: defaultModalProps,
+    modalStyle: defaultModalStyle,
   },
   visible: false,
-  close: () => set(() => ({ visible: false })),
+  close: () =>
+    set(() => ({
+      visible: false,
+      options: {
+        modalProps: defaultModalProps,
+        modalStyle: defaultModalStyle,
+      },
+    })),
   modal: (children, header, options) => {
     set((state) => ({
       children,
