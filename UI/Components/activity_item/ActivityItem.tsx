@@ -140,7 +140,6 @@ export default function ActivityItem({
             animation="jello"
             duration={1000}
             style={styles.popMenu}
-            // onPress={hundleMenuPress}
           >
             {typeof status == 'object' && status.name == 'notified' && (
               <AppButton
@@ -149,6 +148,7 @@ export default function ActivityItem({
                     <DeliveryRequestsModal receiptId={receiptId} />,
                     <CloseButton onPress={close} />,
                   ).open();
+                  showMenu(false);
                 }}
                 style={{
                   backgroundColor: Colors.goodGreen,
@@ -168,7 +168,8 @@ export default function ActivityItem({
             )}
             <AppButton
               onPress={() => {
-                //TODO can receipt
+                //TODO cancel receipt
+                showMenu(false);
               }}
               style={{
                 backgroundColor: Colors.coldBlue,
@@ -182,6 +183,7 @@ export default function ActivityItem({
             <AppButton
               onPress={() => {
                 //TODO edit receipt
+                showMenu(false);
               }}
               style={{
                 backgroundColor: Colors.Unfocused_Blue,
