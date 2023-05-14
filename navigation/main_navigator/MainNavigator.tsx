@@ -5,6 +5,7 @@ import HomeNavigator from '@navigation/home_navigator';
 import TopNavigation from '@components/top_navigation';
 import DeliveryFinished from '@screens/delivery_finished';
 import StepNavigator from '@navigation/step_navigator';
+import DeliveryOnWayScreen from '@screens/delivery_on_way_modal';
 
 export type MainStackParamList = {
   HomeTabs: undefined;
@@ -14,6 +15,7 @@ export type MainStackParamList = {
 const MainStack = createNativeStackNavigator<MainStackParamList>();
 interface MainNavigatorProps {}
 export default function MainNavigator({}: MainNavigatorProps) {
+  //TODO refactor DeliveryFinished to modal instead
   return (
     <MainStack.Navigator
       screenOptions={{

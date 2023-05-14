@@ -11,7 +11,7 @@ export default Object.freeze({
   PaymentMethodStep: 'PaymentMethodStep',
   ConfirmationStep: 'ConfirmationStep',
   DeliveryFinished: 'DeliveryFinished',
-  ORDER_ON_WAY: 'Order_On_Way',
+  OrderOnWay: 'OrderOnWay',
   CONGRATULATIONS: 'Congratulations',
 });
 //TODO Reformat the routes
