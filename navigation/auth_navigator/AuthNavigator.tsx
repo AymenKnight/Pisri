@@ -42,8 +42,6 @@ export default function AuthNavigator({}: AuthNavigatorProps) {
   } = useAuthStore();
 
   useEffect(() => {
-    setIsLoading(true);
-
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const userRef = await doc(db, 'users', user.uid);

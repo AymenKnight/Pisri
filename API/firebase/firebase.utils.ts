@@ -636,5 +636,7 @@ export async function uploadData() {
   }
 }
 
+//Activity section
+
 export { auth, db };
 export default firebaseApp;
