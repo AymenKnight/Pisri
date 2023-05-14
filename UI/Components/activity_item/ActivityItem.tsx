@@ -13,6 +13,9 @@ import Colors from '@components/config/Colors';
 import AppButton from '@components/basic/buttons/text_button/TextButton';
 import * as Animatable from 'react-native-animatable';
 import { useState } from 'react';
+import { useOverlayStore } from '@stores/overlayStore';
+import DeliveryRequestsModal from '@containers/modals/delivery_requests_modal';
+import CloseButton from '@components/basic/buttons/close_button';
 
 type DeliveryStatus =
   | { name: 'delivering'; remainingTime: string }
@@ -38,6 +41,7 @@ export default function ActivityItem({
   //TODO refactor menuBar to single component
   //TODO handle time format
   const [menuIsShown, showMenu] = useState(false);
+  const { modal, close } = useOverlayStore();
   return (
     <View
       style={[
@@ -138,23 +142,34 @@ export default function ActivityItem({
             style={styles.popMenu}
             // onPress={hundleMenuPress}
           >
+            {typeof status == 'object' && status.name == 'notified' && (
+              <AppButton
+                onPress={() => {
+                  modal(
+                    <DeliveryRequestsModal receiptId={receiptId} />,
+                    <CloseButton onPress={close} />,
+                  ).open();
+                }}
+                style={{
+                  backgroundColor: Colors.goodGreen,
+                  borderRadius: 100,
+                  width: 30,
+                  height: 30,
+                }}
+                padding={0}
+                icon={
+                  <MaterialCommunityIcons
+                    name="account-group"
+                    size={15}
+                    color="white"
+                  />
+                }
+              />
+            )}
             <AppButton
-              style={{
-                backgroundColor: Colors.goodGreen,
-                borderRadius: 100,
-                width: 30,
-                height: 30,
+              onPress={() => {
+                //TODO can receipt
               }}
-              padding={0}
-              icon={
-                <MaterialCommunityIcons
-                  name="account-group"
-                  size={15}
-                  color="white"
-                />
-              }
-            />
-            <AppButton
               style={{
                 backgroundColor: Colors.coldBlue,
                 borderRadius: 100,
@@ -165,6 +180,9 @@ export default function ActivityItem({
               icon={<FontAwesome name="pause" size={12} color="white" />}
             />
             <AppButton
+              onPress={() => {
+                //TODO edit receipt
+              }}
               style={{
                 backgroundColor: Colors.Unfocused_Blue,
                 borderRadius: 100,
@@ -181,6 +199,9 @@ export default function ActivityItem({
               }
             />
             <AppButton
+              onPress={() => {
+                showMenu(false);
+              }}
               style={{
                 backgroundColor: Colors.hot_red,
                 borderRadius: 100,
@@ -277,11 +298,6 @@ export default function ActivityItem({
           <AppText text={'remaining:'} style={styles.timerText} />
           <AppText text={status.remainingTime.toString()} style={styles.time} />
         </View>
-      )}
-      {menuIsShown && (
-        <TouchableWithoutFeedback onPress={() => showMenu(false)}>
-          <View style={styles.overlay} />
-        </TouchableWithoutFeedback>
       )}
     </View>
   );
