@@ -5,12 +5,10 @@ import HomeNavigator from '@navigation/home_navigator';
 import TopNavigation from '@components/top_navigation';
 import DeliveryFinished from '@screens/delivery_finished';
 import StepNavigator from '@navigation/step_navigator';
-import DeliveryOnWayScreen from '@screens/delivery_on_way_modal';
 
 export type MainStackParamList = {
   HomeTabs: undefined;
   Check: undefined;
-  DeliveryFinished: undefined;
 };
 const MainStack = createNativeStackNavigator<MainStackParamList>();
 interface MainNavigatorProps {}
@@ -24,10 +22,6 @@ export default function MainNavigator({}: MainNavigatorProps) {
     >
       <MainStack.Screen name={routes.HomeTabs} component={HomeNavigator} />
       <MainStack.Screen name={routes.Check} component={StepNavigator} />
-      <MainStack.Screen
-        name={routes.DeliveryFinished}
-        component={DeliveryFinished}
-      />
     </MainStack.Navigator>
   );
 }
