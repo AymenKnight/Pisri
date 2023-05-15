@@ -3,7 +3,7 @@ import Colors from '@colors';
 import font from '@components/config/font';
 
 export default StyleSheet.create({
-  DeliveryFinished: {
+  RequestPublishedModal: {
     display: 'flex',
     flex: 1,
     gap: 20,

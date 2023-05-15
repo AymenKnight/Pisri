@@ -1,2 +1,2 @@
-import DeliveryFinished from './DeliveryFinished';
-export default DeliveryFinished;
+import RequestPublishedModal from './RequestPublishedModal';
+export default RequestPublishedModal;
