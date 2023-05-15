@@ -12,6 +12,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import routes from '@navigation/routes';
 import { StepStackParamList } from '@navigation/step_navigator/StepNavigator';
 import { MainStackParamList } from '@navigation/main_navigator/MainNavigator';
+import { useOverlayStore } from '@stores/overlayStore';
+import RequestPublishedModal from '@screens/delivery_finished';
 
 type NavigationProp = CompositeNavigationProp<
   StackNavigationProp<StepStackParamList, 'ConfirmationStep'>,
@@ -21,6 +23,7 @@ type NavigationProp = CompositeNavigationProp<
 interface ConfirmStepProps {}
 export default function ConfirmStep({}: ConfirmStepProps) {
   const navigation = useNavigation<NavigationProp>();
+  const { modal } = useOverlayStore();
   return (
     <ScrollView contentContainerStyle={styles.ConfirmStep}>
       <AppText text="Step 3: Confirm and publish!" style={styles.stepName} />
@@ -50,7 +53,9 @@ export default function ConfirmStep({}: ConfirmStepProps) {
           text="Confirm"
           style={styles.confirmButton}
           onPress={() => {
-            navigation.replace(routes.DeliveryFinished);
+            modal(<RequestPublishedModal />, undefined, {
+              modalStyle: { height: '75%' },
+            }).open();
           }}
         />
         <PrimaryButton
