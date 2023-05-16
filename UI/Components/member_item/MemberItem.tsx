@@ -8,7 +8,7 @@ import styles from './style/index';
 import AppText from '@components/basic/app_text';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useOverlayStore } from '@stores/overlayStore';
-import DeliveryOnWayModal from '@screens/delivery_on_way_modal';
+import DeliveryOnWayModal from '@containers/modals/delivery_on_way_modal';
 
 export interface MemberItemProps {
   image: ImageSourcePropType;
@@ -26,7 +26,7 @@ export default function MemberItem({
   timer,
   onPress,
 }: MemberItemProps) {
-  const { modal, close } = useOverlayStore();
+  const { modal } = useOverlayStore();
   return (
     <TouchableOpacity
       style={styles.MemberItem}

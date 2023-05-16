@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import styles from './style/index';
 import AppText from '@components/basic/app_text';
 import PrimaryButton from '@components/basic/buttons/primary_button';

@@ -13,7 +13,7 @@ import routes from '@navigation/routes';
 import { StepStackParamList } from '@navigation/step_navigator/StepNavigator';
 import { MainStackParamList } from '@navigation/main_navigator/MainNavigator';
 import { useOverlayStore } from '@stores/overlayStore';
-import RequestPublishedModal from '@screens/delivery_finished';
+import RequestPublishedModal from '@containers/modals/request_published_modal';
 
 type NavigationProp = CompositeNavigationProp<
   StackNavigationProp<StepStackParamList, 'ConfirmationStep'>,
