@@ -1,4 +1,4 @@
-import { TouchableWithoutFeedback, View } from 'react-native';
+import { View } from 'react-native';
 import styles from './style/index';
 import AppText from '@components/basic/app_text';
 import {
@@ -16,6 +16,7 @@ import { useState } from 'react';
 import { useOverlayStore } from '@stores/overlayStore';
 import DeliveryRequestsModal from '@containers/modals/delivery_requests_modal';
 import CloseButton from '@components/basic/buttons/close_button';
+import DeliveryArrivedModal from '@containers/modals/delivery_arrived_modal';
 
 type DeliveryStatus =
   | { name: 'delivering'; remainingTime: string }
@@ -129,6 +130,16 @@ export default function ActivityItem({
             iterationCount="infinite"
           >
             <AppButton
+              onPress={() => {
+                modal(
+                  <DeliveryArrivedModal
+                    receiptId={receiptId}
+                    verificationCode="D567-454"
+                  />,
+                  <CloseButton onPress={close} />,
+                ).open();
+                showMenu(false);
+              }}
               style={styles.hereButton}
               textStyle={styles.hereButtonText}
               padding={8}
