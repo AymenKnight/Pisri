@@ -135,6 +135,7 @@ export default function ActivityItem({
                   <DeliveryArrivedModal
                     receiptId={receiptId}
                     verificationCode="D567-454"
+                    price={price}
                   />,
                   <CloseButton onPress={close} />,
                 ).open();
