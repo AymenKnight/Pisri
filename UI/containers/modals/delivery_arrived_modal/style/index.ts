@@ -73,4 +73,8 @@ export default StyleSheet.create({
     height: 50,
   },
   verifiedIconStyle: {},
+  verifyButton: {
+    backgroundColor: Colors.coldBlue,
+    borderRadius: 100,
+  },
 });
