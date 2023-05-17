@@ -17,4 +17,9 @@ export default StyleSheet.create({
     borderRadius: 100,
     borderStyle: 'solid',
   },
+  BackButton: {
+    backgroundColor: Colors.primary,
+    padding: 0,
+    borderRadius: 100,
+  },
 });

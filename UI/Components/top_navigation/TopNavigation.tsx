@@ -13,24 +13,27 @@ import { MainStackParamList } from '@navigation/main_navigator/MainNavigator';
 import routes from '@navigation/routes';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { BottomTabParamList } from '@navigation/home_navigator/HomeNavigator';
+import Colors from '@components/config/Colors';
 
 type NavigationProp = CompositeNavigationProp<
   StackNavigationProp<MainStackParamList>,
   BottomTabNavigationProp<BottomTabParamList>
 >;
-interface TopNavigationProps {
-  onBack?: () => void;
-}
-export default function TopNavigation({ onBack }: TopNavigationProps) {
+interface TopNavigationProps {}
+export default function TopNavigation({}: TopNavigationProps) {
   const navigation = useNavigation<NavigationProp>();
+
   return (
     <View style={styles.TopNavigation}>
-      {onBack ? (
+      {navigation.canGoBack() ? (
         <AppButton
+          style={styles.BackButton}
           icon={
-            <MaterialIcons name="keyboard-arrow-left" size={33} color="white" />
+            <MaterialIcons name="keyboard-arrow-left" size={30} color="white" />
           }
-          onPress={() => {}}
+          onPress={() => {
+            navigation.goBack();
+          }}
         />
       ) : (
         <AppButton
