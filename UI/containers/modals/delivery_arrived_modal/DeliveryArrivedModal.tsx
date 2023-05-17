@@ -5,14 +5,23 @@ import BorderContainer from '@containers/border_container';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@components/config/Colors';
 import * as Animatable from 'react-native-animatable';
+import AppButton from '@components/basic/buttons/text_button/TextButton';
+import CongratulationModal from '../congratulation_modal';
+import { useOverlayStore } from '@stores/overlayStore';
 interface DeliveryArrivedModalProps {
   receiptId: string;
   verificationCode: string;
+  price: {
+    amount: number;
+    currency: string;
+  };
 }
 export default function DeliveryArrivedModal({
   receiptId,
   verificationCode,
+  price,
 }: DeliveryArrivedModalProps) {
+  const { modal } = useOverlayStore();
   return (
     <View style={styles.DeliveryArrivedModal}>
       <View style={styles.headerContainer}>
@@ -51,6 +60,13 @@ export default function DeliveryArrivedModal({
             <Ionicons name="reload" size={35} color="white" />
           </Animatable.View>
         </View> */}
+        <AppButton
+          onPress={() => {
+            modal(<CongratulationModal price={price} />).open();
+          }}
+          icon={<Ionicons name="reload" size={35} color="white" />}
+          style={styles.verifyButton}
+        />
       </View>
     </View>
   );
