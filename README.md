@@ -58,7 +58,7 @@ The folder structure of the project is organized as follows:
   - **`screens/`**: Contains the individual screens of the app.
   - **`containers/`**: Contains wrapper view components used to wrap and provide additional functionality to other components and modal                        components used for displaying overlay views and user prompts.
   - **`components/`**: Contains reusable UI components used across different screens.
-- **`App.js`**: The entry point of the application.
+- **`App.tsx`**: The entry point of the application.
 - **`package.json`**: Lists the app's dependencies and provides scripts for running the app.
 
 ## Contributing
