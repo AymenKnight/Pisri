@@ -18,19 +18,21 @@ Pisri is a mobile application built using React Native framework. It serves as a
 To run the Pisri app locally on your development machine, follow these steps:
 
 1. Ensure you have Node.js installed on your system.
-2. Clone the repository from GitHub:https://github.com/daouadji506/Pisri
+2. Clone the repository from GitHub: https://github.com/daouadji506/Pisri
 3. Navigate to the project's root directory: cd Pisri
-4. Install the dependencies using npm or yarn:npm install
+4. Install the dependencies using npm or yarn:
 
+npm install
 or
 yarn install
 
 5. Configure the necessary environment variables. You may need to set up API keys or authentication credentials depending on the backend services used in the app.
 6. Start the development server:
-npm start
 
+npm start
 or
 yarn start
+
 7. Use a simulator or a physical device to run the app. You can use the following commands depending on your preferred platform:
 iOS
 npm run ios
@@ -48,13 +50,14 @@ yarn run android
 
 The folder structure of the project is organized as follows:
 
-- **`src/`**: Contains the main source code of the application.
-  - **`UI/`**: Reusable UI components used across different screens.
+- **`API/`**: Manages API calls and integration with backend services.
+- **`assets/`**: Images, icons, and other static assets used in the app.
+- **`navigation/`**: Handles the navigation between screens.
+- **`services/`**: Contains services for managing app state using Zustand.
+- **`UI/`**: Contains the user interface-related files and folders.
   - **`screens/`**: Contains the individual screens of the app.
-  - **`navigation/`**: Handles the navigation between screens.
-  - **`services/`**: Manages API calls and integration with backend services.
-  - **`utils/`**: Utility functions and helper modules.
-  - **`assets/`**: Images, icons, and other static assets used in the app.
+  - **`containers/`**: Contains wrapper view components used to wrap and provide additional functionality to other components and modal                        components used for displaying overlay views and user prompts.
+  - **`components/`**: Contains reusable UI components used across different screens.
 - **`App.js`**: The entry point of the application.
 - **`package.json`**: Lists the app's dependencies and provides scripts for running the app.
 
